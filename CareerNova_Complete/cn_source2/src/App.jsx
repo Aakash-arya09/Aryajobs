@@ -1,3 +1,5 @@
+//Some working code for the CareerNova app, including context, Firebase authentication helpers, sample data for companies and jobs, and SVG icons for the UI.
+
 import { useState, useEffect, useContext, createContext, useRef } from "react";
 import {
   signInWithGoogle,
@@ -725,58 +727,139 @@ const CATEGORIES = [
 // ─── ICONS ──────────────────────────────────────────────────────────────────
 // ─── CN LOGO COMPONENTS ──────────────────────────────────────────────────────
 const CnMark = ({ size = 36 }) => {
-  const r  = size * 0.30;
+  const r = size * 0.3;
   const cx = size * 0.44;
-  const cy = size * 0.50;
+  const cy = size * 0.5;
   const x1 = cx + r;
   const x2 = cx + r * 1.95;
   const top = cy - r;
   const bot = cy + r;
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d={`M ${x1} ${top} A ${r} ${r} 0 1 0 ${x1} ${bot}`}
-        stroke="white" strokeWidth={size * 0.12} strokeLinecap="round"/>
-      <line x1={x1} y1={top} x2={x2} y2={bot}
-        stroke="#22D3EE" strokeWidth={size * 0.095} strokeLinecap="round"/>
-      <line x1={x2} y1={top} x2={x2} y2={bot}
-        stroke="#A78BFA" strokeWidth={size * 0.095} strokeLinecap="round"/>
+    <svg
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d={`M ${x1} ${top} A ${r} ${r} 0 1 0 ${x1} ${bot}`}
+        stroke="white"
+        strokeWidth={size * 0.12}
+        strokeLinecap="round"
+      />
+      <line
+        x1={x1}
+        y1={top}
+        x2={x2}
+        y2={bot}
+        stroke="#22D3EE"
+        strokeWidth={size * 0.095}
+        strokeLinecap="round"
+      />
+      <line
+        x1={x2}
+        y1={top}
+        x2={x2}
+        y2={bot}
+        stroke="#A78BFA"
+        strokeWidth={size * 0.095}
+        strokeLinecap="round"
+      />
     </svg>
   );
 };
 
 const CnLogo = ({ size = 36, textSize = 20 }) => (
-  <div style={{ display:"flex", alignItems:"center", gap: Math.round(size * 0.24) }}>
-    <div style={{
-      width: size, height: size, borderRadius: Math.round(size * 0.28),
-      background: "#151B3D",
-      display:"flex", alignItems:"center", justifyContent:"center",
-      flexShrink: 0,
-      boxShadow: "0 2px 10px rgba(124,58,237,0.3)",
-    }}>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: Math.round(size * 0.24),
+    }}
+  >
+    <div
+      style={{
+        width: size,
+        height: size,
+        borderRadius: Math.round(size * 0.28),
+        background: "#151B3D",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+        boxShadow: "0 2px 10px rgba(124,58,237,0.3)",
+      }}
+    >
       <CnMark size={Math.round(size * 0.7)} />
     </div>
-    <span style={{
-      fontWeight: 800, fontSize: textSize, letterSpacing: "-0.4px", lineHeight: 1,
-      fontFamily: "inherit",
-    }}>
-      <span style={{ background:"linear-gradient(135deg,#151B3D,#4B1FBF)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>Career</span><span style={{ background:"linear-gradient(135deg,#7C3AED,#22D3EE)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>Nova</span>
+    <span
+      style={{
+        fontWeight: 800,
+        fontSize: textSize,
+        letterSpacing: "-0.4px",
+        lineHeight: 1,
+        fontFamily: "inherit",
+      }}
+    >
+      <span
+        style={{
+          background: "linear-gradient(135deg,#151B3D,#4B1FBF)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        }}
+      >
+        Career
+      </span>
+      <span
+        style={{
+          background: "linear-gradient(135deg,#7C3AED,#22D3EE)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        }}
+      >
+        Nova
+      </span>
     </span>
   </div>
 );
 
 const CnLogoDark = ({ size = 36, textSize = 20 }) => (
-  <div style={{ display:"flex", alignItems:"center", gap: Math.round(size * 0.24) }}>
-    <div style={{
-      width: size, height: size, borderRadius: Math.round(size * 0.28),
-      background: "rgba(255,255,255,0.08)",
-      border: "1px solid rgba(255,255,255,0.15)",
-      display:"flex", alignItems:"center", justifyContent:"center",
-      flexShrink: 0,
-    }}>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: Math.round(size * 0.24),
+    }}
+  >
+    <div
+      style={{
+        width: size,
+        height: size,
+        borderRadius: Math.round(size * 0.28),
+        background: "rgba(255,255,255,0.08)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+      }}
+    >
       <CnMark size={Math.round(size * 0.7)} />
     </div>
-    <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.4px", fontFamily:"inherit" }}>
-      <span style={{ color:"white" }}>Career</span><span style={{ color:"#22D3EE" }}>Nova</span>
+    <span
+      style={{
+        fontWeight: 800,
+        fontSize: textSize,
+        letterSpacing: "-0.4px",
+        fontFamily: "inherit",
+      }}
+    >
+      <span style={{ color: "white" }}>Career</span>
+      <span style={{ color: "#22D3EE" }}>Nova</span>
     </span>
   </div>
 );
@@ -2123,7 +2206,15 @@ const Navbar = ({ page, setPage, user, setUser }) => {
                   </div>
                   <span className="hide-mobile">{user.name.split(" ")[0]}</span>
                 </button>
-                <button className="btn-ghost" onClick={async () => { try { await logOut(); } catch(e){} setUser(null); }}>
+                <button
+                  className="btn-ghost"
+                  onClick={async () => {
+                    try {
+                      await logOut();
+                    } catch (e) {}
+                    setUser(null);
+                  }}
+                >
                   <Icon name="logout" size={15} />
                   <span className="hide-mobile">Logout</span>
                 </button>
@@ -2209,7 +2300,11 @@ const Navbar = ({ page, setPage, user, setUser }) => {
                 </button>
               ))}
               <div
-                style={{ height: 1, background: "var(--border)", margin: "12px 0" }}
+                style={{
+                  height: 1,
+                  background: "var(--border)",
+                  margin: "12px 0",
+                }}
               />
               {user ? (
                 <>
@@ -2226,7 +2321,10 @@ const Navbar = ({ page, setPage, user, setUser }) => {
                   <button
                     className="sidebar-link"
                     onClick={async () => {
-                      try { await logOut(); } catch(e){} setUser(null);
+                      try {
+                        await logOut();
+                      } catch (e) {}
+                      setUser(null);
                       setMenuOpen(false);
                     }}
                   >
@@ -2262,13 +2360,26 @@ const Navbar = ({ page, setPage, user, setUser }) => {
                   </button>
                 </>
               )}
-              <div style={{ marginTop: 12, paddingTop: 14, borderTop: "1px solid var(--border)" }}>
+              <div
+                style={{
+                  marginTop: 12,
+                  paddingTop: 14,
+                  borderTop: "1px solid var(--border)",
+                }}
+              >
                 <button
                   className="sidebar-link"
                   onClick={() => setDarkMode(!darkMode)}
-                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
                 >
-                  <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span
+                    style={{ display: "flex", alignItems: "center", gap: 10 }}
+                  >
                     <Icon name={darkMode ? "sun" : "moon"} size={16} />
                     {darkMode ? "Light Mode" : "Dark Mode"}
                   </span>
@@ -2338,7 +2449,13 @@ const JobCard = ({ job, onView, onApply, saved, onSave }) => {
               >
                 {job.title}
               </h3>
-              <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 2 }}>
+              <p
+                style={{
+                  fontSize: 13,
+                  color: "var(--text-muted)",
+                  marginTop: 2,
+                }}
+              >
                 {job.company}
               </p>
             </div>
@@ -2402,7 +2519,11 @@ const JobCard = ({ job, onView, onApply, saved, onSave }) => {
             ))}
             {job.skills.length > 3 && (
               <span
-                style={{ fontSize: 11, color: "var(--text-faint)", padding: "4px 8px" }}
+                style={{
+                  fontSize: 11,
+                  color: "var(--text-faint)",
+                  padding: "4px 8px",
+                }}
               >
                 +{job.skills.length - 3}
               </span>
@@ -2419,7 +2540,9 @@ const JobCard = ({ job, onView, onApply, saved, onSave }) => {
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={{ fontWeight: 700, fontSize: 14, color: "var(--green)" }}>
+              <span
+                style={{ fontWeight: 700, fontSize: 14, color: "var(--green)" }}
+              >
                 {job.salary}
               </span>
               <span
@@ -2648,7 +2771,8 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
           >
             <div
               style={{
-                flex: "2 1 160px", minWidth: "min(160px,100%)",
+                flex: "2 1 160px",
+                minWidth: "min(160px,100%)",
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
@@ -2658,7 +2782,11 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               <Icon
                 name="search"
                 size={18}
-                style={{ position: "absolute", left: 12, color: "var(--text-faint)" }}
+                style={{
+                  position: "absolute",
+                  left: 12,
+                  color: "var(--text-faint)",
+                }}
               />
               <input
                 value={searchTitle}
@@ -2675,7 +2803,8 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             </div>
             <div
               style={{
-                flex: "1 1 130px", minWidth: "min(130px,100%)",
+                flex: "1 1 130px",
+                minWidth: "min(130px,100%)",
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
@@ -2687,7 +2816,11 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               <Icon
                 name="location"
                 size={18}
-                style={{ position: "absolute", left: 24, color: "var(--text-faint)" }}
+                style={{
+                  position: "absolute",
+                  left: 24,
+                  color: "var(--text-faint)",
+                }}
               />
               <input
                 value={searchLoc}
@@ -2703,7 +2836,8 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             </div>
             <div
               style={{
-                flex: "1 1 130px", minWidth: "min(130px,100%)",
+                flex: "1 1 130px",
+                minWidth: "min(130px,100%)",
                 borderLeft: "1px solid var(--border)",
                 paddingLeft: 12,
               }}
@@ -2734,7 +2868,9 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               <Icon name="search" size={16} /> Search Jobs
             </button>
           </div>
-          <p style={{ marginTop: 16, fontSize: 13, color: "var(--text-muted)" }}>
+          <p
+            style={{ marginTop: 16, fontSize: 13, color: "var(--text-muted)" }}
+          >
             Trending:{" "}
             <span
               onClick={() => {
@@ -2795,7 +2931,13 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               >
                 {val}
               </div>
-              <div style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 2 }}>
+              <div
+                style={{
+                  fontSize: 13,
+                  color: "var(--text-muted)",
+                  marginTop: 2,
+                }}
+              >
                 {label}
               </div>
             </div>
@@ -2805,7 +2947,11 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
 
       {/* CATEGORIES */}
       <section
-        style={{ padding: "clamp(30px,6vw,60px) clamp(12px,3.5vw,20px)", maxWidth: 1200, margin: "0 auto" }}
+        style={{
+          padding: "clamp(30px,6vw,60px) clamp(12px,3.5vw,20px)",
+          maxWidth: 1200,
+          margin: "0 auto",
+        }}
       >
         <h2 className="section-title" style={{ textAlign: "center" }}>
           Browse by Category
@@ -2884,7 +3030,11 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
 
       {/* FEATURED JOBS */}
       <section
-        style={{ padding: "0 clamp(12px,3.5vw,20px) clamp(30px,6vw,60px)", maxWidth: 1200, margin: "0 auto" }}
+        style={{
+          padding: "0 clamp(12px,3.5vw,20px) clamp(30px,6vw,60px)",
+          maxWidth: 1200,
+          margin: "0 auto",
+        }}
       >
         <div
           style={{
@@ -3041,7 +3191,11 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                     {f.title}
                   </div>
                   <div
-                    style={{ fontSize: 13, color: "var(--text-faint)", lineHeight: 1.5 }}
+                    style={{
+                      fontSize: 13,
+                      color: "var(--text-faint)",
+                      lineHeight: 1.5,
+                    }}
                   >
                     {f.desc}
                   </div>
@@ -3066,7 +3220,8 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                     width: 80,
                     height: 80,
                     borderRadius: "50%",
-                    background: "conic-gradient(var(--violet) 92%, var(--border) 0%)",
+                    background:
+                      "conic-gradient(var(--violet) 92%, var(--border) 0%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -3164,7 +3319,11 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
 
       {/* TOP COMPANIES */}
       <section
-        style={{ padding: "clamp(36px,7vw,72px) clamp(12px,3.5vw,20px)", maxWidth: 1200, margin: "0 auto" }}
+        style={{
+          padding: "clamp(36px,7vw,72px) clamp(12px,3.5vw,20px)",
+          maxWidth: 1200,
+          margin: "0 auto",
+        }}
       >
         <div
           style={{
@@ -3218,10 +3377,18 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               >
                 {c.logo}
               </div>
-              <div style={{ fontWeight: 700, fontSize: 15, color: "var(--text)" }}>
+              <div
+                style={{ fontWeight: 700, fontSize: 15, color: "var(--text)" }}
+              >
                 {c.name}
               </div>
-              <div style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 2 }}>
+              <div
+                style={{
+                  fontSize: 12,
+                  color: "var(--text-faint)",
+                  marginTop: 2,
+                }}
+              >
                 {c.industry}
               </div>
               <div
@@ -3353,30 +3520,39 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               [
                 "For Job Seekers",
                 [
-                  ["Find Jobs",        () => setPage("jobs")],
-                  ["Companies",        () => setPage("companies")],
-                  ["Resume Builder",   () => setPage("dashboard")],
+                  ["Find Jobs", () => setPage("jobs")],
+                  ["Companies", () => setPage("companies")],
+                  ["Resume Builder", () => setPage("dashboard")],
                   ["Career Resources", () => setPage("resources")],
-                  ["Job Alerts",       () => setPage("jobs")],
+                  ["Job Alerts", () => setPage("jobs")],
                 ],
               ],
               [
                 "For Employers",
                 [
-                  ["Post a Job",         () => setPage("employer")],
-                  ["Search Candidates",  () => setPage("employer")],
-                  ["Analytics",          () => setPage("employer")],
-                  ["Pricing",            () => showToast("Pricing plans coming soon! 🚀")],
-                  ["Enterprise",         () => showToast("Contact us for enterprise plans 📩")],
+                  ["Post a Job", () => setPage("employer")],
+                  ["Search Candidates", () => setPage("employer")],
+                  ["Analytics", () => setPage("employer")],
+                  ["Pricing", () => showToast("Pricing plans coming soon! 🚀")],
+                  [
+                    "Enterprise",
+                    () => showToast("Contact us for enterprise plans 📩"),
+                  ],
                 ],
               ],
-              ["Company", [
-                ["About",    () => showToast("About page coming soon!")],
-                ["Blog",     () => showToast("Blog coming soon! ✍️")],
-                ["Careers",  () => setPage("jobs")],
-                ["Press",    () => showToast("Press kit available soon 📰")],
-                ["Contact",  () => showToast("Email us at hello@careernova.in 📧")],
-              ]],
+              [
+                "Company",
+                [
+                  ["About", () => showToast("About page coming soon!")],
+                  ["Blog", () => showToast("Blog coming soon! ✍️")],
+                  ["Careers", () => setPage("jobs")],
+                  ["Press", () => showToast("Press kit available soon 📰")],
+                  [
+                    "Contact",
+                    () => showToast("Email us at hello@careernova.in 📧"),
+                  ],
+                ],
+              ],
             ].map(([title, links]) => (
               <div key={title}>
                 <div
@@ -3422,11 +3598,18 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             <span style={{ fontSize: 13 }}>
               © 2026 CareerNova. All rights reserved.
             </span>
-            <span style={{ display: "flex", gap: 16, fontSize: 13, flexWrap: "wrap" }}>
+            <span
+              style={{
+                display: "flex",
+                gap: 16,
+                fontSize: 13,
+                flexWrap: "wrap",
+              }}
+            >
               {[
-                ["Privacy",  "Privacy Policy coming soon 🔒"],
-                ["Terms",    "Terms of Service coming soon 📄"],
-                ["Cookies",  "Cookie Policy coming soon 🍪"],
+                ["Privacy", "Privacy Policy coming soon 🔒"],
+                ["Terms", "Terms of Service coming soon 📄"],
+                ["Cookies", "Cookie Policy coming soon 🍪"],
               ].map(([label, msg]) => (
                 <span
                   key={label}
@@ -3587,7 +3770,13 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
   );
 
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)" }}>
+    <div
+      style={{
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)",
+      }}
+    >
       {/* Search Bar */}
       <div
         className="card"
@@ -3621,7 +3810,13 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
             placeholder="Job title, skills, or company"
           />
         </div>
-        <div style={{ flex: "1 1 130px", minWidth: "min(130px,100%)", position: "relative" }}>
+        <div
+          style={{
+            flex: "1 1 130px",
+            minWidth: "min(130px,100%)",
+            position: "relative",
+          }}
+        >
           <div
             style={{
               position: "absolute",
@@ -3728,14 +3923,22 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
               gap: 10,
             }}
           >
-            <span style={{ fontWeight: 600, color: "var(--text-strong)", fontSize: 15 }}>
+            <span
+              style={{
+                fontWeight: 600,
+                color: "var(--text-strong)",
+                fontSize: 15,
+              }}
+            >
               <span style={{ color: "#7C3AED", fontWeight: 700 }}>
                 {filtered.length}
               </span>{" "}
               jobs found
             </span>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <span style={{ fontSize: 13, color: "var(--text-muted)" }}>Sort:</span>
+              <span style={{ fontSize: 13, color: "var(--text-muted)" }}>
+                Sort:
+              </span>
               <select
                 style={{ width: "auto", padding: "7px 12px", fontSize: 13 }}
                 value={sort}
@@ -3751,7 +3954,11 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
             <div className="card" style={{ padding: 60, textAlign: "center" }}>
               <div style={{ fontSize: 48, marginBottom: 12 }}>🔍</div>
               <h3
-                style={{ fontWeight: 700, color: "var(--text)", marginBottom: 6 }}
+                style={{
+                  fontWeight: 700,
+                  color: "var(--text)",
+                  marginBottom: 6,
+                }}
               >
                 No jobs found
               </h3>
@@ -3811,7 +4018,10 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
         ? prev.filter((id) => id !== job.id)
         : [...prev, job.id],
     );
-    showToast(isSaved ? "Job removed" : "Job saved! ❤️", isSaved ? "error" : "success");
+    showToast(
+      isSaved ? "Job removed" : "Job saved! ❤️",
+      isSaved ? "error" : "success",
+    );
   };
   const isApplied = applications.find((a) => a.jobId === job.id);
   const similar = JOBS.filter(
@@ -3857,7 +4067,13 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
   };
 
   return (
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)" }}>
+    <div
+      style={{
+        maxWidth: 1100,
+        margin: "0 auto",
+        padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)",
+      }}
+    >
       <button
         className="btn-ghost"
         onClick={() => setPage("jobs")}
@@ -3970,7 +4186,11 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
               </div>
               <div style={{ textAlign: "right", flexShrink: 0 }}>
                 <div
-                  style={{ fontSize: 18, fontWeight: 800, color: "var(--green)" }}
+                  style={{
+                    fontSize: 18,
+                    fontWeight: 800,
+                    color: "var(--green)",
+                  }}
                 >
                   {job.salary}
                 </div>
@@ -4041,10 +4261,7 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
               >
                 <Icon name="share" size={16} />
               </button>
-              <button
-                className="btn-ghost"
-                onClick={() => setShowReport(true)}
-              >
+              <button className="btn-ghost" onClick={() => setShowReport(true)}>
                 <Icon name="flag" size={16} /> Report
               </button>
             </div>
@@ -4063,7 +4280,11 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
               title: "Key Responsibilities",
               content: (
                 <ul
-                  style={{ color: "var(--text-soft)", lineHeight: 2, paddingLeft: 18 }}
+                  style={{
+                    color: "var(--text-soft)",
+                    lineHeight: 2,
+                    paddingLeft: 18,
+                  }}
                 >
                   {job.responsibilities.map((r) => (
                     <li key={r}>{r}</li>
@@ -4075,7 +4296,11 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
               title: "Requirements",
               content: (
                 <ul
-                  style={{ color: "var(--text-soft)", lineHeight: 2, paddingLeft: 18 }}
+                  style={{
+                    color: "var(--text-soft)",
+                    lineHeight: 2,
+                    paddingLeft: 18,
+                  }}
                 >
                   {job.requirements.map((r) => (
                     <li key={r}>{r}</li>
@@ -4238,11 +4463,21 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
                 }}
               >
                 <div
-                  style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}
+                  style={{
+                    fontWeight: 600,
+                    fontSize: 14,
+                    color: "var(--text)",
+                  }}
                 >
                   {j.title}
                 </div>
-                <div style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 2 }}>
+                <div
+                  style={{
+                    fontSize: 12,
+                    color: "var(--text-faint)",
+                    marginTop: 2,
+                  }}
+                >
                   {j.company} · {j.location}
                 </div>
                 <div
@@ -4260,105 +4495,140 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
           </div>
         </div>
       </div>
-        {showReport && (
+      {showReport && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(15,23,42,0.55)",
+            backdropFilter: "blur(3px)",
+            zIndex: 1000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 16,
+          }}
+          onClick={() => setShowReport(false)}
+        >
           <div
+            className="card"
             style={{
-              position: "fixed",
-              inset: 0,
-              background: "rgba(15,23,42,0.55)",
-              backdropFilter: "blur(3px)",
-              zIndex: 1000,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 16,
+              width: "100%",
+              maxWidth: 460,
+              padding: 26,
+              maxHeight: "90vh",
+              overflowY: "auto",
             }}
-            onClick={() => setShowReport(false)}
+            onClick={(e) => e.stopPropagation()}
           >
             <div
-              className="card"
               style={{
-                width: "100%",
-                maxWidth: 460,
-                padding: 26,
-                maxHeight: "90vh",
-                overflowY: "auto",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: 8,
               }}
-              onClick={(e) => e.stopPropagation()}
             >
               <div
+                style={{ fontWeight: 800, fontSize: 18, color: "var(--text)" }}
+              >
+                Report this job
+              </div>
+              <button
+                onClick={() => setShowReport(false)}
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginBottom: 8,
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "var(--text-muted)",
                 }}
               >
-                <div style={{ fontWeight: 800, fontSize: 18, color: "var(--text)" }}>
-                  Report this job
-                </div>
-                <button
-                  onClick={() => setShowReport(false)}
-                  style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)" }}
+                <Icon name="x" size={18} />
+              </button>
+            </div>
+            <div
+              style={{
+                fontSize: 13,
+                color: "var(--text-muted)",
+                marginBottom: 16,
+              }}
+            >
+              Let us know why you&apos;re reporting{" "}
+              <strong style={{ color: "#7C3AED" }}>{job.title}</strong> at{" "}
+              {job.company}.
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+                marginBottom: 16,
+              }}
+            >
+              {reportReasons.map((r) => (
+                <label
+                  key={r}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    padding: "10px 12px",
+                    border: `1.5px solid ${report.reason === r ? "#7C3AED" : "var(--border)"}`,
+                    borderRadius: 10,
+                    cursor: "pointer",
+                    background:
+                      report.reason === r
+                        ? "var(--tint-violet)"
+                        : "var(--card)",
+                    fontSize: 14,
+                    color: "var(--text-strong)",
+                  }}
                 >
-                  <Icon name="x" size={18} />
-                </button>
-              </div>
-              <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 16 }}>
-                Let us know why you&apos;re reporting{" "}
-                <strong style={{ color: "#7C3AED" }}>{job.title}</strong> at{" "}
-                {job.company}.
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 16 }}>
-                {reportReasons.map((r) => (
-                  <label
-                    key={r}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
-                      padding: "10px 12px",
-                      border: `1.5px solid ${report.reason === r ? "#7C3AED" : "var(--border)"}`,
-                      borderRadius: 10,
-                      cursor: "pointer",
-                      background: report.reason === r ? "var(--tint-violet)" : "var(--card)",
-                      fontSize: 14,
-                      color: "var(--text-strong)",
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="reportReason"
-                      checked={report.reason === r}
-                      onChange={() => setReport((p) => ({ ...p, reason: r }))}
-                      style={{ width: "auto" }}
-                    />
-                    {r}
-                  </label>
-                ))}
-              </div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: "var(--text-strong)" }}>
-                Additional details (optional)
-              </label>
-              <textarea
-                rows={3}
-                placeholder="Describe the issue..."
-                value={report.details}
-                onChange={(e) => setReport((p) => ({ ...p, details: e.target.value }))}
-                style={{ marginTop: 6, marginBottom: 18 }}
-              />
-              <div style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}>
-                <button className="btn-ghost" onClick={() => setShowReport(false)}>
-                  Cancel
-                </button>
-                <button className="btn-primary" onClick={handleSubmitReport}>
-                  <Icon name="flag" size={14} /> Submit Report
-                </button>
-              </div>
+                  <input
+                    type="radio"
+                    name="reportReason"
+                    checked={report.reason === r}
+                    onChange={() => setReport((p) => ({ ...p, reason: r }))}
+                    style={{ width: "auto" }}
+                  />
+                  {r}
+                </label>
+              ))}
+            </div>
+            <label
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                color: "var(--text-strong)",
+              }}
+            >
+              Additional details (optional)
+            </label>
+            <textarea
+              rows={3}
+              placeholder="Describe the issue..."
+              value={report.details}
+              onChange={(e) =>
+                setReport((p) => ({ ...p, details: e.target.value }))
+              }
+              style={{ marginTop: 6, marginBottom: 18 }}
+            />
+            <div
+              style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}
+            >
+              <button
+                className="btn-ghost"
+                onClick={() => setShowReport(false)}
+              >
+                Cancel
+              </button>
+              <button className="btn-primary" onClick={handleSubmitReport}>
+                <Icon name="flag" size={14} /> Submit Report
+              </button>
             </div>
           </div>
-        )}
-
+        </div>
+      )}
     </div>
   );
 };
@@ -4372,7 +4642,13 @@ const CompaniesPage = ({ setPage, setJobFilter }) => {
       c.industry.toLowerCase().includes(query.toLowerCase()),
   );
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "clamp(18px,3.5vw,36px) clamp(12px,3.5vw,20px)" }}>
+    <div
+      style={{
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "clamp(18px,3.5vw,36px) clamp(12px,3.5vw,20px)",
+      }}
+    >
       <div style={{ textAlign: "center", marginBottom: 36 }}>
         <h1 className="section-title">Top Companies</h1>
         <p className="section-sub">
@@ -4400,7 +4676,10 @@ const CompaniesPage = ({ setPage, setJobFilter }) => {
           />
         </div>
       </div>
-      <div className="grid-4" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))" }}>
+      <div
+        className="grid-4"
+        style={{ gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))" }}
+      >
         {filtered.map((c) => (
           <div
             key={c.id}
@@ -4429,10 +4708,14 @@ const CompaniesPage = ({ setPage, setJobFilter }) => {
             >
               {c.logo}
             </div>
-            <div style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}>
+            <div
+              style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}
+            >
               {c.name}
             </div>
-            <div style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 3 }}>
+            <div
+              style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 3 }}
+            >
               {c.industry}
             </div>
             <p
@@ -4537,7 +4820,13 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
   };
 
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)" }}>
+    <div
+      style={{
+        maxWidth: 900,
+        margin: "0 auto",
+        padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)",
+      }}
+    >
       <button
         className="btn-ghost"
         onClick={() => setPage("job-detail")}
@@ -4615,7 +4904,9 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
               <Icon name="briefcase" size={12} />
               {job.experience}
             </span>
-            <span style={{ fontWeight: 700, fontSize: 13, color: "var(--green)" }}>
+            <span
+              style={{ fontWeight: 700, fontSize: 13, color: "var(--green)" }}
+            >
               {job.salary}
             </span>
           </div>
@@ -4679,7 +4970,9 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
               >
                 <Icon name="user" size={16} />
               </div>
-              <h3 style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}>
+              <h3
+                style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}
+              >
                 Personal Information
               </h3>
             </div>
@@ -4743,7 +5036,9 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
               >
                 <Icon name="share" size={16} />
               </div>
-              <h3 style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}>
+              <h3
+                style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}
+              >
                 Online Presence
               </h3>
             </div>
@@ -4795,7 +5090,9 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
               >
                 <Icon name="messageSquare" size={16} />
               </div>
-              <h3 style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}>
+              <h3
+                style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}
+              >
                 Cover Letter
               </h3>
             </div>
@@ -4809,7 +5106,13 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                 }
                 style={{ resize: "vertical" }}
               />
-              <p style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 4 }}>
+              <p
+                style={{
+                  fontSize: 12,
+                  color: "var(--text-faint)",
+                  marginTop: 4,
+                }}
+              >
                 {form.coverLetter.length} / 2000 characters
               </p>
             </div>
@@ -4842,7 +5145,9 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
               >
                 <Icon name="file" size={16} />
               </div>
-              <h3 style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}>
+              <h3
+                style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}
+              >
                 Resume / CV
               </h3>
             </div>
@@ -4855,7 +5160,9 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                 textAlign: "center",
                 cursor: "pointer",
                 transition: "all 0.2s",
-                background: resumeFile ? "var(--tint-green)" : "var(--border-soft)",
+                background: resumeFile
+                  ? "var(--tint-green)"
+                  : "var(--border-soft)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = "var(--violet)";
@@ -4891,14 +5198,28 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                       margin: "0 auto 12px",
                     }}
                   >
-                    <Icon name="check" size={22} style={{ color: "var(--green)" }} />
+                    <Icon
+                      name="check"
+                      size={22}
+                      style={{ color: "var(--green)" }}
+                    />
                   </div>
                   <p
-                    style={{ fontWeight: 600, color: "var(--text)", fontSize: 14 }}
+                    style={{
+                      fontWeight: 600,
+                      color: "var(--text)",
+                      fontSize: 14,
+                    }}
                   >
                     {resumeFile.name}
                   </p>
-                  <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 4 }}>
+                  <p
+                    style={{
+                      fontSize: 12,
+                      color: "var(--text-muted)",
+                      marginTop: 4,
+                    }}
+                  >
                     {(resumeFile.size / 1024).toFixed(0)} KB · Click to replace
                   </p>
                 </>
@@ -4923,11 +5244,21 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                     />
                   </div>
                   <p
-                    style={{ fontWeight: 600, color: "var(--text)", fontSize: 14 }}
+                    style={{
+                      fontWeight: 600,
+                      color: "var(--text)",
+                      fontSize: 14,
+                    }}
                   >
                     Click to upload your resume
                   </p>
-                  <p style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 4 }}>
+                  <p
+                    style={{
+                      fontSize: 12,
+                      color: "var(--text-faint)",
+                      marginTop: 4,
+                    }}
+                  >
                     PDF, DOC, or DOCX (max 5MB)
                   </p>
                 </>
@@ -4952,7 +5283,9 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
               }}
             >
               <Icon name="ai" size={18} style={{ color: "#7C3AED" }} />
-              <h3 style={{ fontWeight: 700, fontSize: 15, color: "var(--text)" }}>
+              <h3
+                style={{ fontWeight: 700, fontSize: 15, color: "var(--text)" }}
+              >
                 Application Tips
               </h3>
             </div>
@@ -4983,7 +5316,11 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                     <Icon name="check" size={12} style={{ color: "white" }} />
                   </div>
                   <span
-                    style={{ fontSize: 13, color: "var(--text-soft)", lineHeight: 1.5 }}
+                    style={{
+                      fontSize: 13,
+                      color: "var(--text-soft)",
+                      lineHeight: 1.5,
+                    }}
                   >
                     {tip}
                   </span>
@@ -5034,7 +5371,13 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
               </>
             )}
           </button>
-          <p style={{ fontSize: 12, color: "var(--text-faint)", textAlign: "center" }}>
+          <p
+            style={{
+              fontSize: 12,
+              color: "var(--text-faint)",
+              textAlign: "center",
+            }}
+          >
             By submitting, you agree to our Terms of Service and Privacy Policy.
           </p>
         </div>
@@ -5044,7 +5387,13 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
 };
 
 // ─── DASHBOARD ───────────────────────────────────────────────────────────────
-const DashboardPage = ({ user, setPage, setJobFilter, profile, setProfile }) => {
+const DashboardPage = ({
+  user,
+  setPage,
+  setJobFilter,
+  profile,
+  setProfile,
+}) => {
   const [activeSection, setActiveSection] = useState("dashboard");
   const { savedJobs, setSavedJobs, applications, setApplications, showToast } =
     useContext(AppContext);
@@ -5074,7 +5423,14 @@ const DashboardPage = ({ user, setPage, setJobFilter, profile, setProfile }) => 
           />
         );
       case "profile":
-        return <ProfileSection user={user} showToast={showToast} profile={profile} setProfile={setProfile} />;
+        return (
+          <ProfileSection
+            user={user}
+            showToast={showToast}
+            profile={profile}
+            setProfile={setProfile}
+          />
+        );
       case "applications":
         return (
           <ApplicationsSection
@@ -5106,141 +5462,156 @@ const DashboardPage = ({ user, setPage, setJobFilter, profile, setProfile }) => 
 
   return (
     <>
-    {/* ── Dashboard layout: sidebar + content side by side ── */}
-    <div
-      style={{
-        display: "flex",
-        alignItems: "flex-start",
-        maxWidth: 1200,
-        margin: "0 auto",
-        padding: "clamp(14px,3vw,24px) clamp(12px,3.5vw,20px)",
-        gap: 24,
-      }}
-    >
-      {/* Sidebar — vertical nav column, desktop only */}
+      {/* ── Dashboard layout: sidebar + content side by side ── */}
       <div
-        className="hide-mobile"
         style={{
-          width: 230,
-          flexShrink: 0,
           display: "flex",
-          flexDirection: "column",
-          gap: 4,
-          alignSelf: "flex-start",
-          position: "sticky",
-          top: 76,
-          background: "var(--card)",
-          borderRadius: 16,
-          border: "1px solid var(--border)",
-          boxShadow: "var(--shadow)",
-          padding: 16,
-          overflowY: "auto",
-          maxHeight: "calc(100dvh - 96px)",
+          alignItems: "flex-start",
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "clamp(14px,3vw,24px) clamp(12px,3.5vw,20px)",
+          gap: 24,
         }}
       >
+        {/* Sidebar — vertical nav column, desktop only */}
         <div
+          className="hide-mobile"
           style={{
+            width: 230,
+            flexShrink: 0,
             display: "flex",
-            gap: 10,
-            alignItems: "center",
-            padding: "8px 12px",
-            marginBottom: 16,
-            background: "var(--bg)",
-            borderRadius: 12,
+            flexDirection: "column",
+            gap: 4,
+            alignSelf: "flex-start",
+            position: "sticky",
+            top: 76,
+            background: "var(--card)",
+            borderRadius: 16,
+            border: "1px solid var(--border)",
+            boxShadow: "var(--shadow)",
+            padding: 16,
+            overflowY: "auto",
+            maxHeight: "calc(100dvh - 96px)",
           }}
         >
           <div
             style={{
-              width: 38,
-              height: 38,
-              borderRadius: "50%",
-              background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
               display: "flex",
+              gap: 10,
               alignItems: "center",
-              justifyContent: "center",
-              color: "white",
-              fontWeight: 700,
-              fontSize: 16,
+              padding: "8px 12px",
+              marginBottom: 16,
+              background: "var(--bg)",
+              borderRadius: 12,
             }}
           >
-            {user?.name?.charAt(0)}
-          </div>
-          <div>
-            <div style={{ fontWeight: 700, fontSize: 13, color: "var(--text)" }}>
-              {user?.name}
+            <div
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: "50%",
+                background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white",
+                fontWeight: 700,
+                fontSize: 16,
+              }}
+            >
+              {user?.name?.charAt(0)}
             </div>
-            <div style={{ fontSize: 11, color: "var(--text-faint)" }}>{user?.role}</div>
+            <div>
+              <div
+                style={{ fontWeight: 700, fontSize: 13, color: "var(--text)" }}
+              >
+                {user?.name}
+              </div>
+              <div style={{ fontSize: 11, color: "var(--text-faint)" }}>
+                {user?.role}
+              </div>
+            </div>
           </div>
+          {sidebarItems.map((item) => (
+            <button
+              key={item.id}
+              className={`sidebar-link ${activeSection === item.id ? "active" : ""}`}
+              onClick={() => setActiveSection(item.id)}
+            >
+              <Icon name={item.icon} size={16} /> {item.label}
+              {item.id === "applications" && applications.length > 0 && (
+                <span
+                  style={{
+                    marginLeft: "auto",
+                    background: "#7C3AED",
+                    color: "white",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    padding: "2px 7px",
+                    borderRadius: 999,
+                  }}
+                >
+                  {applications.length}
+                </span>
+              )}
+            </button>
+          ))}
         </div>
-        {sidebarItems.map((item) => (
+        {/* Content */}
+        <div
+          className="dash-content"
+          style={{
+            flex: 1,
+            minWidth: 0,
+            maxWidth: "100%",
+            alignSelf: "flex-start",
+          }}
+        >
+          {renderSection()}
+        </div>
+      </div>
+
+      {/* Mobile tab bar — fixed, outside the flex layout */}
+      <div
+        className="show-mobile"
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          background: "var(--card)",
+          borderTop: "1px solid var(--border)",
+          boxShadow: "0 -4px 20px rgba(0,0,0,0.06)",
+          zIndex: 40,
+          padding: "6px 0",
+          paddingBottom: "env(safe-area-inset-bottom,6px)",
+        }}
+      >
+        {sidebarItems.slice(0, 5).map((item) => (
           <button
             key={item.id}
-            className={`sidebar-link ${activeSection === item.id ? "active" : ""}`}
             onClick={() => setActiveSection(item.id)}
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 2,
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "6px 4px",
+              color:
+                activeSection === item.id ? "#7C3AED" : "var(--text-faint)",
+              fontSize: 10,
+              fontWeight: 600,
+            }}
           >
-            <Icon name={item.icon} size={16} /> {item.label}
-            {item.id === "applications" && applications.length > 0 && (
-              <span
-                style={{
-                  marginLeft: "auto",
-                  background: "#7C3AED",
-                  color: "white",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  padding: "2px 7px",
-                  borderRadius: 999,
-                }}
-              >
-                {applications.length}
-              </span>
-            )}
+            <Icon name={item.icon} size={18} />
+            {item.label.split(" ")[0]}
           </button>
         ))}
       </div>
-      {/* Content */}
-      <div className="dash-content" style={{ flex: 1, minWidth: 0, maxWidth: "100%", alignSelf: "flex-start" }}>{renderSection()}</div>
-    </div>
-
-    {/* Mobile tab bar — fixed, outside the flex layout */}
-    <div
-      className="show-mobile"
-      style={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        background: "var(--card)",
-        borderTop: "1px solid var(--border)",
-        boxShadow: "0 -4px 20px rgba(0,0,0,0.06)",
-        zIndex: 40,
-        padding: "6px 0",
-        paddingBottom: "env(safe-area-inset-bottom,6px)",
-      }}
-    >
-      {sidebarItems.slice(0, 5).map((item) => (
-        <button
-          key={item.id}
-          onClick={() => setActiveSection(item.id)}
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 2,
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: "6px 4px",
-            color: activeSection === item.id ? "#7C3AED" : "var(--text-faint)",
-            fontSize: 10,
-            fontWeight: 600,
-          }}
-        >
-          <Icon name={item.icon} size={18} />
-          {item.label.split(" ")[0]}
-        </button>
-      ))}
-    </div>
     </>
   );
 };
@@ -5255,8 +5626,8 @@ const DashSection = ({
   profile,
 }) => {
   // Derived stats from real data
-  const interviewCount = applications.filter(
-    (a) => ["Interview", "Shortlisted", "Selected"].includes(a.status)
+  const interviewCount = applications.filter((a) =>
+    ["Interview", "Shortlisted", "Selected"].includes(a.status),
   ).length;
   const profileViews = applications.length * 12 + 15 + savedJobs.length * 3;
   const completion = computeProfileStrength(profile);
@@ -5295,7 +5666,10 @@ const DashSection = ({
       <div style={{ fontWeight: 800, fontSize: 22, color: "var(--text)" }}>
         Welcome back, {user?.name?.split(" ")[0]} 👋
       </div>
-      <div className="grid-4" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(180px,1fr))" }}>
+      <div
+        className="grid-4"
+        style={{ gridTemplateColumns: "repeat(auto-fill,minmax(180px,1fr))" }}
+      >
         {stats.map((s) => (
           <div key={s.label} className="card" style={{ padding: 18 }}>
             <div
@@ -5309,7 +5683,13 @@ const DashSection = ({
                 <div style={{ fontSize: 28, fontWeight: 900, color: s.color }}>
                   {s.value}
                 </div>
-                <div style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 2 }}>
+                <div
+                  style={{
+                    fontSize: 13,
+                    color: "var(--text-muted)",
+                    marginTop: 2,
+                  }}
+                >
                   {s.label}
                 </div>
               </div>
@@ -5426,7 +5806,11 @@ const DashSection = ({
             >
               <div>
                 <div
-                  style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}
+                  style={{
+                    fontWeight: 600,
+                    fontSize: 14,
+                    color: "var(--text)",
+                  }}
                 >
                   {j.title}
                 </div>
@@ -5458,7 +5842,13 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
   // Load profile from profile state or localStorage
   const loadProfile = () => {
     try {
-      if (profile?.form && (profile.skills?.length > 0 || profile.experience?.length > 0 || profile.form.name)) return profile;
+      if (
+        profile?.form &&
+        (profile.skills?.length > 0 ||
+          profile.experience?.length > 0 ||
+          profile.form.name)
+      )
+        return profile;
       return JSON.parse(localStorage.getItem("cn_profile") || "null");
     } catch {
       return null;
@@ -5473,14 +5863,10 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
       location: "",
       about: "",
       email: user?.email || "",
-    }
+    },
   );
-  const [skills, setSkills] = useState(
-    savedProfile?.skills || []
-  );
-  const [experience, setExperience] = useState(
-    savedProfile?.experience || []
-  );
+  const [skills, setSkills] = useState(savedProfile?.skills || []);
+  const [experience, setExperience] = useState(savedProfile?.experience || []);
 
   const [photo, setPhoto] = useState(savedProfile?.photo || "");
 
@@ -5549,7 +5935,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
     }
     if (editingExp !== null) {
       setExperience((prev) =>
-        prev.map((e, i) => (i === editingExp ? { ...newExp } : e))
+        prev.map((e, i) => (i === editingExp ? { ...newExp } : e)),
       );
       showToast("Experience updated ✅");
     } else {
@@ -5664,7 +6050,9 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
             </div>
           </div>
           <div>
-            <div style={{ fontWeight: 700, fontSize: 18, color: "var(--text)" }}>
+            <div
+              style={{ fontWeight: 700, fontSize: 18, color: "var(--text)" }}
+            >
               {form.name}
             </div>
             <div style={{ color: "#7C3AED", fontSize: 14, fontWeight: 600 }}>
@@ -5864,7 +6252,9 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
               gap: 14,
               paddingBottom: 16,
               borderBottom:
-                i < experience.length - 1 ? "1px solid var(--border-soft)" : "none",
+                i < experience.length - 1
+                  ? "1px solid var(--border-soft)"
+                  : "none",
               marginBottom: i < experience.length - 1 ? 16 : 0,
             }}
           >
@@ -5884,15 +6274,29 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
               <Icon name="briefcase" size={16} />
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontWeight: 700, color: "var(--text)" }}>{e.role}</div>
+              <div style={{ fontWeight: 700, color: "var(--text)" }}>
+                {e.role}
+              </div>
               <div style={{ fontSize: 13, color: "#7C3AED", fontWeight: 600 }}>
                 {e.company}
               </div>
-              <div style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 2 }}>
+              <div
+                style={{
+                  fontSize: 12,
+                  color: "var(--text-faint)",
+                  marginTop: 2,
+                }}
+              >
                 {e.period}
               </div>
               {e.desc && (
-                <div style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>
+                <div
+                  style={{
+                    fontSize: 13,
+                    color: "var(--text-muted)",
+                    marginTop: 4,
+                  }}
+                >
                   {e.desc}
                 </div>
               )}
@@ -6063,12 +6467,20 @@ const ApplicationsSection = ({ applications, setPage, setJobFilter }) => {
                       {app.job.title}
                     </div>
                     <div
-                      style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 3 }}
+                      style={{
+                        fontSize: 13,
+                        color: "var(--text-muted)",
+                        marginTop: 3,
+                      }}
                     >
                       {app.job.company} · {app.job.location}
                     </div>
                     <div
-                      style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 3 }}
+                      style={{
+                        fontSize: 12,
+                        color: "var(--text-faint)",
+                        marginTop: 3,
+                      }}
                     >
                       Applied on {app.appliedAt}
                     </div>
@@ -6135,7 +6547,8 @@ const ApplicationsSection = ({ applications, setPage, setJobFilter }) => {
                           style={{
                             height: 2,
                             flex: 1,
-                            background: si < statusIdx ? "#7C3AED" : "var(--border)",
+                            background:
+                              si < statusIdx ? "#7C3AED" : "var(--border)",
                           }}
                         />
                       )}
@@ -6154,7 +6567,8 @@ const ApplicationsSection = ({ applications, setPage, setJobFilter }) => {
                       key={s}
                       style={{
                         fontSize: 9,
-                        color: si <= statusIdx ? "#7C3AED" : "var(--text-faint)",
+                        color:
+                          si <= statusIdx ? "#7C3AED" : "var(--text-faint)",
                         fontWeight: si === statusIdx ? 700 : 400,
                         textAlign: "center",
                         flex: si < 4 ? 1 : "none",
@@ -6183,7 +6597,13 @@ const ApplicationsSection = ({ applications, setPage, setJobFilter }) => {
   );
 };
 
-const SavedSection = ({ savedJobs, setSavedJobs, setPage, setJobFilter, user }) => {
+const SavedSection = ({
+  savedJobs,
+  setSavedJobs,
+  setPage,
+  setJobFilter,
+  user,
+}) => {
   const { showToast, applications, setApplications } = useContext(AppContext);
   const saved = JOBS.filter((j) => savedJobs.includes(j.id));
   return (
@@ -6229,11 +6649,21 @@ const SavedSection = ({ savedJobs, setSavedJobs, setPage, setJobFilter, user }) 
             >
               <div>
                 <div
-                  style={{ fontWeight: 700, fontSize: 15, color: "var(--text)" }}
+                  style={{
+                    fontWeight: 700,
+                    fontSize: 15,
+                    color: "var(--text)",
+                  }}
                 >
                   {job.title}
                 </div>
-                <div style={{ fontSize: 13, color: "var(--text-faint)", marginTop: 2 }}>
+                <div
+                  style={{
+                    fontSize: 13,
+                    color: "var(--text-faint)",
+                    marginTop: 2,
+                  }}
+                >
                   {job.company} · {job.location}
                 </div>
                 <div
@@ -6334,7 +6764,7 @@ const AlertsSection = ({ showToast }) => {
         frequency: "Weekly",
         active: true,
       },
-    ]
+    ],
   );
   const [form, setForm] = useState({
     title: "",
@@ -6355,10 +6785,7 @@ const AlertsSection = ({ showToast }) => {
       setError("Enter a job title or skills to create an alert.");
       return;
     }
-    setAlerts((prev) => [
-      ...prev,
-      { id: Date.now(), ...form, active: true },
-    ]);
+    setAlerts((prev) => [...prev, { id: Date.now(), ...form, active: true }]);
     setForm({
       title: "",
       location: "",
@@ -6467,8 +6894,16 @@ const AlertsSection = ({ showToast }) => {
             }}
           >
             <div>
-              <div style={{ fontWeight: 700, color: "var(--text)" }}>{a.title}</div>
-              <div style={{ fontSize: 13, color: "var(--text-faint)", marginTop: 2 }}>
+              <div style={{ fontWeight: 700, color: "var(--text)" }}>
+                {a.title}
+              </div>
+              <div
+                style={{
+                  fontSize: 13,
+                  color: "var(--text-faint)",
+                  marginTop: 2,
+                }}
+              >
                 {a.location || "Any location"} · {a.frequency}
               </div>
             </div>
@@ -6484,8 +6919,8 @@ const AlertsSection = ({ showToast }) => {
                 onClick={() =>
                   setAlerts((prev) =>
                     prev.map((al) =>
-                      al.id === a.id ? { ...al, active: !al.active } : al
-                    )
+                      al.id === a.id ? { ...al, active: !al.active } : al,
+                    ),
                   )
                 }
                 title={a.active ? "Click to pause" : "Click to activate"}
@@ -6538,24 +6973,24 @@ const ResumeSection = ({ showToast }) => {
       phone: "",
       location: "",
       linkedin: "",
-    }
+    },
   );
   const [jobDetails, setJobDetails] = useState(
-    saved?.jobDetails || { title: "", company: "", duration: "", desc: "" }
+    saved?.jobDetails || { title: "", company: "", duration: "", desc: "" },
   );
   const [education, setEducation] = useState(
-    saved?.education || { degree: "", institution: "", year: "" }
+    saved?.education || { degree: "", institution: "", year: "" },
   );
   const [skills, setSkills] = useState(saved?.skills || "");
   const [custom, setCustom] = useState(
-    saved?.custom || { title: "Additional Information", content: "" }
+    saved?.custom || { title: "Additional Information", content: "" },
   );
 
   useEffect(() => {
     try {
       localStorage.setItem(
         "cn_resume",
-        JSON.stringify({ personal, jobDetails, education, skills, custom })
+        JSON.stringify({ personal, jobDetails, education, skills, custom }),
       );
     } catch (e) {}
   }, [personal, jobDetails, education, skills, custom]);
@@ -6566,8 +7001,7 @@ const ResumeSection = ({ showToast }) => {
     setJobDetails((p) => ({ ...p, [k]: e.target.value }));
   const setE = (k) => (e) =>
     setEducation((p) => ({ ...p, [k]: e.target.value }));
-  const setC = (k) => (e) =>
-    setCustom((p) => ({ ...p, [k]: e.target.value }));
+  const setC = (k) => (e) => setCustom((p) => ({ ...p, [k]: e.target.value }));
 
   const skillList = skills
     .split(",")
@@ -6710,11 +7144,21 @@ const ResumeSection = ({ showToast }) => {
               Personal Details
             </div>
             {field("Full Name", personal.name, setP("name"), "Full Name")}
-            {field("Headline", personal.headline, setP("headline"), "Professional Headline")}
+            {field(
+              "Headline",
+              personal.headline,
+              setP("headline"),
+              "Professional Headline",
+            )}
             {field("Email", personal.email, setP("email"), "Email")}
             {field("Phone", personal.phone, setP("phone"), "Phone")}
             {field("Location", personal.location, setP("location"), "Location")}
-            {field("LinkedIn", personal.linkedin, setP("linkedin"), "LinkedIn URL")}
+            {field(
+              "LinkedIn",
+              personal.linkedin,
+              setP("linkedin"),
+              "LinkedIn URL",
+            )}
           </div>
 
           {/* Work Experience */}
@@ -6731,10 +7175,19 @@ const ResumeSection = ({ showToast }) => {
             </div>
             {field("Job Title", jobDetails.title, setJ("title"), "Job Title")}
             {field("Company", jobDetails.company, setJ("company"), "Company")}
-            {field("Duration", jobDetails.duration, setJ("duration"), "Duration (e.g. 2022 – Present)")}
+            {field(
+              "Duration",
+              jobDetails.duration,
+              setJ("duration"),
+              "Duration (e.g. 2022 – Present)",
+            )}
             <label
               className="form-group"
-              style={{ fontSize: 13, fontWeight: 600, color: "var(--text-strong)" }}
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                color: "var(--text-strong)",
+              }}
             >
               Description
               <textarea
@@ -6758,8 +7211,18 @@ const ResumeSection = ({ showToast }) => {
             >
               Education
             </div>
-            {field("Degree", education.degree, setE("degree"), "Degree / Certification")}
-            {field("Institution", education.institution, setE("institution"), "Institution")}
+            {field(
+              "Degree",
+              education.degree,
+              setE("degree"),
+              "Degree / Certification",
+            )}
+            {field(
+              "Institution",
+              education.institution,
+              setE("institution"),
+              "Institution",
+            )}
             {field("Year", education.year, setE("year"), "Year (e.g. 2019)")}
           </div>
 
@@ -6796,13 +7259,29 @@ const ResumeSection = ({ showToast }) => {
             >
               Custom Section
             </div>
-            <div style={{ fontSize: 12, color: "var(--text-faint)", marginBottom: 12 }}>
-              Create your own section (e.g. Projects, Certifications, Languages).
+            <div
+              style={{
+                fontSize: 12,
+                color: "var(--text-faint)",
+                marginBottom: 12,
+              }}
+            >
+              Create your own section (e.g. Projects, Certifications,
+              Languages).
             </div>
-            {field("Section Title", custom.title, setC("title"), "Section title e.g. Projects")}
+            {field(
+              "Section Title",
+              custom.title,
+              setC("title"),
+              "Section title e.g. Projects",
+            )}
             <label
               className="form-group"
-              style={{ fontSize: 13, fontWeight: 600, color: "var(--text-strong)" }}
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                color: "var(--text-strong)",
+              }}
             >
               Content
               <textarea
@@ -6987,8 +7466,7 @@ const SegmentedChoice = ({ options, value, onChange }) => (
           padding: "9px 10px",
           borderRadius: 10,
           border: `1.5px solid ${value === o.value ? "var(--violet)" : "var(--border)"}`,
-          background:
-            value === o.value ? "var(--tint-violet)" : "transparent",
+          background: value === o.value ? "var(--tint-violet)" : "transparent",
           color: value === o.value ? "var(--violet)" : "var(--text-muted)",
           fontWeight: 600,
           fontSize: 13,
@@ -7003,15 +7481,25 @@ const SegmentedChoice = ({ options, value, onChange }) => (
 );
 
 // ─── CHANGE PASSWORD MODAL (with "Forgot current password?" link) ─────────────
-const ChangePwModal = ({ onClose, pw, setPw, pwLoading, savePassword, userEmail }) => {
-  const auth = getAuth();   // ← fix: declare auth inside the component
+const ChangePwModal = ({
+  onClose,
+  pw,
+  setPw,
+  pwLoading,
+  savePassword,
+  userEmail,
+}) => {
+  const auth = getAuth(); // ← fix: declare auth inside the component
   const [sending, setSending] = useState(false);
-  const [sent,    setSent]    = useState(false);
+  const [sent, setSent] = useState(false);
   const { showToast } = useContext(AppContext);
 
   const sendReset = async () => {
     const email = auth.currentUser?.email || userEmail;
-    if (!email) { showToast("No email found. Please log in again.", "error"); return; }
+    if (!email) {
+      showToast("No email found. Please log in again.", "error");
+      return;
+    }
     setSending(true);
     try {
       await resetPasswordEmail(email);
@@ -7029,100 +7517,295 @@ const ChangePwModal = ({ onClose, pw, setPw, pwLoading, savePassword, userEmail 
   return (
     <>
       <div className="overlay" onClick={onClose} />
-      <div className="card" style={{
-        position:"fixed", top:"50%", left:"50%",
-        transform:"translate(-50%,-50%)", zIndex:100,
-        width: "min(400px,94vw)", maxWidth: "94vw", padding: "clamp(16px,4vw,28px)",
-        animation:"fadeUp 0.2s ease",
-      }}>
+      <div
+        className="card"
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+          zIndex: 100,
+          width: "min(400px,94vw)",
+          maxWidth: "94vw",
+          padding: "clamp(16px,4vw,28px)",
+          animation: "fadeUp 0.2s ease",
+        }}
+      >
         {/* Header */}
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20}}>
-          <div style={{display:"flex",alignItems:"center",gap:10}}>
-            <div style={{width:34,height:34,borderRadius:10,background:"#EDE9FE",display:"flex",alignItems:"center",justifyContent:"center"}}>
-              <Icon name="key" size={16}/>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 20,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div
+              style={{
+                width: 34,
+                height: 34,
+                borderRadius: 10,
+                background: "#EDE9FE",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Icon name="key" size={16} />
             </div>
-            <span style={{fontWeight:700,fontSize:16,color:"var(--text)"}}>Change Password</span>
+            <span
+              style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}
+            >
+              Change Password
+            </span>
           </div>
-          <button onClick={onClose} style={{background:"none",border:"none",cursor:"pointer",color:"var(--text-muted)",padding:4}}>
-            <Icon name="x" size={18}/>
+          <button
+            onClick={onClose}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--text-muted)",
+              padding: 4,
+            }}
+          >
+            <Icon name="x" size={18} />
           </button>
         </div>
 
         {/* ── Sent state ── */}
         {sent ? (
-          <div style={{textAlign:"center",padding:"8px 0 4px"}}>
-            <div style={{fontSize:44,marginBottom:12}}>📬</div>
-            <div style={{fontWeight:700,fontSize:16,color:"var(--text)",marginBottom:8}}>Reset email sent!</div>
-            <div style={{fontSize:13,color:"var(--text-muted)",lineHeight:1.7,marginBottom:16}}>
-              A password reset link was sent to<br/>
-              <strong style={{color:"var(--text)"}}>{realEmail}</strong>
+          <div style={{ textAlign: "center", padding: "8px 0 4px" }}>
+            <div style={{ fontSize: 44, marginBottom: 12 }}>📬</div>
+            <div
+              style={{
+                fontWeight: 700,
+                fontSize: 16,
+                color: "var(--text)",
+                marginBottom: 8,
+              }}
+            >
+              Reset email sent!
             </div>
-            <div style={{background:"#F0FDF4",border:"1px solid #BBF7D0",borderRadius:12,padding:"12px 16px",textAlign:"left",marginBottom:20}}>
-              {["Open the email from Firebase / noreply@…",'Click "Reset password" in the email',"Set your new password on the page that opens","Come back here and log in again ✅"].map((s,i)=>(
-                <div key={i} style={{display:"flex",gap:8,fontSize:12,color:"#166534",marginBottom:i<3?6:0}}>
-                  <span style={{fontWeight:700,flexShrink:0}}>{i+1}.</span><span>{s}</span>
+            <div
+              style={{
+                fontSize: 13,
+                color: "var(--text-muted)",
+                lineHeight: 1.7,
+                marginBottom: 16,
+              }}
+            >
+              A password reset link was sent to
+              <br />
+              <strong style={{ color: "var(--text)" }}>{realEmail}</strong>
+            </div>
+            <div
+              style={{
+                background: "#F0FDF4",
+                border: "1px solid #BBF7D0",
+                borderRadius: 12,
+                padding: "12px 16px",
+                textAlign: "left",
+                marginBottom: 20,
+              }}
+            >
+              {[
+                "Open the email from Firebase / noreply@…",
+                'Click "Reset password" in the email',
+                "Set your new password on the page that opens",
+                "Come back here and log in again ✅",
+              ].map((s, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: "flex",
+                    gap: 8,
+                    fontSize: 12,
+                    color: "#166534",
+                    marginBottom: i < 3 ? 6 : 0,
+                  }}
+                >
+                  <span style={{ fontWeight: 700, flexShrink: 0 }}>
+                    {i + 1}.
+                  </span>
+                  <span>{s}</span>
                 </div>
               ))}
             </div>
-            <button className="btn-primary" style={{width:"100%",justifyContent:"center"}} onClick={onClose}>Done</button>
+            <button
+              className="btn-primary"
+              style={{ width: "100%", justifyContent: "center" }}
+              onClick={onClose}
+            >
+              Done
+            </button>
           </div>
         ) : (
           /* ── Normal form ── */
           <>
             {/* Current password + forgot link */}
-            <div style={{marginBottom:14}}>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:5}}>
-                <label style={{fontSize:13,fontWeight:600,color:"var(--text)",margin:0}}>Current Password</label>
+            <div style={{ marginBottom: 14 }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: 5,
+                }}
+              >
+                <label
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "var(--text)",
+                    margin: 0,
+                  }}
+                >
+                  Current Password
+                </label>
                 <button
-                  style={{background:"none",border:"none",cursor:sending?"not-allowed":"pointer",fontSize:12,color:"var(--violet)",fontWeight:600,padding:0,opacity:sending?0.6:1}}
-                  onClick={sendReset} disabled={sending}>
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: sending ? "not-allowed" : "pointer",
+                    fontSize: 12,
+                    color: "var(--violet)",
+                    fontWeight: 600,
+                    padding: 0,
+                    opacity: sending ? 0.6 : 1,
+                  }}
+                  onClick={sendReset}
+                  disabled={sending}
+                >
                   {sending ? "Sending…" : "Forgot current password?"}
                 </button>
               </div>
-              <input type="password" value={pw.current}
-                onChange={e=>setPw(p=>({...p,current:e.target.value}))}
+              <input
+                type="password"
+                value={pw.current}
+                onChange={(e) =>
+                  setPw((p) => ({ ...p, current: e.target.value }))
+                }
                 placeholder="Enter current password"
-                style={{width:"100%",padding:"10px 14px",border:"1.5px solid var(--border)",borderRadius:10,fontSize:14,outline:"none",fontFamily:"inherit",background:"var(--input-bg,var(--card))",color:"var(--text)"}}
-                onFocus={e=>e.target.style.borderColor="var(--violet)"}
-                onBlur={e=>e.target.style.borderColor="var(--border)"}
+                style={{
+                  width: "100%",
+                  padding: "10px 14px",
+                  border: "1.5px solid var(--border)",
+                  borderRadius: 10,
+                  fontSize: 14,
+                  outline: "none",
+                  fontFamily: "inherit",
+                  background: "var(--input-bg,var(--card))",
+                  color: "var(--text)",
+                }}
+                onFocus={(e) => (e.target.style.borderColor = "var(--violet)")}
+                onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
               />
-              <div style={{fontSize:11,color:"var(--text-faint)",marginTop:4}}>
-                Forgot it? Click the link above — we'll email a reset link to <strong>{realEmail}</strong>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "var(--text-faint)",
+                  marginTop: 4,
+                }}
+              >
+                Forgot it? Click the link above — we'll email a reset link to{" "}
+                <strong>{realEmail}</strong>
               </div>
             </div>
 
             {/* New password */}
-            <div style={{marginBottom:14}}>
-              <label style={{fontSize:13,fontWeight:600,color:"var(--text)",display:"block",marginBottom:5}}>New Password</label>
-              <input type="password" value={pw.next}
-                onChange={e=>setPw(p=>({...p,next:e.target.value}))}
+            <div style={{ marginBottom: 14 }}>
+              <label
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "var(--text)",
+                  display: "block",
+                  marginBottom: 5,
+                }}
+              >
+                New Password
+              </label>
+              <input
+                type="password"
+                value={pw.next}
+                onChange={(e) => setPw((p) => ({ ...p, next: e.target.value }))}
                 placeholder="At least 6 characters"
-                style={{width:"100%",padding:"10px 14px",border:"1.5px solid var(--border)",borderRadius:10,fontSize:14,outline:"none",fontFamily:"inherit",background:"var(--input-bg,var(--card))",color:"var(--text)"}}
-                onFocus={e=>e.target.style.borderColor="var(--violet)"}
-                onBlur={e=>e.target.style.borderColor="var(--border)"}
+                style={{
+                  width: "100%",
+                  padding: "10px 14px",
+                  border: "1.5px solid var(--border)",
+                  borderRadius: 10,
+                  fontSize: 14,
+                  outline: "none",
+                  fontFamily: "inherit",
+                  background: "var(--input-bg,var(--card))",
+                  color: "var(--text)",
+                }}
+                onFocus={(e) => (e.target.style.borderColor = "var(--violet)")}
+                onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
               />
             </div>
 
             {/* Confirm */}
-            <div style={{marginBottom:20}}>
-              <label style={{fontSize:13,fontWeight:600,color:"var(--text)",display:"block",marginBottom:5}}>Confirm New Password</label>
-              <input type="password" value={pw.confirm}
-                onChange={e=>setPw(p=>({...p,confirm:e.target.value}))}
+            <div style={{ marginBottom: 20 }}>
+              <label
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "var(--text)",
+                  display: "block",
+                  marginBottom: 5,
+                }}
+              >
+                Confirm New Password
+              </label>
+              <input
+                type="password"
+                value={pw.confirm}
+                onChange={(e) =>
+                  setPw((p) => ({ ...p, confirm: e.target.value }))
+                }
                 placeholder="Re-enter new password"
-                style={{width:"100%",padding:"10px 14px",border:"1.5px solid var(--border)",borderRadius:10,fontSize:14,outline:"none",fontFamily:"inherit",background:"var(--input-bg,var(--card))",color:"var(--text)"}}
-                onFocus={e=>e.target.style.borderColor="var(--violet)"}
-                onBlur={e=>e.target.style.borderColor="var(--border)"}
+                style={{
+                  width: "100%",
+                  padding: "10px 14px",
+                  border: "1.5px solid var(--border)",
+                  borderRadius: 10,
+                  fontSize: 14,
+                  outline: "none",
+                  fontFamily: "inherit",
+                  background: "var(--input-bg,var(--card))",
+                  color: "var(--text)",
+                }}
+                onFocus={(e) => (e.target.style.borderColor = "var(--violet)")}
+                onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
               />
             </div>
 
-            <div style={{height:1,background:"var(--border)",marginBottom:16}}/>
+            <div
+              style={{
+                height: 1,
+                background: "var(--border)",
+                marginBottom: 16,
+              }}
+            />
 
-            <button className="btn-primary"
-              style={{width:"100%",justifyContent:"center",padding:12,opacity:(!pw.current||!pw.next||!pw.confirm||pwLoading)?0.5:1}}
+            <button
+              className="btn-primary"
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                padding: 12,
+                opacity:
+                  !pw.current || !pw.next || !pw.confirm || pwLoading ? 0.5 : 1,
+              }}
               onClick={savePassword}
-              disabled={pwLoading||!pw.current||!pw.next||!pw.confirm}>
-              <Icon name="key" size={15}/>
-              {pwLoading?" Updating…":" Update Password"}
+              disabled={pwLoading || !pw.current || !pw.next || !pw.confirm}
+            >
+              <Icon name="key" size={15} />
+              {pwLoading ? " Updating…" : " Update Password"}
             </button>
           </>
         )}
@@ -7136,28 +7819,31 @@ const SettingsSection = ({ showToast }) => {
 
   // ── read persisted settings ──────────────────────────────────────────────
   const readSettings = () => {
-    try { return JSON.parse(localStorage.getItem("cn_settings") || "null") || {}; }
-    catch { return {}; }
+    try {
+      return JSON.parse(localStorage.getItem("cn_settings") || "null") || {};
+    } catch {
+      return {};
+    }
   };
   const boot = readSettings();
 
   const [account, setAccount] = useState({
-    email:           boot.email           || "candidate@email.com",
-    emailVerified:   !!boot.emailVerified,
+    email: boot.email || "candidate@email.com",
+    emailVerified: !!boot.emailVerified,
     passwordUpdated: boot.passwordUpdated || "",
   });
   const [notif, setNotif] = useState({
-    jobAlerts:   boot.notif?.jobAlerts   ?? true,
-    appUpdates:  boot.notif?.appUpdates  ?? true,
+    jobAlerts: boot.notif?.jobAlerts ?? true,
+    appUpdates: boot.notif?.appUpdates ?? true,
     companyNews: boot.notif?.companyNews ?? false,
   });
   const [privacy, setPrivacy] = useState({
     profile: boot.privacy?.profile || "public",
-    resume:  boot.privacy?.resume  || "recruiters",
+    resume: boot.privacy?.resume || "recruiters",
   });
 
   // ── modal open/close flags ───────────────────────────────────────────────
-  const [showPw,          setShowPw]          = useState(false);
+  const [showPw, setShowPw] = useState(false);
   const [showEmailChange, setShowEmailChange] = useState(false);
   const [showEmailVerify, setShowEmailVerify] = useState(false);
 
@@ -7166,10 +7852,10 @@ const SettingsSection = ({ showToast }) => {
   const [pwLoading, setPwLoading] = useState(false);
 
   // ── Change-Email flow ────────────────────────────────────────────────────
-  const [newEmail,       setNewEmail]       = useState("");
-  const [emailChangePw,  setEmailChangePw]  = useState("");
+  const [newEmail, setNewEmail] = useState("");
+  const [emailChangePw, setEmailChangePw] = useState("");
   const [emailChangeStep, setEmailChangeStep] = useState("password"); // "password" | "sent"
-  const [emailLoading,   setEmailLoading]   = useState(false);
+  const [emailLoading, setEmailLoading] = useState(false);
 
   // ── Email-Verify OTP modal (verify current email) ────────────────────────
   const [emailVerifyLoading, setEmailVerifyLoading] = useState(false);
@@ -7180,14 +7866,24 @@ const SettingsSection = ({ showToast }) => {
   const [emailOtpTimer, setEmailOtpTimer] = useState(60);
   const [emailOtpLockTimer, setEmailOtpLockTimer] = useState(0);
   const [emailOtpLockDuration, setEmailOtpLockDuration] = useState(30);
-  const emailOtpRefs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
+  const emailOtpRefs = [
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+  ];
   const emailOtpTimerRef = useRef(null);
   const emailOtpLockRef = useRef(null);
 
   // ── persist on every state change ───────────────────────────────────────
   useEffect(() => {
     try {
-      localStorage.setItem("cn_settings", JSON.stringify({ ...account, notif, privacy }));
+      localStorage.setItem(
+        "cn_settings",
+        JSON.stringify({ ...account, notif, privacy }),
+      );
     } catch {}
   }, [account, notif, privacy]);
 
@@ -7199,7 +7895,10 @@ const SettingsSection = ({ showToast }) => {
   // Send a 6-digit OTP to the user's email via the OTP server
   const sendEmailVerifyOtp = async () => {
     const user = auth.currentUser;
-    if (!user) { showToast("Please log in first", "error"); return false; }
+    if (!user) {
+      showToast("Please log in first", "error");
+      return false;
+    }
     setEmailVerifyLoading(true);
     setEmailOtpError("");
     try {
@@ -7213,7 +7912,8 @@ const SettingsSection = ({ showToast }) => {
         }),
       });
       const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.error || "Failed to send OTP");
+      if (!res.ok || !data.success)
+        throw new Error(data.error || "Failed to send OTP");
       setOtpToken(data.token || "");
       setEmailOtp(["", "", "", "", "", ""]);
       setEmailOtpAttempts(0);
@@ -7222,7 +7922,10 @@ const SettingsSection = ({ showToast }) => {
       emailOtpTimerRef.current = setInterval(
         () =>
           setEmailOtpTimer((t) => {
-            if (t <= 1) { clearInterval(emailOtpTimerRef.current); return 0; }
+            if (t <= 1) {
+              clearInterval(emailOtpTimerRef.current);
+              return 0;
+            }
             return t - 1;
           }),
         1000,
@@ -7230,9 +7933,11 @@ const SettingsSection = ({ showToast }) => {
       return true;
     } catch (err) {
       if (err.code === "auth/too-many-requests")
-        showToast("Too many requests — wait a few minutes and try again.", "error");
-      else
-        showToast("Could not send OTP: " + err.message, "error");
+        showToast(
+          "Too many requests — wait a few minutes and try again.",
+          "error",
+        );
+      else showToast("Could not send OTP: " + err.message, "error");
       return false;
     } finally {
       setEmailVerifyLoading(false);
@@ -7241,8 +7946,14 @@ const SettingsSection = ({ showToast }) => {
 
   const startEmailVerify = async () => {
     const user = auth.currentUser;
-    if (!user) { showToast("Please log in first", "error"); return; }
-    if (account.emailVerified) { showToast("Your email is already verified ✅"); return; }
+    if (!user) {
+      showToast("Please log in first", "error");
+      return;
+    }
+    if (account.emailVerified) {
+      showToast("Your email is already verified ✅");
+      return;
+    }
     const ok = await sendEmailVerifyOtp();
     if (ok) {
       setShowEmailVerify(true);
@@ -7279,7 +7990,10 @@ const SettingsSection = ({ showToast }) => {
     setEmailOtpLockTimer(secs);
     emailOtpLockRef.current = setInterval(() => {
       setEmailOtpLockTimer((t) => {
-        if (t <= 1) { clearInterval(emailOtpLockRef.current); return 0; }
+        if (t <= 1) {
+          clearInterval(emailOtpLockRef.current);
+          return 0;
+        }
         return t - 1;
       });
     }, 1000);
@@ -7288,7 +8002,10 @@ const SettingsSection = ({ showToast }) => {
   // Confirm the OTP with the server, then mark the email as verified
   const submitEmailOtp = async () => {
     const entered = emailOtp.join("");
-    if (entered.length < 6) { setEmailOtpError("Enter the 6-digit OTP."); return; }
+    if (entered.length < 6) {
+      setEmailOtpError("Enter the 6-digit OTP.");
+      return;
+    }
     if (emailOtpLockTimer > 0) return;
     setEmailOtpLoading(true);
     setEmailOtpError("");
@@ -7314,9 +8031,13 @@ const SettingsSection = ({ showToast }) => {
             setEmailOtpLockDuration((d) => d + 30);
             startEmailOtpLock(dur);
             setEmailOtpAttempts(0);
-            setEmailOtpError(`Too many wrong attempts. Wait ${dur}s before trying again.`);
+            setEmailOtpError(
+              `Too many wrong attempts. Wait ${dur}s before trying again.`,
+            );
           } else {
-            setEmailOtpError(`Incorrect OTP. ${3 - newAttempts} attempt${3 - newAttempts === 1 ? "" : "s"} left.`);
+            setEmailOtpError(
+              `Incorrect OTP. ${3 - newAttempts} attempt${3 - newAttempts === 1 ? "" : "s"} left.`,
+            );
             setTimeout(() => emailOtpRefs[0].current?.focus(), 0);
           }
         }
@@ -7347,31 +8068,50 @@ const SettingsSection = ({ showToast }) => {
   };
 
   const confirmEmailChange = async () => {
-    if (!newEmail.includes("@")) { showToast("Enter a valid email address", "error"); return; }
-    if (!emailChangePw)          { showToast("Enter your current password", "error"); return; }
+    if (!newEmail.includes("@")) {
+      showToast("Enter a valid email address", "error");
+      return;
+    }
+    if (!emailChangePw) {
+      showToast("Enter your current password", "error");
+      return;
+    }
     const user = auth.currentUser;
-    if (!user) { showToast("Please log in first", "error"); return; }
+    if (!user) {
+      showToast("Please log in first", "error");
+      return;
+    }
     setEmailLoading(true);
     try {
       // Re-authenticate first
-      const credential = EmailAuthProvider.credential(user.email, emailChangePw);
+      const credential = EmailAuthProvider.credential(
+        user.email,
+        emailChangePw,
+      );
       await reauthenticateWithCredential(user, credential);
       // Update the email in Firebase
       await updateEmail(user, newEmail);
       // Send verification to the new address
       await sendEmailVerification(user);
-      setAccount(p => ({ ...p, email: newEmail, emailVerified: false }));
+      setAccount((p) => ({ ...p, email: newEmail, emailVerified: false }));
       setEmailChangeStep("sent");
-      showToast("Email updated! Verification email sent to your new address 📬");
+      showToast(
+        "Email updated! Verification email sent to your new address 📬",
+      );
     } catch (err) {
-      if (err.code === "auth/wrong-password" || err.code === "auth/invalid-credential")
+      if (
+        err.code === "auth/wrong-password" ||
+        err.code === "auth/invalid-credential"
+      )
         showToast("Current password is incorrect.", "error");
       else if (err.code === "auth/email-already-in-use")
         showToast("That email is already in use by another account.", "error");
       else if (err.code === "auth/requires-recent-login")
-        showToast("Session expired. Please log out and log in again, then retry.", "error");
-      else
-        showToast("Error: " + err.message, "error");
+        showToast(
+          "Session expired. Please log out and log in again, then retry.",
+          "error",
+        );
+      else showToast("Error: " + err.message, "error");
     } finally {
       setEmailLoading(false);
     }
@@ -7381,11 +8121,23 @@ const SettingsSection = ({ showToast }) => {
   //  3. CHANGE PASSWORD  →  re-auth with current password → updatePassword
   // ════════════════════════════════════════════════════════════════════════
   const savePassword = async () => {
-    if (!pw.current)          { showToast("Enter your current password", "error"); return; }
-    if (pw.next.length < 6)   { showToast("New password must be at least 6 characters", "error"); return; }
-    if (pw.next !== pw.confirm){ showToast("New passwords do not match", "error"); return; }
+    if (!pw.current) {
+      showToast("Enter your current password", "error");
+      return;
+    }
+    if (pw.next.length < 6) {
+      showToast("New password must be at least 6 characters", "error");
+      return;
+    }
+    if (pw.next !== pw.confirm) {
+      showToast("New passwords do not match", "error");
+      return;
+    }
     const user = auth.currentUser;
-    if (!user) { showToast("Please log in first", "error"); return; }
+    if (!user) {
+      showToast("Please log in first", "error");
+      return;
+    }
     setPwLoading(true);
     try {
       // Re-authenticate with old password first
@@ -7393,24 +8145,34 @@ const SettingsSection = ({ showToast }) => {
       await reauthenticateWithCredential(user, credential);
       // Now update to the new password
       await updatePassword(user, pw.next);
-      setAccount(p => ({
+      setAccount((p) => ({
         ...p,
         passwordUpdated: new Date().toLocaleDateString("en-US", {
-          month: "short", day: "numeric", year: "numeric"
+          month: "short",
+          day: "numeric",
+          year: "numeric",
         }),
       }));
       setShowPw(false);
       setPw({ current: "", next: "", confirm: "" });
       showToast("Password changed successfully 🔒");
     } catch (err) {
-      if (err.code === "auth/wrong-password" || err.code === "auth/invalid-credential")
+      if (
+        err.code === "auth/wrong-password" ||
+        err.code === "auth/invalid-credential"
+      )
         showToast("Current password is incorrect.", "error");
       else if (err.code === "auth/weak-password")
-        showToast("New password is too weak — use at least 6 characters.", "error");
+        showToast(
+          "New password is too weak — use at least 6 characters.",
+          "error",
+        );
       else if (err.code === "auth/requires-recent-login")
-        showToast("Session expired. Log out and log in again, then retry.", "error");
-      else
-        showToast("Error: " + err.message, "error");
+        showToast(
+          "Session expired. Log out and log in again, then retry.",
+          "error",
+        );
+      else showToast("Error: " + err.message, "error");
     } finally {
       setPwLoading(false);
     }
@@ -7419,15 +8181,30 @@ const SettingsSection = ({ showToast }) => {
   // ── persist settings button ──────────────────────────────────────────────
   const saveSettings = () => {
     try {
-      localStorage.setItem("cn_settings", JSON.stringify({ ...account, notif, privacy }));
+      localStorage.setItem(
+        "cn_settings",
+        JSON.stringify({ ...account, notif, privacy }),
+      );
     } catch {}
     showToast("Settings saved! ✅");
   };
 
   const notifRows = [
-    { key: "jobAlerts",   label: "Job Alerts",          desc: "Get notified when new matching jobs are posted" },
-    { key: "appUpdates",  label: "Application Updates",  desc: "Status changes on your applications" },
-    { key: "companyNews", label: "Company News",          desc: "News and announcements from companies" },
+    {
+      key: "jobAlerts",
+      label: "Job Alerts",
+      desc: "Get notified when new matching jobs are posted",
+    },
+    {
+      key: "appUpdates",
+      label: "Application Updates",
+      desc: "Status changes on your applications",
+    },
+    {
+      key: "companyNews",
+      label: "Company News",
+      desc: "News and announcements from companies",
+    },
   ];
 
   // ════════════════════════════════════════════════════════════════════════
@@ -7435,44 +8212,87 @@ const SettingsSection = ({ showToast }) => {
   // ════════════════════════════════════════════════════════════════════════
   return (
     <div>
-      <div style={{ fontWeight: 800, fontSize: 20, color: "var(--text)", marginBottom: 20 }}>
+      <div
+        style={{
+          fontWeight: 800,
+          fontSize: 20,
+          color: "var(--text)",
+          marginBottom: 20,
+        }}
+      >
         Settings
       </div>
 
       {/* ── Account Card ─────────────────────────────────────────────── */}
       <div className="card" style={{ padding: 22, marginBottom: 16 }}>
-        <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4, color: "var(--text)" }}>Account</div>
-        <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 14 }}>
+        <div
+          style={{
+            fontWeight: 700,
+            fontSize: 16,
+            marginBottom: 4,
+            color: "var(--text)",
+          }}
+        >
+          Account
+        </div>
+        <div
+          style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 14 }}
+        >
           Verify your email and manage your password
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-
           {/* Email row */}
           <div>
             <label>Email Address</label>
             <div style={{ display: "flex", gap: 10 }}>
-              <input type="email" value={account.email} disabled
+              <input
+                type="email"
+                value={account.email}
+                disabled
                 style={{ background: "var(--border-soft)", opacity: 0.9 }}
-                title="Use 'Change Email' to update" />
+                title="Use 'Change Email' to update"
+              />
               {account.emailVerified ? (
-                <span className="badge badge-green"
-                  style={{ flexShrink: 0, alignSelf: "center", padding: "6px 12px", fontSize: 12, gap: 5 }}>
+                <span
+                  className="badge badge-green"
+                  style={{
+                    flexShrink: 0,
+                    alignSelf: "center",
+                    padding: "6px 12px",
+                    fontSize: 12,
+                    gap: 5,
+                  }}
+                >
                   <Icon name="check" size={13} /> Verified
                 </span>
               ) : (
-                <button className="btn-ghost" style={{ flexShrink: 0, whiteSpace: "nowrap" }}
-                  onClick={startEmailVerify} disabled={emailVerifyLoading}>
+                <button
+                  className="btn-ghost"
+                  style={{ flexShrink: 0, whiteSpace: "nowrap" }}
+                  onClick={startEmailVerify}
+                  disabled={emailVerifyLoading}
+                >
                   <Icon name="shield" size={14} />
                   {emailVerifyLoading ? " Sending…" : " Verify"}
                 </button>
               )}
-              <button className="btn-ghost" style={{ flexShrink: 0, whiteSpace: "nowrap" }}
-                onClick={startEmailChange}>
+              <button
+                className="btn-ghost"
+                style={{ flexShrink: 0, whiteSpace: "nowrap" }}
+                onClick={startEmailChange}
+              >
                 <Icon name="edit" size={14} /> Change Email
               </button>
             </div>
-            <small style={{ color: "var(--text-muted)", display: "block", marginTop: 5 }}>
-              Changing your email requires your current password &amp; a verification link
+            <small
+              style={{
+                color: "var(--text-muted)",
+                display: "block",
+                marginTop: 5,
+              }}
+            >
+              Changing your email requires your current password &amp; a
+              verification link
             </small>
           </div>
 
@@ -7481,108 +8301,249 @@ const SettingsSection = ({ showToast }) => {
             <label>Password</label>
             <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
               <input type="password" value="••••••••" readOnly />
-              <button className="btn-ghost" style={{ flexShrink: 0, whiteSpace: "nowrap" }}
-                onClick={() => setShowPw(true)}>
+              <button
+                className="btn-ghost"
+                style={{ flexShrink: 0, whiteSpace: "nowrap" }}
+                onClick={() => setShowPw(true)}
+              >
                 <Icon name="key" size={14} /> Change Password
               </button>
             </div>
             {account.passwordUpdated && (
-              <small style={{ color: "var(--text-muted)", display: "block", marginTop: 5 }}>
+              <small
+                style={{
+                  color: "var(--text-muted)",
+                  display: "block",
+                  marginTop: 5,
+                }}
+              >
                 Last updated: {account.passwordUpdated}
               </small>
             )}
           </div>
-
         </div>
       </div>
 
       {/* ── Notifications Card ──────────────────────────────────────── */}
       <div className="card" style={{ padding: 22, marginBottom: 16 }}>
-        <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4, color: "var(--text)" }}>Notifications</div>
-        <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 10 }}>
+        <div
+          style={{
+            fontWeight: 700,
+            fontSize: 16,
+            marginBottom: 4,
+            color: "var(--text)",
+          }}
+        >
+          Notifications
+        </div>
+        <div
+          style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 10 }}
+        >
           Choose what you want to be notified about
         </div>
-        <div style={{
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "10px 12px", borderRadius: 10, background: "var(--tint-violet)",
-          marginBottom: 8, fontSize: 12, fontWeight: 600, color: "var(--violet)",
-        }}>
-          <span>{notifRows.filter(r => notif[r.key]).length} of {notifRows.length} notifications enabled</span>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "10px 12px",
+            borderRadius: 10,
+            background: "var(--tint-violet)",
+            marginBottom: 8,
+            fontSize: 12,
+            fontWeight: 600,
+            color: "var(--violet)",
+          }}
+        >
+          <span>
+            {notifRows.filter((r) => notif[r.key]).length} of {notifRows.length}{" "}
+            notifications enabled
+          </span>
           <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
             <Icon name="bell" size={13} />
-            {notifRows.every(r => notif[r.key]) ? "All active"
-              : notifRows.every(r => !notif[r.key]) ? "All muted"
-              : "Partially active"}
+            {notifRows.every((r) => notif[r.key])
+              ? "All active"
+              : notifRows.every((r) => !notif[r.key])
+                ? "All muted"
+                : "Partially active"}
           </span>
         </div>
-        {notifRows.map(r => (
-          <div key={r.key} style={{
-            display: "flex", alignItems: "center", justifyContent: "space-between",
-            padding: "12px 0", borderBottom: "1px solid var(--border-soft)",
-          }}>
+        {notifRows.map((r) => (
+          <div
+            key={r.key}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "12px 0",
+              borderBottom: "1px solid var(--border-soft)",
+            }}
+          >
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}>{r.label}</span>
-                <span style={{
-                  fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5,
-                  padding: "2px 8px", borderRadius: 999,
-                  background: notif[r.key] ? "var(--tint-green)" : "var(--border-soft)",
-                  color: notif[r.key] ? "var(--green)" : "var(--text-faint)",
-                  display: "flex", alignItems: "center", gap: 4,
-                }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%",
-                    background: notif[r.key] ? "var(--green)" : "var(--text-faint)" }} />
+                <span
+                  style={{
+                    fontWeight: 600,
+                    fontSize: 14,
+                    color: "var(--text)",
+                  }}
+                >
+                  {r.label}
+                </span>
+                <span
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: 0.5,
+                    padding: "2px 8px",
+                    borderRadius: 999,
+                    background: notif[r.key]
+                      ? "var(--tint-green)"
+                      : "var(--border-soft)",
+                    color: notif[r.key] ? "var(--green)" : "var(--text-faint)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 4,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: "50%",
+                      background: notif[r.key]
+                        ? "var(--green)"
+                        : "var(--text-faint)",
+                    }}
+                  />
                   {notif[r.key] ? "On" : "Off"}
                 </span>
               </div>
-              <div style={{ fontSize: 12, color: "var(--text-muted)" }}>{r.desc}</div>
+              <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
+                {r.desc}
+              </div>
             </div>
-            <ToggleSwitch on={notif[r.key]} onChange={v => setNotif(p => ({ ...p, [r.key]: v }))} />
+            <ToggleSwitch
+              on={notif[r.key]}
+              onChange={(v) => setNotif((p) => ({ ...p, [r.key]: v }))}
+            />
           </div>
         ))}
       </div>
 
       {/* ── Privacy Card ─────────────────────────────────────────────── */}
       <div className="card" style={{ padding: 22, marginBottom: 16 }}>
-        <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4, color: "var(--text)" }}>Privacy</div>
-        <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 6 }}>
+        <div
+          style={{
+            fontWeight: 700,
+            fontSize: 16,
+            marginBottom: 4,
+            color: "var(--text)",
+          }}
+        >
+          Privacy
+        </div>
+        <div
+          style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 6 }}
+        >
           Control who can see your information
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between",
-            padding: "12px 0", borderBottom: "1px solid var(--border-soft)" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "12px 0",
+              borderBottom: "1px solid var(--border-soft)",
+            }}
+          >
             <div>
-              <div style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}>Profile Visibility</div>
+              <div
+                style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}
+              >
+                Profile Visibility
+              </div>
               <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
-                {privacy.profile === "public" ? "Anyone can view your public profile" : "Only you can see your profile"}
+                {privacy.profile === "public"
+                  ? "Anyone can view your public profile"
+                  : "Only you can see your profile"}
               </div>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <span style={{ fontSize: 12, fontWeight: 700,
-                color: privacy.profile === "public" ? "var(--green)" : "var(--text-faint)" }}>
+              <span
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color:
+                    privacy.profile === "public"
+                      ? "var(--green)"
+                      : "var(--text-faint)",
+                }}
+              >
                 {privacy.profile === "public" ? "Public" : "Private"}
               </span>
-              <ToggleSwitch on={privacy.profile === "public"}
-                onChange={v => setPrivacy(p => ({ ...p, profile: v ? "public" : "private" }))} />
+              <ToggleSwitch
+                on={privacy.profile === "public"}
+                onChange={(v) =>
+                  setPrivacy((p) => ({
+                    ...p,
+                    profile: v ? "public" : "private",
+                  }))
+                }
+              />
             </div>
           </div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between",
-            padding: "12px 0", borderBottom: "1px solid var(--border-soft)" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "12px 0",
+              borderBottom: "1px solid var(--border-soft)",
+            }}
+          >
             <div>
-              <div style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}>Resume Visibility</div>
+              <div
+                style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}
+              >
+                Resume Visibility
+              </div>
               <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
-                {privacy.resume === "public" ? "Anyone can download your resume"
-                  : privacy.resume === "recruiters" ? "Only registered recruiters can view your resume"
-                  : "Your resume is not shared with anyone"}
+                {privacy.resume === "public"
+                  ? "Anyone can download your resume"
+                  : privacy.resume === "recruiters"
+                    ? "Only registered recruiters can view your resume"
+                    : "Your resume is not shared with anyone"}
               </div>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <span style={{ fontSize: 12, fontWeight: 700,
-                color: privacy.resume === "private" ? "var(--text-faint)" : "var(--green)" }}>
-                {privacy.resume === "public" ? "Public" : privacy.resume === "recruiters" ? "Recruiters" : "Private"}
+              <span
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color:
+                    privacy.resume === "private"
+                      ? "var(--text-faint)"
+                      : "var(--green)",
+                }}
+              >
+                {privacy.resume === "public"
+                  ? "Public"
+                  : privacy.resume === "recruiters"
+                    ? "Recruiters"
+                    : "Private"}
               </span>
-              <ToggleSwitch on={privacy.resume === "public"}
-                onChange={v => setPrivacy(p => ({ ...p, resume: v ? "public" : "private" }))} />
+              <ToggleSwitch
+                on={privacy.resume === "public"}
+                onChange={(v) =>
+                  setPrivacy((p) => ({
+                    ...p,
+                    resume: v ? "public" : "private",
+                  }))
+                }
+              />
             </div>
           </div>
         </div>
@@ -7590,14 +8551,38 @@ const SettingsSection = ({ showToast }) => {
 
       {/* ── Appearance Card ──────────────────────────────────────────── */}
       <div className="card" style={{ padding: 22, marginBottom: 16 }}>
-        <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4, color: "var(--text)" }}>Appearance</div>
-        <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 6 }}>
+        <div
+          style={{
+            fontWeight: 700,
+            fontSize: 16,
+            marginBottom: 4,
+            color: "var(--text)",
+          }}
+        >
+          Appearance
+        </div>
+        <div
+          style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 6 }}
+        >
           Personalize how the app looks for you
         </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 0" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "12px 0",
+          }}
+        >
           <div>
-            <div style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}>Dark Mode</div>
-            <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Reduce glare with a darker interface</div>
+            <div
+              style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}
+            >
+              Dark Mode
+            </div>
+            <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
+              Reduce glare with a darker interface
+            </div>
           </div>
           <ToggleSwitch on={darkMode} onChange={setDarkMode} />
         </div>
@@ -7613,32 +8598,78 @@ const SettingsSection = ({ showToast }) => {
       {showEmailVerify && (
         <>
           <div className="overlay" onClick={() => setShowEmailVerify(false)} />
-          <div className="card" style={{
-            position: "fixed", top: "50%", left: "50%",
-            transform: "translate(-50%,-50%)", zIndex: 100,
-            width: "min(380px,94vw)", maxWidth: "94vw", padding: "clamp(16px,4vw,26px)",
-          }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <div style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}>Verify Your Email</div>
-              <button style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)" }}
-                onClick={() => setShowEmailVerify(false)}>
+          <div
+            className="card"
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%,-50%)",
+              zIndex: 100,
+              width: "min(380px,94vw)",
+              maxWidth: "94vw",
+              padding: "clamp(16px,4vw,26px)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: 8,
+              }}
+            >
+              <div
+                style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}
+              >
+                Verify Your Email
+              </div>
+              <button
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "var(--text-muted)",
+                }}
+                onClick={() => setShowEmailVerify(false)}
+              >
                 <Icon name="x" size={18} />
               </button>
             </div>
-            <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 14 }}>
+            <p
+              style={{
+                fontSize: 13,
+                color: "var(--text-muted)",
+                marginBottom: 14,
+              }}
+            >
               We've sent a 6-digit OTP to{" "}
               <strong style={{ color: "var(--text)" }}>{account.email}</strong>.
               Enter it below to verify your email address.
             </p>
-            <div style={{
-              background: "var(--tint-violet)", color: "var(--violet)",
-              padding: "10px 14px", borderRadius: 10, fontSize: 12, marginBottom: 16, textAlign: "center",
-            }}>
+            <div
+              style={{
+                background: "var(--tint-violet)",
+                color: "var(--violet)",
+                padding: "10px 14px",
+                borderRadius: 10,
+                fontSize: 12,
+                marginBottom: 16,
+                textAlign: "center",
+              }}
+            >
               📬 Check your inbox (and spam folder) for the OTP email
             </div>
 
             {/* OTP input boxes */}
-            <div style={{ display: "flex", gap: 8, justifyContent: "center", marginBottom: 12 }}>
+            <div
+              style={{
+                display: "flex",
+                gap: 8,
+                justifyContent: "center",
+                marginBottom: 12,
+              }}
+            >
               {emailOtp.map((v, i) => (
                 <input
                   key={i}
@@ -7649,9 +8680,14 @@ const SettingsSection = ({ showToast }) => {
                   onKeyDown={(e) => handleEmailOtpBackspace(i, e)}
                   disabled={emailOtpLockTimer > 0}
                   style={{
-                    width: 42, height: 50, borderRadius: 10,
+                    width: 42,
+                    height: 50,
+                    borderRadius: 10,
                     border: `2px solid ${emailOtpLockTimer > 0 ? "var(--red)" : v ? "var(--violet)" : "var(--border)"}`,
-                    textAlign: "center", fontSize: 20, fontWeight: 700, outline: "none",
+                    textAlign: "center",
+                    fontSize: 20,
+                    fontWeight: 700,
+                    outline: "none",
                     background: v ? "var(--tint-violet)" : "var(--card)",
                     color: emailOtpLockTimer > 0 ? "#EF4444" : "var(--text)",
                   }}
@@ -7660,14 +8696,29 @@ const SettingsSection = ({ showToast }) => {
             </div>
 
             {emailOtpError && (
-              <p style={{ textAlign: "center", fontSize: 12, color: "#EF4444", marginBottom: 10, fontWeight: 600 }}>
+              <p
+                style={{
+                  textAlign: "center",
+                  fontSize: 12,
+                  color: "#EF4444",
+                  marginBottom: 10,
+                  fontWeight: 600,
+                }}
+              >
                 {emailOtpError}
               </p>
             )}
 
-            <button className="btn-primary"
-              style={{ width: "100%", justifyContent: "center", marginBottom: 10 }}
-              onClick={submitEmailOtp} disabled={emailOtpLoading || emailOtpLockTimer > 0}>
+            <button
+              className="btn-primary"
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                marginBottom: 10,
+              }}
+              onClick={submitEmailOtp}
+              disabled={emailOtpLoading || emailOtpLockTimer > 0}
+            >
               <Icon name="check" size={15} />
               {emailOtpLoading ? " Verifying…" : " Verify Email"}
             </button>
@@ -7675,11 +8726,22 @@ const SettingsSection = ({ showToast }) => {
             <div style={{ textAlign: "center", fontSize: 13 }}>
               {emailOtpTimer > 0 ? (
                 <span style={{ color: "var(--text-muted)" }}>
-                  Resend OTP in <span style={{ fontWeight: 700, color: "var(--violet)" }}>{emailOtpTimer}s</span>
+                  Resend OTP in{" "}
+                  <span style={{ fontWeight: 700, color: "var(--violet)" }}>
+                    {emailOtpTimer}s
+                  </span>
                 </span>
               ) : (
-                <span style={{ color: "var(--violet)", fontWeight: 600, cursor: "pointer" }}
-                  onClick={resendEmailOtp}>Resend OTP</span>
+                <span
+                  style={{
+                    color: "var(--violet)",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                  }}
+                  onClick={resendEmailOtp}
+                >
+                  Resend OTP
+                </span>
               )}
             </div>
           </div>
@@ -7692,60 +8754,120 @@ const SettingsSection = ({ showToast }) => {
       {showEmailChange && (
         <>
           <div className="overlay" onClick={() => setShowEmailChange(false)} />
-          <div className="card" style={{
-            position: "fixed", top: "50%", left: "50%",
-            transform: "translate(-50%,-50%)", zIndex: 100,
-            width: "min(400px,94vw)", maxWidth: "94vw", padding: "clamp(16px,4vw,26px)",
-          }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <div style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}>
-                {emailChangeStep === "sent" ? "Email Updated ✅" : "Change Email"}
+          <div
+            className="card"
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%,-50%)",
+              zIndex: 100,
+              width: "min(400px,94vw)",
+              maxWidth: "94vw",
+              padding: "clamp(16px,4vw,26px)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: 8,
+              }}
+            >
+              <div
+                style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}
+              >
+                {emailChangeStep === "sent"
+                  ? "Email Updated ✅"
+                  : "Change Email"}
               </div>
-              <button style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)" }}
-                onClick={() => setShowEmailChange(false)}>
+              <button
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "var(--text-muted)",
+                }}
+                onClick={() => setShowEmailChange(false)}
+              >
                 <Icon name="x" size={18} />
               </button>
             </div>
 
             {emailChangeStep === "password" ? (
               <>
-                <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 14 }}>
-                  For security, enter your new email and current password to continue.
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: "var(--text-muted)",
+                    marginBottom: 14,
+                  }}
+                >
+                  For security, enter your new email and current password to
+                  continue.
                 </p>
                 <div className="form-group" style={{ marginBottom: 12 }}>
                   <label>New Email Address</label>
-                  <input type="email" value={newEmail}
-                    onChange={e => setNewEmail(e.target.value)} placeholder="new@email.com" />
+                  <input
+                    type="email"
+                    value={newEmail}
+                    onChange={(e) => setNewEmail(e.target.value)}
+                    placeholder="new@email.com"
+                  />
                 </div>
                 <div className="form-group" style={{ marginBottom: 16 }}>
                   <label>Current Password</label>
-                  <input type="password" value={emailChangePw}
-                    onChange={e => setEmailChangePw(e.target.value)}
-                    placeholder="Enter current password" />
+                  <input
+                    type="password"
+                    value={emailChangePw}
+                    onChange={(e) => setEmailChangePw(e.target.value)}
+                    placeholder="Enter current password"
+                  />
                 </div>
-                <button className="btn-primary"
+                <button
+                  className="btn-primary"
                   style={{ width: "100%", justifyContent: "center" }}
-                  onClick={confirmEmailChange} disabled={emailLoading}>
+                  onClick={confirmEmailChange}
+                  disabled={emailLoading}
+                >
                   <Icon name="shield" size={15} />
                   {emailLoading ? " Updating…" : " Update & Send Verification"}
                 </button>
               </>
             ) : (
               <>
-                <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 14 }}>
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: "var(--text-muted)",
+                    marginBottom: 14,
+                  }}
+                >
                   Your email has been changed to{" "}
                   <strong style={{ color: "var(--text)" }}>{newEmail}</strong>.
-                  A verification link has been sent there — click it to complete verification.
+                  A verification link has been sent there — click it to complete
+                  verification.
                 </p>
-                <div style={{
-                  background: "var(--tint-green)", color: "var(--green)",
-                  padding: "10px 14px", borderRadius: 10, fontSize: 12, marginBottom: 14, textAlign: "center",
-                }}>
-                  ✅ Email updated — check your new inbox for the verification link
+                <div
+                  style={{
+                    background: "var(--tint-green)",
+                    color: "var(--green)",
+                    padding: "10px 14px",
+                    borderRadius: 10,
+                    fontSize: 12,
+                    marginBottom: 14,
+                    textAlign: "center",
+                  }}
+                >
+                  ✅ Email updated — check your new inbox for the verification
+                  link
                 </div>
-                <button className="btn-primary"
+                <button
+                  className="btn-primary"
                   style={{ width: "100%", justifyContent: "center" }}
-                  onClick={() => setShowEmailChange(false)}>
+                  onClick={() => setShowEmailChange(false)}
+                >
                   Done
                 </button>
               </>
@@ -7757,27 +8879,46 @@ const SettingsSection = ({ showToast }) => {
       {/* ══════════════════════════════════════════════════════════════
            MODAL 3 — Change Password (re-auth → updatePassword)
          ══════════════════════════════════════════════════════════════ */}
-      {showPw && <ChangePwModal
-        onClose={() => { setShowPw(false); setPw({ current:"", next:"", confirm:"" }); }}
-        pw={pw} setPw={setPw}
-        pwLoading={pwLoading}
-        savePassword={savePassword}
-        userEmail={auth.currentUser?.email || account.email}
-      />}
-
+      {showPw && (
+        <ChangePwModal
+          onClose={() => {
+            setShowPw(false);
+            setPw({ current: "", next: "", confirm: "" });
+          }}
+          pw={pw}
+          setPw={setPw}
+          pwLoading={pwLoading}
+          savePassword={savePassword}
+          userEmail={auth.currentUser?.email || account.email}
+        />
+      )}
     </div>
   );
 };
 
-
 // ─── EMPLOYER PORTAL ─────────────────────────────────────────────────────────
-const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerApplicants, setEmployerApplicants }) => {
+const EmployerPage = ({
+  setPage,
+  user,
+  employerJobs,
+  setEmployerJobs,
+  employerApplicants,
+  setEmployerApplicants,
+}) => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [step, setStep] = useState(1);
   const [jobForm, setJobForm] = useState({
-    title: "", company: "", location: "", department: "",
-    description: "", skills: "", experience: "",
-    minSalary: "", maxSalary: "", jobType: "", workMode: "",
+    title: "",
+    company: "",
+    location: "",
+    department: "",
+    description: "",
+    skills: "",
+    experience: "",
+    minSalary: "",
+    maxSalary: "",
+    jobType: "",
+    workMode: "",
   });
   const [viewingProfile, setViewingProfile] = useState(null);
   const [schedulingInterview, setSchedulingInterview] = useState(null);
@@ -7789,13 +8930,35 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
   const totalPosted = employerJobs.length;
   const activeJobs = employerJobs.filter((j) => j.status === "active").length;
   const totalApplicants = employerApplicants.length;
-  const profileViews = employerJobs.reduce((sum, j) => sum + (j.views || 0), 0) + totalApplicants * 5;
+  const profileViews =
+    employerJobs.reduce((sum, j) => sum + (j.views || 0), 0) +
+    totalApplicants * 5;
 
   const stats = [
-    { label: "Jobs Posted", value: totalPosted, icon: "briefcase", color: "#7C3AED" },
-    { label: "Active Jobs", value: activeJobs, icon: "lightning", color: "#22D3EE" },
-    { label: "Total Applicants", value: totalApplicants, icon: "user", color: "var(--green)" },
-    { label: "Profile Views", value: profileViews, icon: "eye", color: "var(--amber)" },
+    {
+      label: "Jobs Posted",
+      value: totalPosted,
+      icon: "briefcase",
+      color: "#7C3AED",
+    },
+    {
+      label: "Active Jobs",
+      value: activeJobs,
+      icon: "lightning",
+      color: "#22D3EE",
+    },
+    {
+      label: "Total Applicants",
+      value: totalApplicants,
+      icon: "user",
+      color: "var(--green)",
+    },
+    {
+      label: "Profile Views",
+      value: profileViews,
+      icon: "eye",
+      color: "var(--amber)",
+    },
   ];
 
   const tabs = [
@@ -7808,10 +8971,7 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
     if (activeTab === "dashboard")
       return (
         <div>
-          <div
-            className="grid-4 employer-stats"
-            style={{ marginBottom: 24 }}
-          >
+          <div className="grid-4 employer-stats" style={{ marginBottom: 24 }}>
             {stats.map((s) => (
               <div key={s.label} className="card" style={{ padding: 18 }}>
                 <div
@@ -7828,7 +8988,11 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
                       {s.value}
                     </div>
                     <div
-                      style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 2 }}
+                      style={{
+                        fontSize: 13,
+                        color: "var(--text-muted)",
+                        marginTop: 2,
+                      }}
                     >
                       {s.label}
                     </div>
@@ -7853,33 +9017,78 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
           </div>
           <div className="card" style={{ padding: 24 }}>
             <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 14 }}>
-              {employerJobs.length > 0 ? "Recent Job Performance" : "No Jobs Posted Yet"}
+              {employerJobs.length > 0
+                ? "Recent Job Performance"
+                : "No Jobs Posted Yet"}
             </div>
             {employerJobs.length === 0 ? (
               <div style={{ textAlign: "center", padding: "40px 0" }}>
-                <Icon name="briefcase" size={48} className="" style={{ color: "var(--text-faint)", marginBottom: 12 }} />
-                <div style={{ color: "var(--text-muted)", fontSize: 14, marginBottom: 16 }}>
-                  You haven't posted any jobs yet. Post your first job to see performance here.
+                <Icon
+                  name="briefcase"
+                  size={48}
+                  className=""
+                  style={{ color: "var(--text-faint)", marginBottom: 12 }}
+                />
+                <div
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: 14,
+                    marginBottom: 16,
+                  }}
+                >
+                  You haven't posted any jobs yet. Post your first job to see
+                  performance here.
                 </div>
-                <button className="btn-primary" onClick={() => setActiveTab("post")}>
+                <button
+                  className="btn-primary"
+                  onClick={() => setActiveTab("post")}
+                >
                   <Icon name="plus" size={15} /> Post a Job
                 </button>
               </div>
             ) : (
               employerJobs.slice(0, 5).map((j) => (
-                <div key={j.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 0", borderBottom: "1px solid var(--border-soft)" }}>
+                <div
+                  key={j.id}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "12px 0",
+                    borderBottom: "1px solid var(--border-soft)",
+                  }}
+                >
                   <div>
-                    <div style={{ fontWeight: 600, color: "var(--text)", fontSize: 14 }}>{j.title}</div>
-                    <div style={{ fontSize: 12, color: "var(--text-faint)" }}>{j.location} · Posted {j.postedAt}</div>
+                    <div
+                      style={{
+                        fontWeight: 600,
+                        color: "var(--text)",
+                        fontSize: 14,
+                      }}
+                    >
+                      {j.title}
+                    </div>
+                    <div style={{ fontSize: 12, color: "var(--text-faint)" }}>
+                      {j.location} · Posted {j.postedAt}
+                    </div>
                   </div>
-                  <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+                  <div
+                    style={{ display: "flex", gap: 16, alignItems: "center" }}
+                  >
                     <div style={{ textAlign: "center" }}>
                       <div style={{ fontWeight: 700, color: "#7C3AED" }}>
-                        {employerApplicants.filter((a) => a.jobId === j.id).length}
+                        {
+                          employerApplicants.filter((a) => a.jobId === j.id)
+                            .length
+                        }
                       </div>
-                      <div style={{ fontSize: 10, color: "var(--text-faint)" }}>Applicants</div>
+                      <div style={{ fontSize: 10, color: "var(--text-faint)" }}>
+                        Applicants
+                      </div>
                     </div>
-                    <span className={`badge ${j.status === "active" ? "badge-green" : "badge-orange"}`}>
+                    <span
+                      className={`badge ${j.status === "active" ? "badge-green" : "badge-orange"}`}
+                    >
                       {j.status === "active" ? "Active" : "Closed"}
                     </span>
                   </div>
@@ -8032,7 +9241,9 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
                   }
                 >
                   <option value="">Select experience</option>
-                  <option value="No Experience (Fresher)">No Experience (Fresher)</option>
+                  <option value="No Experience (Fresher)">
+                    No Experience (Fresher)
+                  </option>
                   <option value="0–1 years">0–1 years</option>
                   <option value="1–3 years">1–3 years</option>
                   <option value="3–5 years">3–5 years</option>
@@ -8113,7 +9324,11 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
                   gap: 10,
                 }}
               >
-                <Icon name="check" size={18} style={{ color: "var(--green)" }} />
+                <Icon
+                  name="check"
+                  size={18}
+                  style={{ color: "var(--green)" }}
+                />
                 <span
                   style={{
                     fontSize: 14,
@@ -8263,11 +9478,19 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
                     location: jobForm.location,
                     department: jobForm.department,
                     description: jobForm.description,
-                    skills: jobForm.skills ? jobForm.skills.split(",").map((s) => s.trim()).filter(Boolean) : [],
+                    skills: jobForm.skills
+                      ? jobForm.skills
+                          .split(",")
+                          .map((s) => s.trim())
+                          .filter(Boolean)
+                      : [],
                     experience: jobForm.experience,
-                    salary: (jobForm.minSalary && jobForm.maxSalary)
-                      ? `\u20B9${jobForm.minSalary}L \u2013 \u20B9${jobForm.maxSalary}L/yr`
-                      : jobForm.minSalary ? `\u20B9${jobForm.minSalary}L+` : "Negotiable",
+                    salary:
+                      jobForm.minSalary && jobForm.maxSalary
+                        ? `\u20B9${jobForm.minSalary}L \u2013 \u20B9${jobForm.maxSalary}L/yr`
+                        : jobForm.minSalary
+                          ? `\u20B9${jobForm.minSalary}L+`
+                          : "Negotiable",
                     jobType: jobForm.jobType,
                     workMode: jobForm.workMode,
                     status: "active",
@@ -8275,31 +9498,66 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
                     views: Math.floor(Math.random() * 30) + 5,
                   };
                   const sampleNames = [
-                    { name: "Aarav Sharma", role: "Senior Developer", experience: "5 years", email: "aarav.sharma@email.com" },
-                    { name: "Priya Nair", role: "React Engineer", experience: "3 years", email: "priya.nair@email.com" },
-                    { name: "Rohan Mehta", role: "Full Stack Developer", experience: "4 years", email: "rohan.mehta@email.com" },
-                    { name: "Deepa Krishnan", role: "Frontend Lead", experience: "6 years", email: "deepa.k@email.com" },
-                    { name: "Arjun Gupta", role: "Backend Developer", experience: "3 years", email: "arjun.gupta@email.com" },
+                    {
+                      name: "Aarav Sharma",
+                      role: "Senior Developer",
+                      experience: "5 years",
+                      email: "aarav.sharma@email.com",
+                    },
+                    {
+                      name: "Priya Nair",
+                      role: "React Engineer",
+                      experience: "3 years",
+                      email: "priya.nair@email.com",
+                    },
+                    {
+                      name: "Rohan Mehta",
+                      role: "Full Stack Developer",
+                      experience: "4 years",
+                      email: "rohan.mehta@email.com",
+                    },
+                    {
+                      name: "Deepa Krishnan",
+                      role: "Frontend Lead",
+                      experience: "6 years",
+                      email: "deepa.k@email.com",
+                    },
+                    {
+                      name: "Arjun Gupta",
+                      role: "Backend Developer",
+                      experience: "3 years",
+                      email: "arjun.gupta@email.com",
+                    },
                   ];
                   const numApplicants = Math.floor(Math.random() * 4) + 1;
-                  const newApplicants = sampleNames.slice(0, numApplicants).map((s, i) => ({
-                    id: Date.now() + i + 1,
-                    name: s.name,
-                    role: s.role,
-                    experience: s.experience,
-                    email: s.email,
-                    jobId: newJob.id,
-                    status: "applied",
-                  }));
+                  const newApplicants = sampleNames
+                    .slice(0, numApplicants)
+                    .map((s, i) => ({
+                      id: Date.now() + i + 1,
+                      name: s.name,
+                      role: s.role,
+                      experience: s.experience,
+                      email: s.email,
+                      jobId: newJob.id,
+                      status: "applied",
+                    }));
                   setEmployerJobs((prev) => [newJob, ...prev]);
                   setEmployerApplicants((prev) => [...newApplicants, ...prev]);
                   showToast("Job published! \uD83D\uDE80");
                   setStep(1);
                   setActiveTab("listings");
                   setJobForm({
-                    title: "", company: "", location: "", department: "",
-                    description: "", skills: "", experience: "",
-                    minSalary: "", maxSalary: "", jobType: "", workMode: "",
+                    title: "",
+                    company: "",
+                    location: "",
+                    department: "",
+                    description: "",
+                    skills: "",
+                    experience: "",
+                    minSalary: "",
+                    maxSalary: "",
+                    jobType: "",
+                    workMode: "",
                   });
                 }
               }}
@@ -8313,61 +9571,169 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
     if (activeTab === "listings")
       return (
         <div>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-            <div style={{ fontWeight: 700, fontSize: 18, color: "var(--text)" }}>Job Listings</div>
-            <button className="btn-primary" onClick={() => setActiveTab("post")}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: 16,
+            }}
+          >
+            <div
+              style={{ fontWeight: 700, fontSize: 18, color: "var(--text)" }}
+            >
+              Job Listings
+            </div>
+            <button
+              className="btn-primary"
+              onClick={() => setActiveTab("post")}
+            >
               <Icon name="plus" size={15} /> Post New Job
             </button>
           </div>
           {employerJobs.length === 0 ? (
             <div className="card" style={{ padding: 48, textAlign: "center" }}>
-              <Icon name="briefcase" size={48} className="" style={{ color: "var(--text-faint)", marginBottom: 12 }} />
-              <div style={{ color: "var(--text-muted)", fontSize: 14, marginBottom: 16 }}>No jobs posted yet.</div>
-              <button className="btn-primary" onClick={() => setActiveTab("post")}>
+              <Icon
+                name="briefcase"
+                size={48}
+                className=""
+                style={{ color: "var(--text-faint)", marginBottom: 12 }}
+              />
+              <div
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: 14,
+                  marginBottom: 16,
+                }}
+              >
+                No jobs posted yet.
+              </div>
+              <button
+                className="btn-primary"
+                onClick={() => setActiveTab("post")}
+              >
                 <Icon name="plus" size={15} /> Post Your First Job
               </button>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {employerJobs.map((j) => (
-                <div key={j.id} className="card" style={{ padding: 18, display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
-                  <div style={{ flex: "1 1 200px", minWidth: "min(200px,100%)" }}>
-                    <div style={{ fontWeight: 700, color: "var(--text)" }}>{j.title}</div>
-                    <div style={{ fontSize: 13, color: "var(--text-faint)", marginTop: 2 }}>
-                      {j.location} · {j.jobType || "Full-time"} · Posted {j.postedAt}
+                <div
+                  key={j.id}
+                  className="card"
+                  style={{
+                    padding: 18,
+                    display: "flex",
+                    gap: 16,
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <div
+                    style={{ flex: "1 1 200px", minWidth: "min(200px,100%)" }}
+                  >
+                    <div style={{ fontWeight: 700, color: "var(--text)" }}>
+                      {j.title}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 13,
+                        color: "var(--text-faint)",
+                        marginTop: 2,
+                      }}
+                    >
+                      {j.location} · {j.jobType || "Full-time"} · Posted{" "}
+                      {j.postedAt}
                     </div>
                     {j.skills && j.skills.length > 0 && (
-                      <div style={{ display: "flex", gap: 4, marginTop: 6, flexWrap: "wrap" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: 4,
+                          marginTop: 6,
+                          flexWrap: "wrap",
+                        }}
+                      >
                         {j.skills.slice(0, 3).map((s) => (
-                          <span key={s} className="tag" style={{ fontSize: 11 }}>{s}</span>
+                          <span
+                            key={s}
+                            className="tag"
+                            style={{ fontSize: 11 }}
+                          >
+                            {s}
+                          </span>
                         ))}
-                        {j.skills.length > 3 && <span className="tag" style={{ fontSize: 11 }}>+{j.skills.length - 3}</span>}
+                        {j.skills.length > 3 && (
+                          <span className="tag" style={{ fontSize: 11 }}>
+                            +{j.skills.length - 3}
+                          </span>
+                        )}
                       </div>
                     )}
                   </div>
-                  <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                  <div
+                    style={{ display: "flex", gap: 12, alignItems: "center" }}
+                  >
                     <div style={{ textAlign: "center" }}>
                       <div style={{ fontWeight: 700, color: "#7C3AED" }}>
-                        {employerApplicants.filter((a) => a.jobId === j.id).length}
+                        {
+                          employerApplicants.filter((a) => a.jobId === j.id)
+                            .length
+                        }
                       </div>
-                      <div style={{ fontSize: 11, color: "var(--text-faint)" }}>Applicants</div>
+                      <div style={{ fontSize: 11, color: "var(--text-faint)" }}>
+                        Applicants
+                      </div>
                     </div>
-                    <span className={`badge ${j.status === "active" ? "badge-green" : "badge-orange"}`}>
+                    <span
+                      className={`badge ${j.status === "active" ? "badge-green" : "badge-orange"}`}
+                    >
                       {j.status === "active" ? "Active" : "Closed"}
                     </span>
-                    <button className="btn-ghost" style={{ padding: "7px 12px" }} onClick={() => {
-                      setEmployerJobs((prev) => prev.map((job) => job.id === j.id ? { ...job, status: job.status === "active" ? "closed" : "active" } : job));
-                      showToast(j.status === "active" ? "Job closed" : "Job reopened");
-                    }}>
-                      <Icon name={j.status === "active" ? "x" : "check"} size={14} />
+                    <button
+                      className="btn-ghost"
+                      style={{ padding: "7px 12px" }}
+                      onClick={() => {
+                        setEmployerJobs((prev) =>
+                          prev.map((job) =>
+                            job.id === j.id
+                              ? {
+                                  ...job,
+                                  status:
+                                    job.status === "active"
+                                      ? "closed"
+                                      : "active",
+                                }
+                              : job,
+                          ),
+                        );
+                        showToast(
+                          j.status === "active" ? "Job closed" : "Job reopened",
+                        );
+                      }}
+                    >
+                      <Icon
+                        name={j.status === "active" ? "x" : "check"}
+                        size={14}
+                      />
                     </button>
-                    <button className="btn-ghost" style={{ padding: "7px 12px", color: "var(--red)" }} onClick={() => {
-                      if (confirm(`Delete "${j.title}"? This cannot be undone.`)) {
-                        setEmployerJobs((prev) => prev.filter((job) => job.id !== j.id));
-                        setEmployerApplicants((prev) => prev.filter((a) => a.jobId !== j.id));
-                        showToast("Job deleted");
-                      }
-                    }}>
+                    <button
+                      className="btn-ghost"
+                      style={{ padding: "7px 12px", color: "var(--red)" }}
+                      onClick={() => {
+                        if (
+                          confirm(`Delete "${j.title}"? This cannot be undone.`)
+                        ) {
+                          setEmployerJobs((prev) =>
+                            prev.filter((job) => job.id !== j.id),
+                          );
+                          setEmployerApplicants((prev) =>
+                            prev.filter((a) => a.jobId !== j.id),
+                          );
+                          showToast("Job deleted");
+                        }
+                      }}
+                    >
                       <Icon name="trash" size={14} />
                     </button>
                   </div>
@@ -8381,15 +9747,37 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
       const allApplicants = employerApplicants;
       return (
         <div>
-          <div style={{ fontWeight: 700, fontSize: 18, color: "var(--text)", marginBottom: 16 }}>
-            Applicants {allApplicants.length > 0 ? `(${allApplicants.length})` : ""}
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: 18,
+              color: "var(--text)",
+              marginBottom: 16,
+            }}
+          >
+            Applicants{" "}
+            {allApplicants.length > 0 ? `(${allApplicants.length})` : ""}
           </div>
           {allApplicants.length === 0 ? (
             <div className="card" style={{ padding: 48, textAlign: "center" }}>
-              <Icon name="user" size={48} className="" style={{ color: "var(--text-faint)", marginBottom: 12 }} />
-              <div style={{ color: "var(--text-muted)", fontSize: 14, marginBottom: 8 }}>No applicants yet.</div>
+              <Icon
+                name="user"
+                size={48}
+                className=""
+                style={{ color: "var(--text-faint)", marginBottom: 12 }}
+              />
+              <div
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: 14,
+                  marginBottom: 8,
+                }}
+              >
+                No applicants yet.
+              </div>
               <div style={{ color: "var(--text-faint)", fontSize: 13 }}>
-                Applicants will appear here once job seekers apply to your posted jobs.
+                Applicants will appear here once job seekers apply to your
+                posted jobs.
               </div>
             </div>
           ) : (
@@ -8398,36 +9786,134 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
               const isShortlisted = a.status === "shortlisted";
               const hasInterview = a.status === "interviewed";
               return (
-                <div key={a.id} className="card" style={{ padding: 18, marginBottom: 12, display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
-                  <div style={{ width: 44, height: 44, borderRadius: "50%", background: isShortlisted ? "linear-gradient(135deg, #059669, #22D3EE)" : hasInterview ? "linear-gradient(135deg, #D97706, #F59E0B)" : "linear-gradient(135deg, #7C3AED, #22D3EE)", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 700, flexShrink: 0 }}>
+                <div
+                  key={a.id}
+                  className="card"
+                  style={{
+                    padding: 18,
+                    marginBottom: 12,
+                    display: "flex",
+                    gap: 14,
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: "50%",
+                      background: isShortlisted
+                        ? "linear-gradient(135deg, #059669, #22D3EE)"
+                        : hasInterview
+                          ? "linear-gradient(135deg, #D97706, #F59E0B)"
+                          : "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      fontWeight: 700,
+                      flexShrink: 0,
+                    }}
+                  >
                     {a.name.charAt(0)}
                   </div>
-                  <div style={{ flex: "1 1 150px", minWidth: "min(150px,100%)" }}>
-                    <div style={{ fontWeight: 700, color: "var(--text)" }}>{a.name}</div>
-                    <div style={{ fontSize: 13, color: "var(--text-faint)" }}>{a.role} · {a.experience}</div>
-                    <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>
-                      Applied for: <strong>{job ? job.title : "Unknown Job"}</strong>
+                  <div
+                    style={{ flex: "1 1 150px", minWidth: "min(150px,100%)" }}
+                  >
+                    <div style={{ fontWeight: 700, color: "var(--text)" }}>
+                      {a.name}
+                    </div>
+                    <div style={{ fontSize: 13, color: "var(--text-faint)" }}>
+                      {a.role} · {a.experience}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 12,
+                        color: "var(--text-muted)",
+                        marginTop: 2,
+                      }}
+                    >
+                      Applied for:{" "}
+                      <strong>{job ? job.title : "Unknown Job"}</strong>
                     </div>
                     {hasInterview && a.interviewDate && (
-                      <div style={{ fontSize: 12, color: "#D97706", marginTop: 4, fontWeight: 600 }}>
-                        Interview: {a.interviewDate} at {a.interviewTime} {a.interviewNote ? `(${a.interviewNote})` : ""}
+                      <div
+                        style={{
+                          fontSize: 12,
+                          color: "#D97706",
+                          marginTop: 4,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Interview: {a.interviewDate} at {a.interviewTime}{" "}
+                        {a.interviewNote ? `(${a.interviewNote})` : ""}
                       </div>
                     )}
                     {isShortlisted && !hasInterview && (
-                      <div style={{ fontSize: 12, color: "#059669", marginTop: 4, fontWeight: 600 }}>Shortlisted</div>
+                      <div
+                        style={{
+                          fontSize: 12,
+                          color: "#059669",
+                          marginTop: 4,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Shortlisted
+                      </div>
                     )}
                   </div>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    <button className="btn-primary" style={{ padding: "7px 14px", fontSize: 13 }} onClick={() => { setSchedulingInterview(a); setInterviewDate(""); setInterviewTime(""); setInterviewNote(""); }}>
-                      <Icon name="clock" size={13} /> {hasInterview ? "Reschedule" : "Schedule Interview"}
+                    <button
+                      className="btn-primary"
+                      style={{ padding: "7px 14px", fontSize: 13 }}
+                      onClick={() => {
+                        setSchedulingInterview(a);
+                        setInterviewDate("");
+                        setInterviewTime("");
+                        setInterviewNote("");
+                      }}
+                    >
+                      <Icon name="clock" size={13} />{" "}
+                      {hasInterview ? "Reschedule" : "Schedule Interview"}
                     </button>
-                    <button className="btn-ghost" style={{ padding: "7px 14px", background: isShortlisted ? "var(--tint-green)" : undefined, color: isShortlisted ? "#059669" : undefined }} onClick={() => {
-                      setEmployerApplicants((prev) => prev.map((ap) => ap.id === a.id ? { ...ap, status: isShortlisted ? "applied" : "shortlisted" } : ap));
-                      showToast(isShortlisted ? `${a.name} removed from shortlist` : `${a.name} shortlisted!`);
-                    }}>
-                      <Icon name={isShortlisted ? "check" : "star"} size={13} /> {isShortlisted ? "Shortlisted" : "Shortlist"}
+                    <button
+                      className="btn-ghost"
+                      style={{
+                        padding: "7px 14px",
+                        background: isShortlisted
+                          ? "var(--tint-green)"
+                          : undefined,
+                        color: isShortlisted ? "#059669" : undefined,
+                      }}
+                      onClick={() => {
+                        setEmployerApplicants((prev) =>
+                          prev.map((ap) =>
+                            ap.id === a.id
+                              ? {
+                                  ...ap,
+                                  status: isShortlisted
+                                    ? "applied"
+                                    : "shortlisted",
+                                }
+                              : ap,
+                          ),
+                        );
+                        showToast(
+                          isShortlisted
+                            ? `${a.name} removed from shortlist`
+                            : `${a.name} shortlisted!`,
+                        );
+                      }}
+                    >
+                      <Icon name={isShortlisted ? "check" : "star"} size={13} />{" "}
+                      {isShortlisted ? "Shortlisted" : "Shortlist"}
                     </button>
-                    <button className="btn-ghost" style={{ padding: "7px 14px" }} onClick={() => setViewingProfile(a)}>
+                    <button
+                      className="btn-ghost"
+                      style={{ padding: "7px 14px" }}
+                      onClick={() => setViewingProfile(a)}
+                    >
                       <Icon name="eye" size={13} /> View Profile
                     </button>
                   </div>
@@ -8436,68 +9922,304 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
             })
           )}
           {schedulingInterview && (
-            <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, padding: 20 }} onClick={() => setSchedulingInterview(null)}>
-              <div className="card" style={{ width: "100%", maxWidth: 440, padding: 28 }} onClick={(e) => e.stopPropagation()}>
-                <div style={{ fontWeight: 700, fontSize: 18, color: "var(--text)", marginBottom: 20 }}>Schedule Interview with {schedulingInterview.name}</div>
-                <div className="form-group"><label>Date</label><input type="date" value={interviewDate} onChange={(e) => setInterviewDate(e.target.value)} /></div>
-                <div className="form-group"><label>Time</label><input type="time" value={interviewTime} onChange={(e) => setInterviewTime(e.target.value)} /></div>
-                <div className="form-group"><label>Note (optional)</label><input placeholder="e.g. Video call via Zoom" value={interviewNote} onChange={(e) => setInterviewNote(e.target.value)} /></div>
+            <div
+              style={{
+                position: "fixed",
+                inset: 0,
+                background: "rgba(0,0,0,0.4)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 9999,
+                padding: 20,
+              }}
+              onClick={() => setSchedulingInterview(null)}
+            >
+              <div
+                className="card"
+                style={{ width: "100%", maxWidth: 440, padding: 28 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div
+                  style={{
+                    fontWeight: 700,
+                    fontSize: 18,
+                    color: "var(--text)",
+                    marginBottom: 20,
+                  }}
+                >
+                  Schedule Interview with {schedulingInterview.name}
+                </div>
+                <div className="form-group">
+                  <label>Date</label>
+                  <input
+                    type="date"
+                    value={interviewDate}
+                    onChange={(e) => setInterviewDate(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Time</label>
+                  <input
+                    type="time"
+                    value={interviewTime}
+                    onChange={(e) => setInterviewTime(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Note (optional)</label>
+                  <input
+                    placeholder="e.g. Video call via Zoom"
+                    value={interviewNote}
+                    onChange={(e) => setInterviewNote(e.target.value)}
+                  />
+                </div>
                 <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
-                  <button className="btn-ghost" onClick={() => setSchedulingInterview(null)}>Cancel</button>
-                  <button className="btn-primary" style={{ marginLeft: "auto" }} onClick={() => {
-                    if (!interviewDate || !interviewTime) { showToast("Please select date and time", "error"); return; }
-                    setEmployerApplicants((prev) => prev.map((ap) => ap.id === schedulingInterview.id ? { ...ap, status: "interviewed", interviewDate, interviewTime, interviewNote } : ap));
-                    showToast(`Interview scheduled with ${schedulingInterview.name}!`);
-                    setSchedulingInterview(null);
-                  }}><Icon name="check" size={15} /> Confirm Interview</button>
+                  <button
+                    className="btn-ghost"
+                    onClick={() => setSchedulingInterview(null)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="btn-primary"
+                    style={{ marginLeft: "auto" }}
+                    onClick={() => {
+                      if (!interviewDate || !interviewTime) {
+                        showToast("Please select date and time", "error");
+                        return;
+                      }
+                      setEmployerApplicants((prev) =>
+                        prev.map((ap) =>
+                          ap.id === schedulingInterview.id
+                            ? {
+                                ...ap,
+                                status: "interviewed",
+                                interviewDate,
+                                interviewTime,
+                                interviewNote,
+                              }
+                            : ap,
+                        ),
+                      );
+                      showToast(
+                        `Interview scheduled with ${schedulingInterview.name}!`,
+                      );
+                      setSchedulingInterview(null);
+                    }}
+                  >
+                    <Icon name="check" size={15} /> Confirm Interview
+                  </button>
                 </div>
               </div>
             </div>
           )}
           {viewingProfile && (
-            <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, padding: 20 }} onClick={() => setViewingProfile(null)}>
-              <div className="card" style={{ width: "100%", maxWidth: 500, padding: 28 }} onClick={(e) => e.stopPropagation()}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-                  <div style={{ fontWeight: 700, fontSize: 18, color: "var(--text)" }}>Applicant Profile</div>
-                  <button className="btn-ghost" style={{ padding: "4px 8px" }} onClick={() => setViewingProfile(null)}><Icon name="x" size={18} /></button>
+            <div
+              style={{
+                position: "fixed",
+                inset: 0,
+                background: "rgba(0,0,0,0.4)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 9999,
+                padding: 20,
+              }}
+              onClick={() => setViewingProfile(null)}
+            >
+              <div
+                className="card"
+                style={{ width: "100%", maxWidth: 500, padding: 28 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: 20,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontWeight: 700,
+                      fontSize: 18,
+                      color: "var(--text)",
+                    }}
+                  >
+                    Applicant Profile
+                  </div>
+                  <button
+                    className="btn-ghost"
+                    style={{ padding: "4px 8px" }}
+                    onClick={() => setViewingProfile(null)}
+                  >
+                    <Icon name="x" size={18} />
+                  </button>
                 </div>
-                <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 20 }}>
-                  <div style={{ width: 60, height: 60, borderRadius: "50%", background: "linear-gradient(135deg, #7C3AED, #22D3EE)", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 700, fontSize: 24, flexShrink: 0 }}>{viewingProfile.name.charAt(0)}</div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 16,
+                    alignItems: "center",
+                    marginBottom: 20,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 60,
+                      height: 60,
+                      borderRadius: "50%",
+                      background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      fontWeight: 700,
+                      fontSize: 24,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {viewingProfile.name.charAt(0)}
+                  </div>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: 18, color: "var(--text)" }}>{viewingProfile.name}</div>
-                    <div style={{ fontSize: 14, color: "var(--text-faint)" }}>{viewingProfile.role} · {viewingProfile.experience}</div>
+                    <div
+                      style={{
+                        fontWeight: 700,
+                        fontSize: 18,
+                        color: "var(--text)",
+                      }}
+                    >
+                      {viewingProfile.name}
+                    </div>
+                    <div style={{ fontSize: 14, color: "var(--text-faint)" }}>
+                      {viewingProfile.role} · {viewingProfile.experience}
+                    </div>
                   </div>
                 </div>
                 <div className="card" style={{ padding: 16, marginBottom: 12 }}>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-muted)", marginBottom: 6 }}>EMAIL</div>
-                  <div style={{ fontSize: 14, color: "var(--text)" }}>{viewingProfile.email}</div>
+                  <div
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: "var(--text-muted)",
+                      marginBottom: 6,
+                    }}
+                  >
+                    EMAIL
+                  </div>
+                  <div style={{ fontSize: 14, color: "var(--text)" }}>
+                    {viewingProfile.email}
+                  </div>
                 </div>
                 <div className="card" style={{ padding: 16, marginBottom: 12 }}>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-muted)", marginBottom: 6 }}>APPLIED FOR</div>
-                  <div style={{ fontSize: 14, color: "var(--text)" }}>{employerJobs.find((j) => j.id === viewingProfile.jobId)?.title || "Unknown Job"}</div>
+                  <div
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: "var(--text-muted)",
+                      marginBottom: 6,
+                    }}
+                  >
+                    APPLIED FOR
+                  </div>
+                  <div style={{ fontSize: 14, color: "var(--text)" }}>
+                    {employerJobs.find((j) => j.id === viewingProfile.jobId)
+                      ?.title || "Unknown Job"}
+                  </div>
                 </div>
                 <div className="card" style={{ padding: 16, marginBottom: 12 }}>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-muted)", marginBottom: 6 }}>STATUS</div>
-                  <span className={`badge ${viewingProfile.status === "shortlisted" ? "badge-green" : viewingProfile.status === "interviewed" ? "badge-orange" : "badge-violet"}`}>
-                    {viewingProfile.status === "shortlisted" ? "Shortlisted" : viewingProfile.status === "interviewed" ? "Interview Scheduled" : "Applied"}
+                  <div
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: "var(--text-muted)",
+                      marginBottom: 6,
+                    }}
+                  >
+                    STATUS
+                  </div>
+                  <span
+                    className={`badge ${viewingProfile.status === "shortlisted" ? "badge-green" : viewingProfile.status === "interviewed" ? "badge-orange" : "badge-violet"}`}
+                  >
+                    {viewingProfile.status === "shortlisted"
+                      ? "Shortlisted"
+                      : viewingProfile.status === "interviewed"
+                        ? "Interview Scheduled"
+                        : "Applied"}
                   </span>
                 </div>
                 {viewingProfile.status === "interviewed" && (
-                  <div className="card" style={{ padding: 16, marginBottom: 12 }}>
-                    <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-muted)", marginBottom: 6 }}>INTERVIEW DETAILS</div>
+                  <div
+                    className="card"
+                    style={{ padding: 16, marginBottom: 12 }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 600,
+                        color: "var(--text-muted)",
+                        marginBottom: 6,
+                      }}
+                    >
+                      INTERVIEW DETAILS
+                    </div>
                     <div style={{ fontSize: 14, color: "var(--text)" }}>
-                      Date: {viewingProfile.interviewDate} at {viewingProfile.interviewTime}
-                      {viewingProfile.interviewNote && <><br/>Note: {viewingProfile.interviewNote}</>}
+                      Date: {viewingProfile.interviewDate} at{" "}
+                      {viewingProfile.interviewTime}
+                      {viewingProfile.interviewNote && (
+                        <>
+                          <br />
+                          Note: {viewingProfile.interviewNote}
+                        </>
+                      )}
                     </div>
                   </div>
                 )}
                 <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
-                  <button className="btn-ghost" onClick={() => setViewingProfile(null)}>Close</button>
-                  <button className="btn-primary" style={{ marginLeft: "auto" }} onClick={() => {
-                    setEmployerApplicants((prev) => prev.map((ap) => ap.id === viewingProfile.id ? { ...ap, status: ap.status === "shortlisted" ? "applied" : "shortlisted" } : ap));
-                    setViewingProfile((prev) => ({ ...prev, status: prev.status === "shortlisted" ? "applied" : "shortlisted" }));
-                    showToast(viewingProfile.status === "shortlisted" ? "Removed from shortlist" : `${viewingProfile.name} shortlisted!`);
-                  }}><Icon name="star" size={15} /> {viewingProfile.status === "shortlisted" ? "Remove from Shortlist" : "Shortlist"}</button>
+                  <button
+                    className="btn-ghost"
+                    onClick={() => setViewingProfile(null)}
+                  >
+                    Close
+                  </button>
+                  <button
+                    className="btn-primary"
+                    style={{ marginLeft: "auto" }}
+                    onClick={() => {
+                      setEmployerApplicants((prev) =>
+                        prev.map((ap) =>
+                          ap.id === viewingProfile.id
+                            ? {
+                                ...ap,
+                                status:
+                                  ap.status === "shortlisted"
+                                    ? "applied"
+                                    : "shortlisted",
+                              }
+                            : ap,
+                        ),
+                      );
+                      setViewingProfile((prev) => ({
+                        ...prev,
+                        status:
+                          prev.status === "shortlisted"
+                            ? "applied"
+                            : "shortlisted",
+                      }));
+                      showToast(
+                        viewingProfile.status === "shortlisted"
+                          ? "Removed from shortlist"
+                          : `${viewingProfile.name} shortlisted!`,
+                      );
+                    }}
+                  >
+                    <Icon name="star" size={15} />{" "}
+                    {viewingProfile.status === "shortlisted"
+                      ? "Remove from Shortlist"
+                      : "Shortlist"}
+                  </button>
                 </div>
               </div>
             </div>
@@ -8508,7 +10230,13 @@ const EmployerPage = ({ setPage, user, employerJobs, setEmployerJobs, employerAp
   };
 
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)" }}>
+    <div
+      style={{
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)",
+      }}
+    >
       <div
         style={{
           fontWeight: 800,
@@ -8586,7 +10314,7 @@ const saveAccounts = (arr) =>
 
 // ─── AUTH SUB-COMPONENTS (defined outside AuthPage so React never remounts them) ──
 const AuthLogo = () => (
-  <div style={{ display:"flex", justifyContent:"center", marginBottom:28 }}>
+  <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
     <CnLogo size={44} textSize={23} />
   </div>
 );
@@ -8815,7 +10543,13 @@ const OtpBox = ({
               <span style={{ fontSize: 28, fontWeight: 800, color: "#EF4444" }}>
                 {lockTimer}
               </span>
-              <span style={{ fontSize: 13, color: "var(--text-faint)", marginLeft: 4 }}>
+              <span
+                style={{
+                  fontSize: 13,
+                  color: "var(--text-faint)",
+                  marginLeft: 4,
+                }}
+              >
                 seconds
               </span>
             </div>
@@ -8838,7 +10572,13 @@ const OtpBox = ({
                 }}
               />
             </div>
-            <p style={{ fontSize: 12, color: "var(--text-faint)", textAlign: "center" }}>
+            <p
+              style={{
+                fontSize: 12,
+                color: "var(--text-faint)",
+                textAlign: "center",
+              }}
+            >
               Too many wrong attempts. Please wait before trying again.
             </p>
           </div>
@@ -8981,8 +10721,8 @@ const GoogleDemoModal = ({ onSelect, onClose }) => {
           Choose a demo account (or add your own) to continue with Google.
           <br />
           <span style={{ fontSize: 11, color: "var(--text-faint)" }}>
-            Tip: paste your real Google OAuth Client ID in App.jsx to use
-            actual Google accounts.
+            Tip: paste your real Google OAuth Client ID in App.jsx to use actual
+            Google accounts.
           </span>
         </p>
         <div
@@ -9040,7 +10780,11 @@ const GoogleDemoModal = ({ onSelect, onClose }) => {
               </div>
               <div>
                 <div
-                  style={{ fontSize: 14, fontWeight: 600, color: "var(--text)" }}
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: "var(--text)",
+                  }}
                 >
                   {a.name}
                 </div>
@@ -9108,7 +10852,10 @@ const GoogleButton = ({ onLogin }) => {
       onLogin(user);
     } catch (err) {
       // user closed the popup — don't show an error
-      if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
+      if (
+        err.code !== "auth/popup-closed-by-user" &&
+        err.code !== "auth/cancelled-popup-request"
+      ) {
         showToast(err.message || "Google sign-in failed.", "error");
       }
     } finally {
@@ -9124,70 +10871,365 @@ const GoogleButton = ({ onLogin }) => {
   );
 };
 
-const ProfileSetupJSX = ({ form, updateForm, strength, skills, newSkill, setNewSkill, addSkill, removeSkill, experience, newExp, setNewExp, addExperience, removeExperience, handleSave, handleSkip }) => (
-  <div style={{ maxWidth: 760, margin: "0 auto", padding: "clamp(16px,3.5vw,32px) clamp(12px,3.5vw,20px) clamp(30px,5vw,60px)" }}>
+const ProfileSetupJSX = ({
+  form,
+  updateForm,
+  strength,
+  skills,
+  newSkill,
+  setNewSkill,
+  addSkill,
+  removeSkill,
+  experience,
+  newExp,
+  setNewExp,
+  addExperience,
+  removeExperience,
+  handleSave,
+  handleSkip,
+}) => (
+  <div
+    style={{
+      maxWidth: 760,
+      margin: "0 auto",
+      padding:
+        "clamp(16px,3.5vw,32px) clamp(12px,3.5vw,20px) clamp(30px,5vw,60px)",
+    }}
+  >
     <div style={{ textAlign: "center", marginBottom: 24 }}>
-      <h1 style={{ fontWeight: 800, fontSize: "clamp(20px,5vw,24px)", color: "var(--text)" }}>Build your profile strength</h1>
-      <p style={{ color: "var(--text-muted)", fontSize: 14, marginTop: 6 }}>Take a minute to complete your profile. You can skip and do this later.</p>
+      <h1
+        style={{
+          fontWeight: 800,
+          fontSize: "clamp(20px,5vw,24px)",
+          color: "var(--text)",
+        }}
+      >
+        Build your profile strength
+      </h1>
+      <p style={{ color: "var(--text-muted)", fontSize: 14, marginTop: 6 }}>
+        Take a minute to complete your profile. You can skip and do this later.
+      </p>
     </div>
-    <div className="card" style={{ padding: "clamp(16px,3vw,22px)", marginBottom: 20 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-        <div style={{ fontWeight: 700, color: "var(--text)" }}>Profile Strength</div>
-        <span style={{ fontWeight: 700, color: "#7C3AED", fontSize: 18 }}>{strength}%</span>
+    <div
+      className="card"
+      style={{ padding: "clamp(16px,3vw,22px)", marginBottom: 20 }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 12,
+        }}
+      >
+        <div style={{ fontWeight: 700, color: "var(--text)" }}>
+          Profile Strength
+        </div>
+        <span style={{ fontWeight: 700, color: "#7C3AED", fontSize: 18 }}>
+          {strength}%
+        </span>
       </div>
-      <div className="progress-bar"><div className="progress-fill" style={{ width: `${strength}%` }} /></div>
+      <div className="progress-bar">
+        <div className="progress-fill" style={{ width: `${strength}%` }} />
+      </div>
     </div>
     <div className="card" style={{ padding: "clamp(16px,3vw,24px)" }}>
-      <div style={{ fontWeight: 700, fontSize: 16, color: "var(--text)", marginBottom: 14 }}>Basic Info</div>
-      <div className="grid-2">
-        <div className="form-group"><label>Full Name</label><input value={form.name} onChange={(e) => updateForm("name", e.target.value)} /></div>
-        <div className="form-group"><label>Professional Headline</label><input value={form.headline} onChange={(e) => updateForm("headline", e.target.value)} placeholder="e.g. Full Stack Developer" /></div>
-        <div className="form-group"><label>Location</label><input value={form.location} onChange={(e) => updateForm("location", e.target.value)} placeholder="e.g. Bengaluru, India" /></div>
-        <div className="form-group"><label>Email</label><input value={form.email} disabled /></div>
+      <div
+        style={{
+          fontWeight: 700,
+          fontSize: 16,
+          color: "var(--text)",
+          marginBottom: 14,
+        }}
+      >
+        Basic Info
       </div>
-      <div className="form-group" style={{ marginTop: 12 }}><label>About</label><textarea value={form.about} onChange={(e) => updateForm("about", e.target.value)} placeholder="Short professional summary" rows={3} /></div>
+      <div className="grid-2">
+        <div className="form-group">
+          <label>Full Name</label>
+          <input
+            value={form.name}
+            onChange={(e) => updateForm("name", e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Professional Headline</label>
+          <input
+            value={form.headline}
+            onChange={(e) => updateForm("headline", e.target.value)}
+            placeholder="e.g. Full Stack Developer"
+          />
+        </div>
+        <div className="form-group">
+          <label>Location</label>
+          <input
+            value={form.location}
+            onChange={(e) => updateForm("location", e.target.value)}
+            placeholder="e.g. Bengaluru, India"
+          />
+        </div>
+        <div className="form-group">
+          <label>Email</label>
+          <input value={form.email} disabled />
+        </div>
+      </div>
+      <div className="form-group" style={{ marginTop: 12 }}>
+        <label>About</label>
+        <textarea
+          value={form.about}
+          onChange={(e) => updateForm("about", e.target.value)}
+          placeholder="Short professional summary"
+          rows={3}
+        />
+      </div>
     </div>
-    <div className="card" style={{ padding: "clamp(16px,3vw,24px)", marginTop: 20 }}>
-      <div style={{ fontWeight: 700, fontSize: 16, color: "var(--text)", marginBottom: 14 }}>Skills</div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 12 }}>
-        {skills.map((s) => (<span key={s} className="tag">{s}<button onClick={() => removeSkill(s)} style={{ background: "none", border: "none", cursor: "pointer", color: "#7C3AED", marginLeft: 4, padding: 0, fontSize: 12 }}>×</button></span>))}
+    <div
+      className="card"
+      style={{ padding: "clamp(16px,3vw,24px)", marginTop: 20 }}
+    >
+      <div
+        style={{
+          fontWeight: 700,
+          fontSize: 16,
+          color: "var(--text)",
+          marginBottom: 14,
+        }}
+      >
+        Skills
+      </div>
+      <div
+        style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 12 }}
+      >
+        {skills.map((s) => (
+          <span key={s} className="tag">
+            {s}
+            <button
+              onClick={() => removeSkill(s)}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                color: "#7C3AED",
+                marginLeft: 4,
+                padding: 0,
+                fontSize: 12,
+              }}
+            >
+              ×
+            </button>
+          </span>
+        ))}
       </div>
       <div style={{ display: "flex", gap: 8 }}>
-        <input value={newSkill} onChange={(e) => setNewSkill(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addSkill(); } }} placeholder="Add a skill" style={{ flex: 1, padding: "8px 12px", borderRadius: 8, border: "1.5px solid var(--border)", fontSize: 14, outline: "none", background: "var(--card)", color: "var(--text)", minHeight: 44 }} />
-        <button className="btn-ghost" style={{ padding: "8px 16px", whiteSpace: "nowrap" }} onClick={addSkill}><Icon name="plus" size={14} /> Add</button>
+        <input
+          value={newSkill}
+          onChange={(e) => setNewSkill(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              addSkill();
+            }
+          }}
+          placeholder="Add a skill"
+          style={{
+            flex: 1,
+            padding: "8px 12px",
+            borderRadius: 8,
+            border: "1.5px solid var(--border)",
+            fontSize: 14,
+            outline: "none",
+            background: "var(--card)",
+            color: "var(--text)",
+            minHeight: 44,
+          }}
+        />
+        <button
+          className="btn-ghost"
+          style={{ padding: "8px 16px", whiteSpace: "nowrap" }}
+          onClick={addSkill}
+        >
+          <Icon name="plus" size={14} /> Add
+        </button>
       </div>
     </div>
-    <div className="card" style={{ padding: "clamp(16px,3vw,24px)", marginTop: 20 }}>
-      <div style={{ fontWeight: 700, fontSize: 16, color: "var(--text)", marginBottom: 14 }}>Experience</div>
-      {experience.length === 0 ? (<p style={{ fontSize: 13, color: "var(--text-faint)", marginBottom: 12 }}>No experience added yet.</p>) : null}
+    <div
+      className="card"
+      style={{ padding: "clamp(16px,3vw,24px)", marginTop: 20 }}
+    >
+      <div
+        style={{
+          fontWeight: 700,
+          fontSize: 16,
+          color: "var(--text)",
+          marginBottom: 14,
+        }}
+      >
+        Experience
+      </div>
+      {experience.length === 0 ? (
+        <p
+          style={{ fontSize: 13, color: "var(--text-faint)", marginBottom: 12 }}
+        >
+          No experience added yet.
+        </p>
+      ) : null}
       {experience.map((e, i) => (
-        <div key={i} style={{ display: "flex", gap: 12, paddingBottom: 16, borderBottom: i < experience.length - 1 ? "1px solid var(--border-soft)" : "none", marginBottom: i < experience.length - 1 ? 16 : 0 }}>
-          <div style={{ width: 38, height: 38, borderRadius: 10, background: "var(--tint-violet)", display: "flex", alignItems: "center", justifyContent: "center", color: "#7C3AED", flexShrink: 0 }}><Icon name="briefcase" size={16} /></div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontWeight: 700, color: "var(--text)", wordBreak: "break-word" }}>{e.role}</div>
-            <div style={{ fontSize: 13, color: "#7C3AED", fontWeight: 600 }}>{e.company}</div>
-            <div style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 2 }}>{e.period}</div>
-            {e.desc && <div style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>{e.desc}</div>}
+        <div
+          key={i}
+          style={{
+            display: "flex",
+            gap: 12,
+            paddingBottom: 16,
+            borderBottom:
+              i < experience.length - 1
+                ? "1px solid var(--border-soft)"
+                : "none",
+            marginBottom: i < experience.length - 1 ? 16 : 0,
+          }}
+        >
+          <div
+            style={{
+              width: 38,
+              height: 38,
+              borderRadius: 10,
+              background: "var(--tint-violet)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#7C3AED",
+              flexShrink: 0,
+            }}
+          >
+            <Icon name="briefcase" size={16} />
           </div>
-          <button onClick={() => removeExperience(i)} style={{ background: "none", border: "none", cursor: "pointer", color: "#EF4444", fontSize: 18, alignSelf: "flex-start", padding: 0, flexShrink: 0 }}>×</button>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div
+              style={{
+                fontWeight: 700,
+                color: "var(--text)",
+                wordBreak: "break-word",
+              }}
+            >
+              {e.role}
+            </div>
+            <div style={{ fontSize: 13, color: "#7C3AED", fontWeight: 600 }}>
+              {e.company}
+            </div>
+            <div
+              style={{ fontSize: 12, color: "var(--text-faint)", marginTop: 2 }}
+            >
+              {e.period}
+            </div>
+            {e.desc && (
+              <div
+                style={{
+                  fontSize: 13,
+                  color: "var(--text-muted)",
+                  marginTop: 4,
+                }}
+              >
+                {e.desc}
+              </div>
+            )}
+          </div>
+          <button
+            onClick={() => removeExperience(i)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "#EF4444",
+              fontSize: 18,
+              alignSelf: "flex-start",
+              padding: 0,
+              flexShrink: 0,
+            }}
+          >
+            ×
+          </button>
         </div>
       ))}
       <div className="grid-2 exp-grid" style={{ marginTop: 16, gap: 12 }}>
-        <div className="form-group"><label>Role / Title</label><input value={newExp.role} onChange={(e) => setNewExp((p) => ({ ...p, role: e.target.value }))} placeholder="e.g. Frontend Developer" /></div>
-        <div className="form-group"><label>Company</label><input value={newExp.company} onChange={(e) => setNewExp((p) => ({ ...p, company: e.target.value }))} placeholder="e.g. Tech Corp" /></div>
-        <div className="form-group"><label>Period</label><input value={newExp.period} onChange={(e) => setNewExp((p) => ({ ...p, period: e.target.value }))} placeholder="e.g. 2022 – Present" /></div>
-        <div className="form-group"><label>Description</label><input value={newExp.desc} onChange={(e) => setNewExp((p) => ({ ...p, desc: e.target.value }))} placeholder="Brief description" /></div>
+        <div className="form-group">
+          <label>Role / Title</label>
+          <input
+            value={newExp.role}
+            onChange={(e) => setNewExp((p) => ({ ...p, role: e.target.value }))}
+            placeholder="e.g. Frontend Developer"
+          />
+        </div>
+        <div className="form-group">
+          <label>Company</label>
+          <input
+            value={newExp.company}
+            onChange={(e) =>
+              setNewExp((p) => ({ ...p, company: e.target.value }))
+            }
+            placeholder="e.g. Tech Corp"
+          />
+        </div>
+        <div className="form-group">
+          <label>Period</label>
+          <input
+            value={newExp.period}
+            onChange={(e) =>
+              setNewExp((p) => ({ ...p, period: e.target.value }))
+            }
+            placeholder="e.g. 2022 – Present"
+          />
+        </div>
+        <div className="form-group">
+          <label>Description</label>
+          <input
+            value={newExp.desc}
+            onChange={(e) => setNewExp((p) => ({ ...p, desc: e.target.value }))}
+            placeholder="Brief description"
+          />
+        </div>
       </div>
-      <button className="btn-ghost" style={{ marginTop: 12, width: "100%", justifyContent: "center" }} onClick={addExperience}><Icon name="plus" size={13} /> Add Experience</button>
+      <button
+        className="btn-ghost"
+        style={{ marginTop: 12, width: "100%", justifyContent: "center" }}
+        onClick={addExperience}
+      >
+        <Icon name="plus" size={13} /> Add Experience
+      </button>
     </div>
-    <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "flex-end", gap: 12, marginTop: 20 }}>
-      <button className="btn-ghost" style={{ padding: "12px 24px" }} onClick={handleSkip}>Skip for now</button>
-      <button className="btn-primary" style={{ padding: "12px 24px" }} onClick={handleSave}><Icon name="check" size={15} /> Save & Continue</button>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "flex-end",
+        gap: 12,
+        marginTop: 20,
+      }}
+    >
+      <button
+        className="btn-ghost"
+        style={{ padding: "12px 24px" }}
+        onClick={handleSkip}
+      >
+        Skip for now
+      </button>
+      <button
+        className="btn-primary"
+        style={{ padding: "12px 24px" }}
+        onClick={handleSave}
+      >
+        <Icon name="check" size={15} /> Save & Continue
+      </button>
     </div>
   </div>
 );
 
-const ProfileSetupPage = ({ user, setPage, profile, setProfile, showToast }) => {
+const ProfileSetupPage = ({
+  user,
+  setPage,
+  profile,
+  setProfile,
+  showToast,
+}) => {
   const [form, setForm] = useState({
     name: user?.name || profile?.form?.name || "",
     headline: profile?.form?.headline || "",
@@ -9198,32 +11240,73 @@ const ProfileSetupPage = ({ user, setPage, profile, setProfile, showToast }) => 
   const [skills, setSkills] = useState(profile?.skills || []);
   const [experience, setExperience] = useState(profile?.experience || []);
   const [newSkill, setNewSkill] = useState("");
-  const [newExp, setNewExp] = useState({ role: "", company: "", period: "", desc: "" });
+  const [newExp, setNewExp] = useState({
+    role: "",
+    company: "",
+    period: "",
+    desc: "",
+  });
   const strength = computeProfileStrength({ form, skills, experience });
   const updateForm = (key, value) => setForm((p) => ({ ...p, [key]: value }));
-  const addSkill = () => { const s = newSkill.trim(); if (!s) return; setSkills((p) => (p.includes(s) ? p : [...p, s])); setNewSkill(""); };
+  const addSkill = () => {
+    const s = newSkill.trim();
+    if (!s) return;
+    setSkills((p) => (p.includes(s) ? p : [...p, s]));
+    setNewSkill("");
+  };
   const removeSkill = (s) => setSkills((p) => p.filter((x) => x !== s));
   const addExperience = () => {
     if (!newExp.role.trim() || !newExp.company.trim()) return;
-    setExperience((p) => [...p, { ...newExp, role: newExp.role.trim(), company: newExp.company.trim() }]);
+    setExperience((p) => [
+      ...p,
+      { ...newExp, role: newExp.role.trim(), company: newExp.company.trim() },
+    ]);
     setNewExp({ role: "", company: "", period: "", desc: "" });
   };
-  const removeExperience = (i) => setExperience((p) => p.filter((_, idx) => idx !== i));
+  const removeExperience = (i) =>
+    setExperience((p) => p.filter((_, idx) => idx !== i));
   const handleSave = () => {
-    const pd = { form: { ...form, email: user?.email || form.email }, skills, experience };
+    const pd = {
+      form: { ...form, email: user?.email || form.email },
+      skills,
+      experience,
+    };
     setProfile(pd);
-    try { localStorage.setItem("cn_profile", JSON.stringify(pd)); } catch {}
+    try {
+      localStorage.setItem("cn_profile", JSON.stringify(pd));
+    } catch {}
     showToast("Profile created! 🎉");
     setPage("dashboard");
   };
   const handleSkip = () => {
     // Save the current (mostly empty) profile so we don't fall back to defaults
     setProfile({ form, skills, experience });
-    try { localStorage.setItem("cn_profile", JSON.stringify({ form, skills, experience })); } catch {}
+    try {
+      localStorage.setItem(
+        "cn_profile",
+        JSON.stringify({ form, skills, experience }),
+      );
+    } catch {}
     setPage("dashboard");
   };
 
-  return ProfileSetupJSX({ form, updateForm, strength, skills, newSkill, setNewSkill, addSkill, removeSkill, experience, newExp, setNewExp, addExperience, removeExperience, handleSave, handleSkip });
+  return ProfileSetupJSX({
+    form,
+    updateForm,
+    strength,
+    skills,
+    newSkill,
+    setNewSkill,
+    addSkill,
+    removeSkill,
+    experience,
+    newExp,
+    setNewExp,
+    addExperience,
+    removeExperience,
+    handleSave,
+    handleSkip,
+  });
 }; // ProfileSetupPage
 
 // ─── AUTH PAGES ──────────────────────────────────────────────────────────────
@@ -9347,20 +11430,37 @@ const AuthPage = ({ mode, setPage, setUser }) => {
   // ── Sign-up: step 1 – validate form, send real OTP via server ──────────────
   // ── Sign-up: Firebase email+password ─────────────────────────────────────
   const handleSignupSubmit = async () => {
-    if (!form.name.trim())           { setError("Full name is required."); return; }
-    if (!form.email.includes("@"))   { setError("Enter a valid email address."); return; }
-    if (form.password.length < 6)    { setError("Password must be at least 6 characters."); return; }
-    if (form.password !== form.confirm) { setError("Passwords do not match."); return; }
+    if (!form.name.trim()) {
+      setError("Full name is required.");
+      return;
+    }
+    if (!form.email.includes("@")) {
+      setError("Enter a valid email address.");
+      return;
+    }
+    if (form.password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
+    if (form.password !== form.confirm) {
+      setError("Passwords do not match.");
+      return;
+    }
     setLoading(true);
     setError("");
     try {
       const res = await fetch("/api/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: form.email, name: form.name.trim(), purpose: "signup" }),
+        body: JSON.stringify({
+          email: form.email,
+          name: form.name.trim(),
+          purpose: "signup",
+        }),
       });
       const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.error || "Failed to send OTP");
+      if (!res.ok || !data.success)
+        throw new Error(data.error || "Failed to send OTP");
       setOtpToken(data.token || "");
       showToast("OTP sent! Check your email inbox.", "success");
       setStep("otp");
@@ -9416,7 +11516,11 @@ const AuthPage = ({ mode, setPage, setUser }) => {
         return;
       }
       // OTP verified ✓ — create the Firebase account (both Job Seeker & Employer)
-      const user = await signUpWithEmail(form.name.trim(), form.email, form.password);
+      const user = await signUpWithEmail(
+        form.name.trim(),
+        form.email,
+        form.password,
+      );
       setLoading(false);
       setUser({
         name: user.name,
@@ -9441,12 +11545,19 @@ const AuthPage = ({ mode, setPage, setUser }) => {
 
   // ── Login: Firebase email+password ──────────────────────────────────────
   const handleLoginSubmit = async () => {
-    if (!form.email || !form.password) { setError("Please fill in all fields."); return; }
+    if (!form.email || !form.password) {
+      setError("Please fill in all fields.");
+      return;
+    }
     setLoading(true);
     setError("");
     try {
       const user = await signInWithEmail(form.email, form.password);
-      setUser({ name: user.name || form.email.split("@")[0], email: user.email, role: "Job Seeker" });
+      setUser({
+        name: user.name || form.email.split("@")[0],
+        email: user.email,
+        role: "Job Seeker",
+      });
       showToast(`Welcome back, ${user.name || "there"}! 👋`);
       setPage("dashboard");
     } catch (err) {
@@ -9461,7 +11572,9 @@ const AuthPage = ({ mode, setPage, setUser }) => {
       ) {
         setError("Incorrect email or password. Please try again.");
       } else if (err.code === "auth/too-many-requests") {
-        setError("Too many failed attempts. Please wait a few minutes or reset your password.");
+        setError(
+          "Too many failed attempts. Please wait a few minutes or reset your password.",
+        );
       } else if (err.code === "auth/user-disabled") {
         setError("This account has been disabled. Please contact support.");
       } else {
@@ -9478,14 +11591,19 @@ const AuthPage = ({ mode, setPage, setUser }) => {
       role: form.role === "employer" ? "Employer" : "Job Seeker",
       photo: googleUser.photo || "",
     });
-    showToast(`Welcome, ${googleUser.name || googleUser.email.split("@")[0]}! 🎉`);
+    showToast(
+      `Welcome, ${googleUser.name || googleUser.email.split("@")[0]}! 🎉`,
+    );
     setPage("profile-setup");
   };
 
   // ── Forgot password: send OTP via server ─────────────────────────────────
   // ── Forgot password: Firebase sends reset link directly ─────────────────
   const handleForgotSend = async () => {
-    if (!otpEmail.includes("@")) { setError("Enter a valid email address."); return; }
+    if (!otpEmail.includes("@")) {
+      setError("Enter a valid email address.");
+      return;
+    }
     setLoading(true);
     setError("");
     try {
@@ -9493,7 +11611,10 @@ const AuthPage = ({ mode, setPage, setUser }) => {
     } catch (err) {
       // Silently swallow auth/user-not-found so we don't reveal if email is registered.
       // Only surface unexpected errors (network failures etc.)
-      if (err.code !== "auth/user-not-found" && err.code !== "auth/invalid-email") {
+      if (
+        err.code !== "auth/user-not-found" &&
+        err.code !== "auth/invalid-email"
+      ) {
         setLoading(false);
         setError(err.message || "Could not send reset email. Try again.");
         return;
@@ -9590,7 +11711,11 @@ const AuthPage = ({ mode, setPage, setUser }) => {
     padding: "clamp(12px,4vw,20px)",
     // auth-wrap class added in JSX via className
   };
-  const cardSt = { width: "100%", maxWidth: "min(440px,96vw)", padding: "clamp(20px,5vw,36px)" };
+  const cardSt = {
+    width: "100%",
+    maxWidth: "min(440px,96vw)",
+    padding: "clamp(20px,5vw,36px)",
+  };
   // Auth logo: use <AuthLogo /> component defined above
 
   // ── RENDER: OTP verification (signup) ─────────────────────────────────────
@@ -9633,7 +11758,9 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             <h1 style={{ fontWeight: 800, fontSize: 22, color: "var(--text)" }}>
               Forgot password?
             </h1>
-            <p style={{ color: "var(--text-faint)", fontSize: 13, marginTop: 6 }}>
+            <p
+              style={{ color: "var(--text-faint)", fontSize: 13, marginTop: 6 }}
+            >
               Enter your email and Firebase will send you a reset link
             </p>
           </div>
@@ -9644,21 +11771,41 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                 type="email"
                 placeholder="you@example.com"
                 value={otpEmail}
-                onChange={(e) => { setOtpEmail(e.target.value); setError(""); }}
+                onChange={(e) => {
+                  setOtpEmail(e.target.value);
+                  setError("");
+                }}
               />
             </div>
             <ErrBox error={error} />
             <button
               className="btn-primary"
-              style={{ width: "100%", justifyContent: "center", padding: 13, fontSize: 15, opacity: loading ? 0.6 : 1 }}
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                padding: 13,
+                fontSize: 15,
+                opacity: loading ? 0.6 : 1,
+              }}
               onClick={handleForgotSend}
               disabled={loading}
             >
               {loading ? "Sending…" : "Send Reset Link"}
             </button>
             <button
-              style={{ background: "none", border: "none", color: "#7C3AED", fontWeight: 600, cursor: "pointer", fontSize: 13, textAlign: "center" }}
-              onClick={() => { setStep("form"); setError(""); }}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#7C3AED",
+                fontWeight: 600,
+                cursor: "pointer",
+                fontSize: 13,
+                textAlign: "center",
+              }}
+              onClick={() => {
+                setStep("form");
+                setError("");
+              }}
             >
               ← Back to Login
             </button>
@@ -9675,26 +11822,79 @@ const AuthPage = ({ mode, setPage, setUser }) => {
           <AuthLogo />
           <div style={{ textAlign: "center", padding: "8px 0 24px" }}>
             <div style={{ fontSize: 56, marginBottom: 16 }}>📬</div>
-            <h1 style={{ fontWeight: 800, fontSize: 22, color: "var(--text)", marginBottom: 10 }}>Check your inbox</h1>
-            <p style={{ color: "var(--text-faint)", fontSize: 13, lineHeight: 1.7 }}>
-              We sent a password reset link to<br/>
+            <h1
+              style={{
+                fontWeight: 800,
+                fontSize: 22,
+                color: "var(--text)",
+                marginBottom: 10,
+              }}
+            >
+              Check your inbox
+            </h1>
+            <p
+              style={{
+                color: "var(--text-faint)",
+                fontSize: 13,
+                lineHeight: 1.7,
+              }}
+            >
+              We sent a password reset link to
+              <br />
               <strong style={{ color: "var(--text)" }}>{otpEmail}</strong>
             </p>
-            <div style={{ background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 12, padding: "14px 16px", margin: "20px 0", fontSize: 13, color: "#166534", textAlign: "left" }}>
+            <div
+              style={{
+                background: "#F0FDF4",
+                border: "1px solid #BBF7D0",
+                borderRadius: 12,
+                padding: "14px 16px",
+                margin: "20px 0",
+                fontSize: 13,
+                color: "#166534",
+                textAlign: "left",
+              }}
+            >
               <strong>What to do next:</strong>
               <ol style={{ margin: "8px 0 0", paddingLeft: 18, lineHeight: 2 }}>
-                <li>Open the email from <strong>Firebase / noreply@…</strong></li>
-                <li>Click <strong>"Reset password"</strong> in the email</li>
+                <li>
+                  Open the email from <strong>Firebase / noreply@…</strong>
+                </li>
+                <li>
+                  Click <strong>"Reset password"</strong> in the email
+                </li>
                 <li>Set your new password on the page that opens</li>
                 <li>Come back here and log in ✅</li>
               </ol>
             </div>
-            <p style={{ fontSize: 12, color: "var(--text-faint)", marginBottom: 20 }}>
+            <p
+              style={{
+                fontSize: 12,
+                color: "var(--text-faint)",
+                marginBottom: 20,
+              }}
+            >
               Didn't get it? Check your spam folder, or{" "}
-              <span style={{ color: "#7C3AED", fontWeight: 600, cursor: "pointer" }} onClick={() => { setStep("forgot"); setError(""); }}>try again</span>.
+              <span
+                style={{ color: "#7C3AED", fontWeight: 600, cursor: "pointer" }}
+                onClick={() => {
+                  setStep("forgot");
+                  setError("");
+                }}
+              >
+                try again
+              </span>
+              .
             </p>
-            <button className="btn-primary" style={{ width: "100%", justifyContent: "center", padding: 12 }}
-              onClick={() => { setStep("form"); setError(""); setOtpEmail(""); }}>
+            <button
+              className="btn-primary"
+              style={{ width: "100%", justifyContent: "center", padding: 12 }}
+              onClick={() => {
+                setStep("form");
+                setError("");
+                setOtpEmail("");
+              }}
+            >
               Back to Login
             </button>
           </div>
@@ -9784,7 +11984,11 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                   fontWeight: 700,
                   outline: "none",
                   background:
-                    lockTimer > 0 ? "var(--tint-red)" : v ? "var(--tint-violet)" : "var(--card)",
+                    lockTimer > 0
+                      ? "var(--tint-red)"
+                      : v
+                        ? "var(--tint-violet)"
+                        : "var(--card)",
                   color: lockTimer > 0 ? "#EF4444" : "var(--text)",
                   transition: "border 0.2s, background 0.2s",
                   cursor: lockTimer > 0 ? "not-allowed" : "text",
@@ -9818,7 +12022,13 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                 >
                   {lockTimer}
                 </span>
-                <span style={{ fontSize: 13, color: "var(--text-faint)", marginLeft: 4 }}>
+                <span
+                  style={{
+                    fontSize: 13,
+                    color: "var(--text-faint)",
+                    marginLeft: 4,
+                  }}
+                >
                   seconds
                 </span>
               </div>
@@ -9842,7 +12052,11 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                 />
               </div>
               <p
-                style={{ fontSize: 12, color: "var(--text-faint)", textAlign: "center" }}
+                style={{
+                  fontSize: 12,
+                  color: "var(--text-faint)",
+                  textAlign: "center",
+                }}
               >
                 Too many wrong attempts. Please wait before trying again.
               </p>
@@ -10125,7 +12339,13 @@ const AuthPage = ({ mode, setPage, setUser }) => {
           </div>
         )}
         <div className="divider" />
-        <div style={{ textAlign: "center", fontSize: 14, color: "var(--text-muted)" }}>
+        <div
+          style={{
+            textAlign: "center",
+            fontSize: 14,
+            color: "var(--text-muted)",
+          }}
+        >
           {mode === "login" ? (
             <>
               Don't have an account?{" "}
@@ -10582,7 +12802,13 @@ const ResourcesModal = ({ resource, onClose }) => {
 const ResourcesPage = () => {
   const [active, setActive] = useState(null);
   return (
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "clamp(20px,4vw,40px) clamp(12px,3.5vw,20px)" }}>
+    <div
+      style={{
+        maxWidth: 1100,
+        margin: "0 auto",
+        padding: "clamp(20px,4vw,40px) clamp(12px,3.5vw,20px)",
+      }}
+    >
       <div style={{ textAlign: "center", marginBottom: 48 }}>
         <h1 className="section-title">Career Resources</h1>
         <p className="section-sub">
@@ -10659,7 +12885,11 @@ const ResourcesPage = () => {
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
 export default function App() {
   const [page, setPage] = useState(() => {
-    try { return sessionStorage.getItem("cn_page") || "home"; } catch { return "home"; }
+    try {
+      return sessionStorage.getItem("cn_page") || "home";
+    } catch {
+      return "home";
+    }
   });
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
@@ -10667,7 +12897,9 @@ export default function App() {
     try {
       const saved = localStorage.getItem("cn_profile");
       return saved ? JSON.parse(saved) : emptyProfile;
-    } catch { return emptyProfile; }
+    } catch {
+      return emptyProfile;
+    }
   });
   const [savedJobs, setSavedJobs] = useState([]);
   const [applications, setApplications] = useState([]);
@@ -10675,13 +12907,17 @@ export default function App() {
     try {
       const stored = localStorage.getItem("cn_employer_jobs");
       return stored ? JSON.parse(stored) : [];
-    } catch { return []; }
+    } catch {
+      return [];
+    }
   });
   const [employerApplicants, setEmployerApplicants] = useState(() => {
     try {
       const stored = localStorage.getItem("cn_employer_applicants");
       return stored ? JSON.parse(stored) : [];
-    } catch { return []; }
+    } catch {
+      return [];
+    }
   });
   const [jobFilter, setJobFilter] = useState({});
   const [toast, setToast] = useState(null);
@@ -10704,12 +12940,15 @@ export default function App() {
   useEffect(() => {
     const unsub = onAuthChange((firebaseUser) => {
       if (firebaseUser) {
-        setUser(prev => prev || {
-          name:  firebaseUser.name  || firebaseUser.email?.split("@")[0],
-          email: firebaseUser.email,
-          photo: firebaseUser.photo || null,
-          role:  "Job Seeker",
-        });
+        setUser(
+          (prev) =>
+            prev || {
+              name: firebaseUser.name || firebaseUser.email?.split("@")[0],
+              email: firebaseUser.email,
+              photo: firebaseUser.photo || null,
+              role: "Job Seeker",
+            },
+        );
       } else {
         setUser(null);
       }
@@ -10720,7 +12959,9 @@ export default function App() {
 
   // ── Remember page across reloads ──────────────────────────────────────────
   useEffect(() => {
-    try { sessionStorage.setItem("cn_page", page); } catch {}
+    try {
+      sessionStorage.setItem("cn_page", page);
+    } catch {}
   }, [page]);
 
   // ── Apply + persist theme ─────────────────────────────────────────────────
@@ -10760,7 +13001,10 @@ export default function App() {
   }, [employerJobs]);
   useEffect(() => {
     try {
-      localStorage.setItem("cn_employer_applicants", JSON.stringify(employerApplicants));
+      localStorage.setItem(
+        "cn_employer_applicants",
+        JSON.stringify(employerApplicants),
+      );
     } catch {}
   }, [employerApplicants]);
 
@@ -10874,36 +13118,83 @@ export default function App() {
   }, [jobFilter?.selected]);
 
   // ── Loading screen while Firebase confirms session ─────────────────────────
-  if (authLoading) return (
-    <div style={{
-      position:"fixed", inset:0,
-      display:"flex", flexDirection:"column",
-      alignItems:"center", justifyContent:"center",
-      background: darkMode ? "#0B1026" : "#F8FAFC",
-      gap:24, zIndex:9999,
-    }}>
-      <style>{`
+  if (authLoading)
+    return (
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          background: darkMode ? "#0B1026" : "#F8FAFC",
+          gap: 24,
+          zIndex: 9999,
+        }}
+      >
+        <style>{`
         @keyframes cn-pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.08);opacity:0.8;}}
         @keyframes cn-slide{0%{transform:translateX(-100%);}100%{transform:translateX(400%);}}
       `}</style>
-      <div style={{
-        width:64, height:64, borderRadius:20,
-        background:"linear-gradient(135deg,#151B3D,#7C3AED)",
-        display:"flex", alignItems:"center", justifyContent:"center",
-        boxShadow:"0 8px 32px rgba(124,58,237,0.4)",
-        animation:"cn-pulse 1.6s ease-in-out infinite",
-      }}>
-        <CnMark size={44}/>
+        <div
+          style={{
+            width: 64,
+            height: 64,
+            borderRadius: 20,
+            background: "linear-gradient(135deg,#151B3D,#7C3AED)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 8px 32px rgba(124,58,237,0.4)",
+            animation: "cn-pulse 1.6s ease-in-out infinite",
+          }}
+        >
+          <CnMark size={44} />
+        </div>
+        <div
+          style={{
+            fontWeight: 800,
+            fontSize: 22,
+            fontFamily: "Inter,sans-serif",
+          }}
+        >
+          <span style={{ color: darkMode ? "white" : "#151B3D" }}>Career</span>
+          <span
+            style={{
+              background: "linear-gradient(135deg,#7C3AED,#22D3EE)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Nova
+          </span>
+        </div>
+        <div
+          style={{
+            width: 120,
+            height: 3,
+            borderRadius: 99,
+            background: darkMode ? "#1F2937" : "#E5E7EB",
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "35%",
+              height: "100%",
+              background: "linear-gradient(90deg,#7C3AED,#22D3EE)",
+              borderRadius: 99,
+              animation: "cn-slide 1.1s ease-in-out infinite",
+            }}
+          />
+        </div>
       </div>
-      <div style={{fontWeight:800, fontSize:22, fontFamily:"Inter,sans-serif"}}>
-        <span style={{color: darkMode?"white":"#151B3D"}}>Career</span>
-        <span style={{background:"linear-gradient(135deg,#7C3AED,#22D3EE)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Nova</span>
-      </div>
-      <div style={{width:120,height:3,borderRadius:99,background:darkMode?"#1F2937":"#E5E7EB",overflow:"hidden",position:"relative"}}>
-        <div style={{position:"absolute",top:0,left:0,width:"35%",height:"100%",background:"linear-gradient(90deg,#7C3AED,#22D3EE)",borderRadius:99,animation:"cn-slide 1.1s ease-in-out infinite"}}/>
-      </div>
-    </div>
-  );
+    );
 
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
