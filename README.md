@@ -116,8 +116,8 @@ Firebase config lives in **`src/firebase.js`**:
 | `projectId` | `careernova-3cacc` |
 | `storageBucket` | `careernova-3cacc.firebasestorage.app` |
 | `messagingSenderId` | `960586972151` |
-| `appId` | `1:960586972151:web:7947cbb8cfb9c805cb0cf2` |
-| `measurementId` | `G-DN0RZ0BWJN` |
+| `appId` | `1:960586972151:web:794dfghgjmnfddscfgh` |
+| `measurementId` | `G-gN0Re0BWJN` |
 
 A **demo Google account chooser** modal is included for use when no Google Client ID is configured.
 
