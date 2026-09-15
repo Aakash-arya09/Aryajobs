@@ -41,20 +41,20 @@ The `files` folder contains **CareerNova** — a full-featured, AI-powered premi
 
 ## 2. Web Apps at a Glance
 
-| Web App | Path | Type | How to run |
-|---|---|---|---|
-| CareerNova (main source) | `CareerNova_Complete/cn_source2/` | React 19 + Vite 6 + Firebase | `npm run dev` |
-| CareerNova (pre-built) | `CareerNova_Complete/cn_source2/CareerNova_Site/` | Static HTML / JS / CSS | open `index.html` |
-| CareerNova (pre-built variant) | `CareerNova_Complete/cn_source2/cn_logo_site/` | Static HTML / JS / CSS | open `index.html` |
-| Build output (latest) | `CareerNova_Complete/cn_source2/dist/` | Static (production build) | serve the folder |
-| Early prototype | `CareerNova.jsx` | Single-file React source | needs a Vite project to run |
-| Archived Firebase copy | `CareerNova_Complete/cn_source2/src/careernova_firebase/` | Source + pre-built site + guide | see `FIREBASE_SETUP_GUIDE.md` |
+| Web App                        | Path                                                      | Type                            | How to run                    |
+| ------------------------------ | --------------------------------------------------------- | ------------------------------- | ----------------------------- |
+| CareerNova (main source)       | `CareerNova_Complete/cn_source2/`                         | React 19 + Vite 6 + Firebase    | `npm run dev`                 |
+| CareerNova (pre-built)         | `CareerNova_Complete/cn_source2/CareerNova_Site/`         | Static HTML / JS / CSS          | open `index.html`             |
+| CareerNova (pre-built variant) | `CareerNova_Complete/cn_source2/cn_logo_site/`            | Static HTML / JS / CSS          | open `index.html`             |
+| Build output (latest)          | `CareerNova_Complete/cn_source2/dist/`                    | Static (production build)       | serve the folder              |
+| Early prototype                | `CareerNova.jsx`                                          | Single-file React source        | needs a Vite project to run   |
+| Archived Firebase copy         | `CareerNova_Complete/cn_source2/src/careernova_firebase/` | Source + pre-built site + guide | see `FIREBASE_SETUP_GUIDE.md` |
 
 ---
 
 ## 3. CareerNova – Main Web App
 
-**CareerNova** — *"Find Work That Moves Your Career Forward"* — is a premium, mobile-friendly job portal positioned as *"India's most advanced AI-powered job platform"*.
+**CareerNova** — _"Find Work That Moves Your Career Forward"_ — is a premium, mobile-friendly job portal positioned as _"India's most advanced AI-powered job platform"_.
 
 It provides **two experiences in one app**:
 
@@ -109,15 +109,15 @@ The current source (`cn_source2`) uses **Firebase Authentication v12** (see `src
 
 Firebase config lives in **`src/firebase.js`**:
 
-| Key | Value |
-|---|---|
-| `apiKey` | sjrjaur..**************` |
-| `authDomain` | `careernova-3cacc.firebaseapp.com` |
-| `projectId` | `careernova-3cacc` |
-| `storageBucket` | `careernova-3cacc.firebasestorage.app` |
-| `messagingSenderId` | `960586972151` |
-| `appId` | `1:960586972151:web:794dfghgjmnfddscfgh` |
-| `measurementId` | `G-gN0Re0BWJN` |
+| Key                 | Value                                    |
+| ------------------- | ---------------------------------------- |
+| `apiKey`            | sjrjaur..******\*\*******`               |
+| `authDomain`        | `careernova-3cacc.firebaseapp.com`       |
+| `projectId`         | `careernova-3cacc`                       |
+| `storageBucket`     | `careernova-3cacc.firebasestorage.app`   |
+| `messagingSenderId` | `960586972151`                           |
+| `appId`             | `1:960586972151:web:794dfghgjmnfddscfgh` |
+| `measurementId`     | `G-gN0Re0BWJN`                           |
 
 A **demo Google account chooser** modal is included for use when no Google Client ID is configured.
 
@@ -127,16 +127,16 @@ A **demo Google account chooser** modal is included for use when no Google Clien
 
 Everything is stored client-side in the browser:
 
-| Browser storage | Key | Content |
-|---|---|---|
-| `localStorage` | `cn_profile` | User profile (form, skills, experience) |
-| `localStorage` | `cn_saved` | Saved job IDs |
-| `localStorage` | `cn_apps` | Job applications |
-| `localStorage` | `cn_employer_jobs` | Employer-posted jobs |
-| `localStorage` | `cn_employer_applicants` | Employer applicants |
-| `localStorage` | `cn_theme` | Light/dark theme |
-| `localStorage` | `cn_settings` | Account / notification / privacy settings |
-| `sessionStorage` | `cn_page` | Current page (restored across reloads) |
+| Browser storage  | Key                      | Content                                   |
+| ---------------- | ------------------------ | ----------------------------------------- |
+| `localStorage`   | `cn_profile`             | User profile (form, skills, experience)   |
+| `localStorage`   | `cn_saved`               | Saved job IDs                             |
+| `localStorage`   | `cn_apps`                | Job applications                          |
+| `localStorage`   | `cn_employer_jobs`       | Employer-posted jobs                      |
+| `localStorage`   | `cn_employer_applicants` | Employer applicants                       |
+| `localStorage`   | `cn_theme`               | Light/dark theme                          |
+| `localStorage`   | `cn_settings`            | Account / notification / privacy settings |
+| `sessionStorage` | `cn_page`                | Current page (restored across reloads)    |
 
 ---
 
@@ -180,15 +180,15 @@ This folder is **informational only** and is not used by the build.
 
 ## 10. Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 19, ReactDOM 19, JSX |
-| Build tool | Vite 6 (`@vitejs/plugin-react`) |
-| Auth | Firebase (`firebase/app`, `firebase/auth`) |
-| OTP email (local dev) | Express 5, Nodemailer 9, CORS |
-| OTP email (serverless) | Vercel serverless functions + Nodemailer |
-| Styling | Inline CSS-in-JS + `src/index.css` base reset |
-| Language | JavaScript (ES modules) |
+| Layer                  | Technology                                    |
+| ---------------------- | --------------------------------------------- |
+| Frontend               | React 19, ReactDOM 19, JSX                    |
+| Build tool             | Vite 6 (`@vitejs/plugin-react`)               |
+| Auth                   | Firebase (`firebase/app`, `firebase/auth`)    |
+| OTP email (local dev)  | Express 5, Nodemailer 9, CORS                 |
+| OTP email (serverless) | Vercel serverless functions + Nodemailer      |
+| Styling                | Inline CSS-in-JS + `src/index.css` base reset |
+| Language               | JavaScript (ES modules)                       |
 
 ---
 
@@ -241,11 +241,11 @@ Both send branded, responsive HTML emails using the CareerNova violet-gradient t
 
 ## 13. Environment Variables
 
-| Variable | Used by | Purpose |
-|---|---|---|
-| `GMAIL_USER` | `server.js` / `api/*` | Sending Gmail account |
-| `GMAIL_PASS` | `server.js` / `api/*` | Gmail App Password (16 chars) |
-| `OTP_SECRET` | `api/*` | HMAC secret used to sign OTP tokens |
+| Variable     | Used by               | Purpose                             |
+| ------------ | --------------------- | ----------------------------------- |
+| `GMAIL_USER` | `server.js` / `api/*` | Sending Gmail account               |
+| `GMAIL_PASS` | `server.js` / `api/*` | Gmail App Password (16 chars)       |
+| `OTP_SECRET` | `api/*`               | HMAC secret used to sign OTP tokens |
 
 ---
 
@@ -292,7 +292,7 @@ files/
   "framework": "vite",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)",     "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
 ```
@@ -325,27 +325,27 @@ Full instructions live in `src/careernova_firebase/FIREBASE_SETUP_GUIDE.md`. Sum
 
 ## 17. npm Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start the Vite dev server → http://localhost:5173 |
-| `npm run build` | Create the production build in `dist/` |
-| `npm run preview` | Preview the production build locally |
+| Command              | Description                                            |
+| -------------------- | ------------------------------------------------------ |
+| `npm run dev`        | Start the Vite dev server → http://localhost:5173      |
+| `npm run build`      | Create the production build in `dist/`                 |
+| `npm run preview`    | Preview the production build locally                   |
 | `node src/server.js` | Run the local OTP email server → http://localhost:4000 |
 
 ---
 
 ## 18. Troubleshooting
 
-| Issue | Fix |
-|---|---|
-| Google popup blocked | Allow popups for your site in the browser |
-| `auth/unauthorized-domain` | Add the domain in Firebase → Auth → Authorized domains |
-| `auth/configuration-not-found` | Verify the `firebaseConfig` in `src/firebase.js` |
-| OTP emails not arriving | Update the Gmail address + App Password in `src/server.js`, or set `GMAIL_USER` / `GMAIL_PASS` |
-| Static site shows a blank page | Serve it over HTTP (`npx serve dist`) instead of opening `file://` directly |
-| Port already in use | Vite automatically selects the next free port; the OTP server uses 4000 |
-| Wrong Firebase project | Use your own Firebase project rather than `careernova-3cacc` unless you own it |
+| Issue                          | Fix                                                                                            |
+| ------------------------------ | ---------------------------------------------------------------------------------------------- |
+| Google popup blocked           | Allow popups for your site in the browser                                                      |
+| `auth/unauthorized-domain`     | Add the domain in Firebase → Auth → Authorized domains                                         |
+| `auth/configuration-not-found` | Verify the `firebaseConfig` in `src/firebase.js`                                               |
+| OTP emails not arriving        | Update the Gmail address + App Password in `src/server.js`, or set `GMAIL_USER` / `GMAIL_PASS` |
+| Static site shows a blank page | Serve it over HTTP (`npx serve dist`) instead of opening `file://` directly                    |
+| Port already in use            | Vite automatically selects the next free port; the OTP server uses 4000                        |
+| Wrong Firebase project         | Use your own Firebase project rather than `careernova-3cacc` unless you own it                 |
 
 ---
 
-*Generated from the actual source code — CareerNova by Aakash Kumar Arya · © 2026*
+_Generated from the actual source code — CareerNova by Aakash Kumar Arya · © 2026_
