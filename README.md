@@ -111,7 +111,7 @@ Firebase config lives in **`src/firebase.js`**:
 
 | Key | Value |
 |---|---|
-| `apiKey` | `AIzaSyCke2zBvZJbtdCFI7QYTQk3clOhDBuYaQs` |
+| `apiKey` | sjrjaur..**************` |
 | `authDomain` | `careernova-3cacc.firebaseapp.com` |
 | `projectId` | `careernova-3cacc` |
 | `storageBucket` | `careernova-3cacc.firebasestorage.app` |
