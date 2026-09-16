@@ -1,4 +1,4 @@
-//Some working code for the CareerNova app, including context, Firebase authentication helpers, sample data for companies and jobs, and SVG icons for the UI.
+//Some working code for the Jobqora app, including context, Firebase authentication helpers, sample data for companies and jobs, and SVG icons for the UI.
 
 import { useState, useEffect, useContext, createContext, useRef } from "react";
 import {
@@ -725,808 +725,80 @@ const CATEGORIES = [
 ];
 
 // ─── ICONS ──────────────────────────────────────────────────────────────────
-// ─── CN LOGO COMPONENTS ──────────────────────────────────────────────────────
-const CnMark = ({ size = 36 }) => {
-  const r = size * 0.3;
-  const cx = size * 0.44;
-  const cy = size * 0.5;
-  const x1 = cx + r;
-  const x2 = cx + r * 1.95;
-  const top = cy - r;
-  const bot = cy + r;
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox={`0 0 ${size} ${size}`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d={`M ${x1} ${top} A ${r} ${r} 0 1 0 ${x1} ${bot}`}
-        stroke="white"
-        strokeWidth={size * 0.12}
-        strokeLinecap="round"
-      />
-      <line
-        x1={x1}
-        y1={top}
-        x2={x2}
-        y2={bot}
-        stroke="#22D3EE"
-        strokeWidth={size * 0.095}
-        strokeLinecap="round"
-      />
-      <line
-        x1={x2}
-        y1={top}
-        x2={x2}
-        y2={bot}
-        stroke="#A78BFA"
-        strokeWidth={size * 0.095}
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-};
+// ─── JOBQORA LOGO COMPONENTS ─────────────────────────────────────────────────
+// J-arrow + person dot mark inspired by the Jobqora brand
+const CnMark = ({ size = 36 }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    {/* Person head */}
+    <circle cx="62" cy="16" r="11" fill="url(#jq-h)"/>
+    {/* J body */}
+    <path d="M62 27 L62 68 Q62 84 46 84 Q30 84 30 70 L30 62"
+      stroke="url(#jq-b)" strokeWidth="13" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    {/* Arrow shaft */}
+    <line x1="62" y1="44" x2="81" y2="23" stroke="url(#jq-a)" strokeWidth="11" strokeLinecap="round"/>
+    {/* Arrow head */}
+    <polyline points="68,19 83,23 79,38" stroke="url(#jq-a)" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <defs>
+      <linearGradient id="jq-h" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#60B5FF"/>
+        <stop offset="100%" stopColor="#3B82F6"/>
+      </linearGradient>
+      <linearGradient id="jq-b" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#818CF8"/>
+        <stop offset="100%" stopColor="#6366F1"/>
+      </linearGradient>
+      <linearGradient id="jq-a" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#818CF8"/>
+        <stop offset="100%" stopColor="#60B5FF"/>
+      </linearGradient>
+    </defs>
+  </svg>
+);
 
 const CnLogo = ({ size = 36, textSize = 20 }) => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: Math.round(size * 0.24),
-    }}
-  >
-    <div
-      style={{
-        width: size,
-        height: size,
-        borderRadius: Math.round(size * 0.28),
-        background: "#151B3D",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexShrink: 0,
-        boxShadow: "0 2px 10px rgba(124,58,237,0.3)",
-      }}
-    >
-      <CnMark size={Math.round(size * 0.7)} />
+  <div style={{ display:"flex", alignItems:"center", gap: Math.round(size * 0.24) }}>
+    <div style={{
+      width: size, height: size, borderRadius: Math.round(size * 0.28),
+      background: "#0F172A",
+      display:"flex", alignItems:"center", justifyContent:"center",
+      flexShrink: 0,
+      boxShadow: "0 2px 14px rgba(99,102,241,0.4)",
+    }}>
+      <CnMark size={Math.round(size * 0.78)} />
     </div>
-    <span
-      style={{
-        fontWeight: 800,
-        fontSize: textSize,
-        letterSpacing: "-0.4px",
-        lineHeight: 1,
-        fontFamily: "inherit",
-      }}
-    >
-      <span
-        style={{
-          background: "linear-gradient(135deg,#151B3D,#4B1FBF)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}
-      >
-        Career
-      </span>
-      <span
-        style={{
-          background: "linear-gradient(135deg,#7C3AED,#22D3EE)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}
-      >
-        Nova
-      </span>
+    <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.5px", lineHeight:1, fontFamily:"inherit" }}>
+      <span style={{ color:"#0F172A" }}>Job</span><span style={{ background:"linear-gradient(135deg,#6366F1,#8B5CF6)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>qora</span>
     </span>
   </div>
 );
 
 const CnLogoDark = ({ size = 36, textSize = 20 }) => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: Math.round(size * 0.24),
-    }}
-  >
-    <div
-      style={{
-        width: size,
-        height: size,
-        borderRadius: Math.round(size * 0.28),
-        background: "rgba(255,255,255,0.08)",
-        border: "1px solid rgba(255,255,255,0.15)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexShrink: 0,
-      }}
-    >
-      <CnMark size={Math.round(size * 0.7)} />
+  <div style={{ display:"flex", alignItems:"center", gap: Math.round(size * 0.24) }}>
+    <div style={{
+      width: size, height: size, borderRadius: Math.round(size * 0.28),
+      background: "rgba(255,255,255,0.09)",
+      border: "1px solid rgba(255,255,255,0.15)",
+      display:"flex", alignItems:"center", justifyContent:"center",
+      flexShrink: 0,
+    }}>
+      <CnMark size={Math.round(size * 0.78)} />
     </div>
-    <span
-      style={{
-        fontWeight: 800,
-        fontSize: textSize,
-        letterSpacing: "-0.4px",
-        fontFamily: "inherit",
-      }}
-    >
-      <span style={{ color: "white" }}>Career</span>
-      <span style={{ color: "#22D3EE" }}>Nova</span>
+    <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.5px", fontFamily:"inherit" }}>
+      <span style={{ color:"white" }}>Job</span><span style={{ background:"linear-gradient(135deg,#818CF8,#60B5FF)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>qora</span>
     </span>
   </div>
 );
-
-const Icon = ({ name, size = 18, className = "" }) => {
-  const icons = {
-    search: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.35-4.35" />
-      </svg>
-    ),
-    location: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-        <circle cx="12" cy="10" r="3" />
-      </svg>
-    ),
-    briefcase: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <rect width="20" height="14" x="2" y="7" rx="2" />
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-      </svg>
-    ),
-    heart: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-      </svg>
-    ),
-    "heart-fill": (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="#EF4444"
-        stroke="#EF4444"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-      </svg>
-    ),
-    bell: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-        <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-      </svg>
-    ),
-    user: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-        <circle cx="12" cy="7" r="4" />
-      </svg>
-    ),
-    settings: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    ),
-    logout: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-        <polyline points="16 17 21 12 16 7" />
-        <line x1="21" y1="12" x2="9" y2="12" />
-      </svg>
-    ),
-    menu: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <line x1="4" y1="12" x2="20" y2="12" />
-        <line x1="4" y1="6" x2="20" y2="6" />
-        <line x1="4" y1="18" x2="20" y2="18" />
-      </svg>
-    ),
-    x: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M18 6 6 18" />
-        <path d="m6 6 12 12" />
-      </svg>
-    ),
-    check: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M20 6 9 17l-5-5" />
-      </svg>
-    ),
-    star: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        stroke="none"
-        className={className}
-      >
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-      </svg>
-    ),
-    trending: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-        <polyline points="16 7 22 7 22 13" />
-      </svg>
-    ),
-    chart: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <line x1="18" y1="20" x2="18" y2="10" />
-        <line x1="12" y1="20" x2="12" y2="4" />
-        <line x1="6" y1="20" x2="6" y2="14" />
-      </svg>
-    ),
-    file: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-        <polyline points="14 2 14 8 20 8" />
-      </svg>
-    ),
-    send: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="m22 2-7 20-4-9-9-4Z" />
-        <path d="M22 2 11 13" />
-      </svg>
-    ),
-    building: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <rect width="16" height="20" x="4" y="2" rx="2" />
-        <path d="M9 22v-4h6v4" />
-        <path d="M8 6h.01" />
-        <path d="M16 6h.01" />
-        <path d="M12 6h.01" />
-        <path d="M12 10h.01" />
-        <path d="M12 14h.01" />
-        <path d="M16 10h.01" />
-        <path d="M16 14h.01" />
-        <path d="M8 10h.01" />
-        <path d="M8 14h.01" />
-      </svg>
-    ),
-    lightning: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-      </svg>
-    ),
-    ai: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M12 2a5 5 0 1 0 5 5" />
-        <path d="M12 7v5l3 3" />
-        <circle cx="19" cy="5" r="2" />
-        <path d="M3 17a5 5 0 0 1 5-5h4" />
-        <path d="M8 22H6a2 2 0 0 1-2-2v-2a4 4 0 0 1 4-4h2" />
-      </svg>
-    ),
-    chevronRight: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="m9 18 6-6-6-6" />
-      </svg>
-    ),
-    chevronDown: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="m6 9 6 6 6-6" />
-      </svg>
-    ),
-    share: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <circle cx="18" cy="5" r="3" />
-        <circle cx="6" cy="12" r="3" />
-        <circle cx="18" cy="19" r="3" />
-        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-      </svg>
-    ),
-    flag: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-        <line x1="4" y1="22" x2="4" y2="15" />
-      </svg>
-    ),
-    home: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
-      </svg>
-    ),
-    plus: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M5 12h14" />
-        <path d="M12 5v14" />
-      </svg>
-    ),
-    eye: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    ),
-    trash: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M3 6h18" />
-        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-      </svg>
-    ),
-    upload: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-        <polyline points="17 8 12 3 7 8" />
-        <line x1="12" y1="3" x2="12" y2="15" />
-      </svg>
-    ),
-    download: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-        <polyline points="7 10 12 15 17 10" />
-        <line x1="12" y1="15" x2="12" y2="3" />
-      </svg>
-    ),
-    clock: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
-    edit: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-      </svg>
-    ),
-    filter: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-      </svg>
-    ),
-    paperclip: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />
-      </svg>
-    ),
-    messageSquare: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
-    camera: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-        <circle cx="12" cy="13" r="3" />
-      </svg>
-    ),
-    moon: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-      </svg>
-    ),
-    sun: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <circle cx="12" cy="12" r="4" />
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-      </svg>
-    ),
-    shield: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
-    ),
-    key: (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-      >
-        <path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4" />
-      </svg>
-    ),
-  };
-  return icons[name] || null;
-};
-
 // ─── STYLES ──────────────────────────────────────────────────────────────────
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
   :root {
-    --primary: #151B3D;
-    --violet: #7C3AED;
-    --cyan: #22D3EE;
+    --primary: #0F172A;
+    --violet: #6366F1;
+    --cyan: #60B5FF;
     --bg: #F8FAFC;
-    --dark: #0B1026;
+    --dark: #080F1E;
     --card: #ffffff;
     --success: #10B981;
     --warning: #F59E0B;
@@ -1547,15 +819,15 @@ const styles = `
     --amber: #D97706;
     --teal: #0891B2;
     --red: #DC2626;
-    --grad: linear-gradient(135deg, #151B3D, #7C3AED, #22D3EE);
-    --grad-btn: linear-gradient(135deg, #7C3AED, #22D3EE);
+    --grad: linear-gradient(135deg, #0F172A, #6366F1, #3B82F6);
+    --grad-btn: linear-gradient(135deg, #6366F1, #3B82F6);
     --auth-bg: linear-gradient(135deg, #F5F3FF, #ECFEFF);
     --shadow: 0 4px 24px rgba(21,27,61,0.08);
     --shadow-lg: 0 8px 40px rgba(21,27,61,0.14);
   }
   [data-theme="dark"] {
     --primary: #E5E7EB;
-    --bg: #0B1026;
+    --bg: #080F1E;
     --card: #121A2E;
     --text: #E5E7EB;
     --text-strong: #CBD5E1;
@@ -1571,9 +843,9 @@ const styles = `
     --tint-red: #3A1D24;
     --green: #34D399;
     --amber: #FBBF24;
-    --teal: #22D3EE;
+    --teal: #60B5FF;
     --red: #F87171;
-    --auth-bg: linear-gradient(135deg, #171031, #0B1026);
+    --auth-bg: linear-gradient(135deg, #171031, #080F1E);
     --shadow: 0 4px 24px rgba(0,0,0,0.4);
     --shadow-lg: 0 8px 40px rgba(0,0,0,0.55);
   }
@@ -2180,7 +1452,7 @@ const Navbar = ({ page, setPage, user, setUser }) => {
                       width: 28,
                       height: 28,
                       borderRadius: "50%",
-                      background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                      background: "linear-gradient(135deg, #7C3AED, #60B5FF)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -2646,7 +1918,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
       <section
         style={{
           background:
-            "linear-gradient(135deg, #0B1026 0%, #151B3D 50%, #1a0a3d 100%)",
+            "linear-gradient(135deg, #080F1E 0%, #0F172A 50%, #1a0a3d 100%)",
           color: "white",
           padding: "clamp(40px,8vh,100px) clamp(12px,3.5vw,20px)",
           textAlign: "center",
@@ -2729,11 +2001,11 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               marginBottom: 20,
             }}
           >
-            Find Work That Moves
+            Find Work.
             <br />
             <span
               style={{
-                background: "linear-gradient(135deg, #A78BFA, #22D3EE)",
+                background: "linear-gradient(135deg, #818CF8, #60B5FF)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -2877,7 +2149,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                 setJobFilter({ title: "React" });
                 setPage("jobs");
               }}
-              style={{ color: "#A78BFA", cursor: "pointer", marginLeft: 4 }}
+              style={{ color: "#818CF8", cursor: "pointer", marginLeft: 4 }}
             >
               React Developer
             </span>
@@ -2887,7 +2159,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                 setJobFilter({ title: "ML" });
                 setPage("jobs");
               }}
-              style={{ color: "#A78BFA", cursor: "pointer", marginLeft: 4 }}
+              style={{ color: "#818CF8", cursor: "pointer", marginLeft: 4 }}
             >
               ML Engineer
             </span>
@@ -2897,7 +2169,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                 setJobFilter({ title: "Product" });
                 setPage("jobs");
               }}
-              style={{ color: "#A78BFA", cursor: "pointer", marginLeft: 4 }}
+              style={{ color: "#818CF8", cursor: "pointer", marginLeft: 4 }}
             >
               Product Manager
             </span>
@@ -2924,7 +2196,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                 style={{
                   fontSize: 28,
                   fontWeight: 900,
-                  background: "linear-gradient(135deg, #A78BFA, #22D3EE)",
+                  background: "linear-gradient(135deg, #818CF8, #60B5FF)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -3084,7 +2356,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
       {/* AI FEATURES */}
       <section
         style={{
-          background: "linear-gradient(135deg, #0B1026, #151B3D)",
+          background: "linear-gradient(135deg, #080F1E, #0F172A)",
           padding: "clamp(36px,7vw,72px) clamp(12px,3.5vw,20px)",
           color: "white",
         }}
@@ -3129,7 +2401,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               Your Career,{" "}
               <span
                 style={{
-                  background: "linear-gradient(135deg, #A78BFA, #22D3EE)",
+                  background: "linear-gradient(135deg, #818CF8, #60B5FF)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -3182,7 +2454,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                     flexShrink: 0,
                   }}
                 >
-                  <Icon name={f.icon} size={18} style={{ color: "#A78BFA" }} />
+                  <Icon name={f.icon} size={18} style={{ color: "#818CF8" }} />
                 </div>
                 <div>
                   <div
@@ -3243,7 +2515,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                       style={{
                         fontWeight: 900,
                         fontSize: 20,
-                        background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                        background: "linear-gradient(135deg, #7C3AED, #60B5FF)",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                       }}
@@ -3411,7 +2683,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
       {/* CTA */}
       <section
         style={{
-          background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
+          background: "linear-gradient(135deg, #7C3AED, #60B5FF)",
           padding: "64px 20px",
           textAlign: "center",
         }}
@@ -3433,7 +2705,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             marginBottom: 32,
           }}
         >
-          Join 2M+ professionals who found their dream job on CareerNova.
+          Join 2M+ professionals who found their dream job on Jobqora.
         </p>
         <div
           style={{
@@ -3485,7 +2757,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
       {/* FOOTER */}
       <footer
         style={{
-          background: "#0B1026",
+          background: "#080F1E",
           color: "var(--text-faint)",
           padding: "48px 20px 28px",
         }}
@@ -3549,7 +2821,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                   ["Press", () => showToast("Press kit available soon 📰")],
                   [
                     "Contact",
-                    () => showToast("Email us at hello@careernova.in 📧"),
+                    () => showToast("Email us at hello@jobqora.in 📧"),
                   ],
                 ],
               ],
@@ -3575,7 +2847,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                       cursor: "pointer",
                       transition: "color 0.15s",
                     }}
-                    onMouseEnter={(e) => (e.target.style.color = "#A78BFA")}
+                    onMouseEnter={(e) => (e.target.style.color = "#818CF8")}
                     onMouseLeave={(e) => (e.target.style.color = "")}
                   >
                     {label}
@@ -3596,7 +2868,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             }}
           >
             <span style={{ fontSize: 13 }}>
-              © 2026 CareerNova. All rights reserved.
+              © 2026 Jobqora. All rights reserved.
             </span>
             <span
               style={{
@@ -3615,7 +2887,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                   key={label}
                   onClick={() => showToast(msg)}
                   style={{ cursor: "pointer", transition: "color 0.15s" }}
-                  onMouseEnter={(e) => (e.target.style.color = "#A78BFA")}
+                  onMouseEnter={(e) => (e.target.style.color = "#818CF8")}
                   onMouseLeave={(e) => (e.target.style.color = "")}
                 >
                   {label}
@@ -5510,7 +4782,7 @@ const DashboardPage = ({
                 width: 38,
                 height: 38,
                 borderRadius: "50%",
-                background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                background: "linear-gradient(135deg, #7C3AED, #60B5FF)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -5984,7 +5256,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                 width: 84,
                 height: 84,
                 borderRadius: "50%",
-                background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                background: "linear-gradient(135deg, #7C3AED, #60B5FF)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -6516,7 +5788,7 @@ const ApplicationsSection = ({ applications, setPage, setJobFilter }) => {
                           borderRadius: "50%",
                           background:
                             si <= statusIdx
-                              ? "linear-gradient(135deg, #7C3AED, #22D3EE)"
+                              ? "linear-gradient(135deg, #7C3AED, #60B5FF)"
                               : "var(--border)",
                           display: "flex",
                           alignItems: "center",
@@ -7031,9 +6303,9 @@ const ResumeSection = ({ showToast }) => {
       : "";
     const headBg =
       template === 0
-        ? "linear-gradient(135deg, #7C3AED, #22D3EE)"
+        ? "linear-gradient(135deg, #7C3AED, #60B5FF)"
         : template === 1
-          ? "#151B3D"
+          ? "#0F172A"
           : "#F8FAFC";
     const headColor = template < 2 ? "#fff" : "#1F2937";
 
@@ -7089,9 +6361,9 @@ const ResumeSection = ({ showToast }) => {
 
   const headerBg =
     template === 0
-      ? "linear-gradient(135deg, #7C3AED, #22D3EE)"
+      ? "linear-gradient(135deg, #7C3AED, #60B5FF)"
       : template === 1
-        ? "#151B3D"
+        ? "#0F172A"
         : "var(--bg)";
   const headerColor = template < 2 ? "white" : "var(--text)";
 
@@ -8945,7 +8217,7 @@ const EmployerPage = ({
       label: "Active Jobs",
       value: activeJobs,
       icon: "lightning",
-      color: "#22D3EE",
+      color: "#60B5FF",
     },
     {
       label: "Total Applicants",
@@ -9145,7 +8417,7 @@ const EmployerPage = ({
                       borderRadius: "50%",
                       background:
                         i + 1 < step
-                          ? "linear-gradient(135deg, #7C3AED, #22D3EE)"
+                          ? "linear-gradient(135deg, #7C3AED, #60B5FF)"
                           : i + 1 === step
                             ? "#7C3AED"
                             : "var(--border)",
@@ -9804,10 +9076,10 @@ const EmployerPage = ({
                       height: 44,
                       borderRadius: "50%",
                       background: isShortlisted
-                        ? "linear-gradient(135deg, #059669, #22D3EE)"
+                        ? "linear-gradient(135deg, #059669, #60B5FF)"
                         : hasInterview
                           ? "linear-gradient(135deg, #D97706, #F59E0B)"
-                          : "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                          : "linear-gradient(135deg, #7C3AED, #60B5FF)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -10071,7 +9343,7 @@ const EmployerPage = ({
                       width: 60,
                       height: 60,
                       borderRadius: "50%",
-                      background: "linear-gradient(135deg, #7C3AED, #22D3EE)",
+                      background: "linear-gradient(135deg, #7C3AED, #60B5FF)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -11527,7 +10799,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
         email: user.email,
         role: form.role === "employer" ? "Employer" : "Job Seeker",
       });
-      showToast("Account created! Welcome to CareerNova 🎉");
+      showToast("Account created! Welcome to Jobqora 🎉");
       setPage("profile-setup");
     } catch (err) {
       setLoading(false);
@@ -12163,8 +11435,8 @@ const AuthPage = ({ mode, setPage, setUser }) => {
           </h1>
           <p style={{ color: "var(--text-faint)", fontSize: 14, marginTop: 6 }}>
             {mode === "login"
-              ? "Sign in to your CareerNova account"
-              : "Start your journey with CareerNova"}
+              ? "Sign in to your Jobqora account"
+              : "Start your journey with Jobqora"}
           </p>
         </div>
 
@@ -13128,7 +12400,7 @@ export default function App() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: darkMode ? "#0B1026" : "#F8FAFC",
+          background: darkMode ? "#080F1E" : "#F8FAFC",
           gap: 24,
           zIndex: 9999,
         }}
@@ -13142,7 +12414,7 @@ export default function App() {
             width: 64,
             height: 64,
             borderRadius: 20,
-            background: "linear-gradient(135deg,#151B3D,#7C3AED)",
+            background: "linear-gradient(135deg,#0F172A,#7C3AED)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -13159,10 +12431,10 @@ export default function App() {
             fontFamily: "Inter,sans-serif",
           }}
         >
-          <span style={{ color: darkMode ? "white" : "#151B3D" }}>Career</span>
+          <span style={{ color: darkMode ? "white" : "#0F172A" }}>Career</span>
           <span
             style={{
-              background: "linear-gradient(135deg,#7C3AED,#22D3EE)",
+              background: "linear-gradient(135deg,#7C3AED,#60B5FF)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -13187,7 +12459,7 @@ export default function App() {
               left: 0,
               width: "35%",
               height: "100%",
-              background: "linear-gradient(90deg,#7C3AED,#22D3EE)",
+              background: "linear-gradient(90deg,#7C3AED,#60B5FF)",
               borderRadius: 99,
               animation: "cn-slide 1.1s ease-in-out infinite",
             }}
