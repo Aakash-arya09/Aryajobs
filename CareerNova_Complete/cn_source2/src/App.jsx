@@ -726,34 +726,36 @@ const CATEGORIES = [
 
 // ─── ICONS ──────────────────────────────────────────────────────────────────
 // ─── JOBQORA LOGO COMPONENTS ─────────────────────────────────────────────────
-// J-arrow + person dot mark inspired by the Jobqora brand
-const CnMark = ({ size = 36 }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    {/* Person head */}
-    <circle cx="62" cy="16" r="11" fill="url(#jq-h)"/>
-    {/* J body */}
-    <path d="M62 27 L62 68 Q62 84 46 84 Q30 84 30 70 L30 62"
-      stroke="url(#jq-b)" strokeWidth="13" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-    {/* Arrow shaft */}
-    <line x1="62" y1="44" x2="81" y2="23" stroke="url(#jq-a)" strokeWidth="11" strokeLinecap="round"/>
-    {/* Arrow head */}
-    <polyline points="68,19 83,23 79,38" stroke="url(#jq-a)" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-    <defs>
-      <linearGradient id="jq-h" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#60B5FF"/>
-        <stop offset="100%" stopColor="#3B82F6"/>
-      </linearGradient>
-      <linearGradient id="jq-b" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#818CF8"/>
-        <stop offset="100%" stopColor="#6366F1"/>
-      </linearGradient>
-      <linearGradient id="jq-a" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#818CF8"/>
-        <stop offset="100%" stopColor="#60B5FF"/>
-      </linearGradient>
-    </defs>
-  </svg>
-);
+// Unique ID counter — prevents duplicate SVG gradient IDs crashing the DOM
+let _jqId = 0;
+const CnMark = ({ size = 36 }) => {
+  const uid = useRef(null);
+  if (!uid.current) uid.current = `jq${++_jqId}`;
+  const id = uid.current;
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id={`${id}h`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#60B5FF"/>
+          <stop offset="100%" stopColor="#3B82F6"/>
+        </linearGradient>
+        <linearGradient id={`${id}b`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#818CF8"/>
+          <stop offset="100%" stopColor="#6366F1"/>
+        </linearGradient>
+        <linearGradient id={`${id}a`} x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#818CF8"/>
+          <stop offset="100%" stopColor="#60B5FF"/>
+        </linearGradient>
+      </defs>
+      <circle cx="62" cy="16" r="11" fill={`url(#${id}h)`}/>
+      <path d="M62 27 L62 68 Q62 84 46 84 Q30 84 30 70 L30 62"
+        stroke={`url(#${id}b)`} strokeWidth="13" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      <line x1="62" y1="44" x2="81" y2="23" stroke={`url(#${id}a)`} strokeWidth="11" strokeLinecap="round"/>
+      <polyline points="68,19 83,23 79,38" stroke={`url(#${id}a)`} strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    </svg>
+  );
+};
 
 const CnLogo = ({ size = 36, textSize = 20 }) => (
   <div style={{ display:"flex", alignItems:"center", gap: Math.round(size * 0.24) }}>
