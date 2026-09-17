@@ -1,4 +1,4 @@
-//Some working code for the Jobqora app, including context, Firebase authentication helpers, sample data for companies and jobs, and SVG icons for the UI.
+//Some working code for the Aryajobs app, including context, Firebase authentication helpers, sample data for companies and jobs, and SVG icons for the UI.
 
 import { useState, useEffect, useContext, createContext, useRef } from "react";
 import {
@@ -772,7 +772,7 @@ const CATEGORIES = [
 ];
 
 // ─── ICONS ──────────────────────────────────────────────────────────────────
-// ─── JOBQORA LOGO COMPONENTS ─────────────────────────────────────────────────
+// ─── ARYAJOBS LOGO COMPONENTS ─────────────────────────────────────────────────
 // Unique ID counter — prevents duplicate SVG gradient IDs crashing the DOM
 let _jqId = 0;
 const CnMark = ({ size = 36 }) => {
@@ -2754,7 +2754,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             marginBottom: 32,
           }}
         >
-          Join 2M+ professionals who found their dream job on Jobqora.
+          Join 2M+ professionals who found their dream job on Aryajobs.
         </p>
         <div
           style={{
@@ -2870,7 +2870,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
                   ["Press", () => showToast("Press kit available soon 📰")],
                   [
                     "Contact",
-                    () => showToast("Email us at hello@jobqora.in 📧"),
+                    () => showToast("Email us at hello@aryajobs.in 📧"),
                   ],
                 ],
               ],
@@ -2917,7 +2917,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             }}
           >
             <span style={{ fontSize: 13 }}>
-              © 2026 Jobqora. All rights reserved.
+              © 2026 Aryajobs. All rights reserved.
             </span>
             <span
               style={{
@@ -10848,7 +10848,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
         email: user.email,
         role: form.role === "employer" ? "Employer" : "Job Seeker",
       });
-      showToast("Account created! Welcome to Jobqora 🎉");
+      showToast("Account created! Welcome to Aryajobs 🎉");
       setPage("profile-setup");
     } catch (err) {
       setLoading(false);
@@ -11484,8 +11484,8 @@ const AuthPage = ({ mode, setPage, setUser }) => {
           </h1>
           <p style={{ color: "var(--text-faint)", fontSize: 14, marginTop: 6 }}>
             {mode === "login"
-              ? "Sign in to your Jobqora account"
-              : "Start your journey with Jobqora"}
+              ? "Sign in to your Aryajobs account"
+              : "Start your journey with Aryajobs"}
           </p>
         </div>
 
