@@ -816,7 +816,7 @@ const CnLogo = ({ size = 36, textSize = 20 }) => (
       <CnMark size={Math.round(size * 0.78)} />
     </div>
     <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.5px", lineHeight:1, fontFamily:"inherit" }}>
-      <span style={{ color:"#0F172A" }}>Job</span><span style={{ background:"linear-gradient(135deg,#6366F1,#8B5CF6)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>qora</span>
+      <span style={{ color:"#0F172A" }}>Arya</span><span style={{ background:"linear-gradient(135deg,#6366F1,#8B5CF6)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>jobs</span>
     </span>
   </div>
 );
@@ -833,7 +833,7 @@ const CnLogoDark = ({ size = 36, textSize = 20 }) => (
       <CnMark size={Math.round(size * 0.78)} />
     </div>
     <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.5px", fontFamily:"inherit" }}>
-      <span style={{ color:"white" }}>Job</span><span style={{ background:"linear-gradient(135deg,#818CF8,#60B5FF)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>qora</span>
+      <span style={{ color:"white" }}>Arya</span><span style={{ background:"linear-gradient(135deg,#818CF8,#60B5FF)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>jobs</span>
     </span>
   </div>
 );
