@@ -879,9 +879,9 @@ const styles = `
     --bg: #080F1E;
     --card: #121A2E;
     --text: #E5E7EB;
-    --text-strong: #CBD5E1;
-    --text-soft: #A3AEC2;
-    --text-muted: #8896AC;
+    --text-strong: #F1F5F9;
+    --text-soft: #CBD5E1;
+    --text-muted: #94A3B8;
     --text-faint: #64748B;
     --border: #253049;
     --border-soft: #1C243C;
@@ -1113,6 +1113,12 @@ const styles = `
   [data-theme="dark"] .sidebar-link.active { background:var(--tint-violet); color:var(--violet); }
   [data-theme="dark"] .section-title { color: var(--text); }
   [data-theme="dark"] .card { box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+  [data-theme="dark"] .nav-link { color: var(--text-soft); }
+  [data-theme="dark"] .nav-link:hover { color: #818CF8; }
+  [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 { color: var(--text); }
+  [data-theme="dark"] .btn-outline { color: #818CF8; border-color: #818CF8; }
+  [data-theme="dark"] .btn-outline:hover { background: #818CF8; color: white; }
+  [data-theme="dark"] input, [data-theme="dark"] select, [data-theme="dark"] textarea { background: var(--card); color: var(--text); border-color: var(--border); }
 
   /* ════════════════════════════════════════════════════════════════════
      RESPONSIVE SYSTEM — mobile-first, fluid, safe-area aware
@@ -1439,7 +1445,7 @@ const Navbar = ({ page, setPage, user, setUser }) => {
               flexShrink: 0,
             }}
           >
-            <CnLogo size={34} textSize={19} />
+            {darkMode ? <CnLogoDark size={34} textSize={19} /> : <CnLogo size={34} textSize={19} />}
           </div>
           {/* Desktop Nav */}
           <div
@@ -1593,7 +1599,7 @@ const Navbar = ({ page, setPage, user, setUser }) => {
                 marginBottom: 28,
               }}
             >
-              <CnLogo size={30} textSize={17} />
+              {darkMode ? <CnLogoDark size={30} textSize={17} /> : <CnLogo size={30} textSize={17} />}
               <button
                 onClick={() => setMenuOpen(false)}
                 style={{
@@ -9634,11 +9640,14 @@ const saveAccounts = (arr) =>
 // OTP is now generated server-side via /send-otp endpoint
 
 // ─── AUTH SUB-COMPONENTS (defined outside AuthPage so React never remounts them) ──
-const AuthLogo = () => (
+const AuthLogo = () => {
+  const { darkMode } = useContext(ThemeContext);
+  return (
   <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
-    <CnLogo size={44} textSize={23} />
+    {darkMode ? <CnLogoDark size={44} textSize={23} /> : <CnLogo size={44} textSize={23} />}
   </div>
-);
+  );
+};
 
 const ErrBox = ({ error }) =>
   error ? (
