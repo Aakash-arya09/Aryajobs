@@ -1120,19 +1120,84 @@ const styles = `
   [data-theme="dark"] .btn-outline:hover { background: #818CF8; color: white; }
   [data-theme="dark"] input, [data-theme="dark"] select, [data-theme="dark"] textarea { background: var(--card); color: var(--text); border-color: var(--border); }
 
-  /* ── Light theme overrides ───────────────────────────────────────────── */
-  [data-theme="light"] body { background: var(--bg); color: var(--text); }
-  [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6 { color: var(--text-strong); }
-  [data-theme="light"] p, [data-theme="light"] span, [data-theme="light"] div { color: inherit; }
-  [data-theme="light"] .card { background: var(--card); color: var(--text); }
-  [data-theme="light"] input, [data-theme="light"] select, [data-theme="light"] textarea { background: white; color: var(--text); border-color: var(--border); }
-  [data-theme="light"] label { color: var(--text-strong); }
-  [data-theme="light"] .section-title { color: var(--text-strong); }
-  [data-theme="light"] .section-sub { color: var(--text-muted); }
-  [data-theme="light"] .nav-link { color: var(--text-soft); }
-  [data-theme="light"] .btn-outline { color: var(--violet); border-color: var(--violet); }
-  [data-theme="light"] main { background: var(--bg); color: var(--text); }
 
+  /* ══════════════════════════════════════════════════════════════════════
+     LIGHT THEME - Comprehensive overrides for all pages and components
+     ══════════════════════════════════════════════════════════════════════ */
+  [data-theme="light"] body { background: #F8FAFC !important; color: #1F2937 !important; }
+  [data-theme="light"] main { background: #F8FAFC !important; color: #1F2937 !important; }
+  
+  /* Typography */
+  [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, 
+  [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6 { color: #0F172A !important; }
+  [data-theme="light"] p { color: #374151; }
+  [data-theme="light"] span { color: inherit; }
+  [data-theme="light"] label { color: #0F172A !important; font-weight: 600; }
+  [data-theme="light"] .section-title { color: #0F172A !important; }
+  [data-theme="light"] .section-sub { color: #6B7280 !important; }
+  
+  /* Cards and containers */
+  [data-theme="light"] .card { background: white !important; color: #1F2937 !important; border: 1px solid #E5E7EB !important; }
+  [data-theme="light"] .glass { background: rgba(255,255,255,0.9) !important; border-color: rgba(0,0,0,0.1) !important; }
+  
+  /* Navigation */
+  [data-theme="light"] nav { background: rgba(255,255,255,0.98) !important; border-bottom: 1px solid #E5E7EB !important; }
+  [data-theme="light"] .nav-link { color: #4B5563 !important; }
+  [data-theme="light"] .nav-link:hover { color: #6366F1 !important; }
+  
+  /* Form elements */
+  [data-theme="light"] input, [data-theme="light"] select, [data-theme="light"] textarea { 
+    background: white !important; 
+    color: #1F2937 !important; 
+    border: 1.5px solid #D1D5DB !important; 
+  }
+  [data-theme="light"] input::placeholder, 
+  [data-theme="light"] select::placeholder, 
+  [data-theme="light"] textarea::placeholder { color: #9CA3AF !important; }
+  [data-theme="light"] input:focus, [data-theme="light"] select:focus, [data-theme="light"] textarea:focus { 
+    border-color: #6366F1 !important; 
+    outline: none; 
+  }
+  
+  /* Buttons */
+  [data-theme="light"] .btn-outline { color: #6366F1 !important; border-color: #6366F1 !important; background: transparent !important; }
+  [data-theme="light"] .btn-outline:hover { background: #6366F1 !important; color: white !important; }
+  [data-theme="light"] .btn-ghost { border-color: #D1D5DB !important; color: #6B7280 !important; }
+  [data-theme="light"] .btn-ghost:hover { border-color: #6366F1 !important; color: #6366F1 !important; }
+  
+  /* Job cards and company cards */
+  [data-theme="light"] .job-card { background: white !important; color: #1F2937 !important; }
+  [data-theme="light"] .job-card h3 { color: #0F172A !important; }
+  [data-theme="light"] .job-card p { color: #6B7280 !important; }
+  
+  /* Sidebar and dashboard */
+  [data-theme="light"] .sidebar-link { color: #6B7280 !important; }
+  [data-theme="light"] .sidebar-link:hover { background: #F3F4F6 !important; color: #0F172A !important; }
+  [data-theme="light"] .sidebar-link.active { background: #EDE9FE !important; color: #6366F1 !important; }
+  
+  /* Auth pages */
+  [data-theme="light"] .auth-container { background: linear-gradient(135deg, #F5F3FF, #ECFEFF) !important; }
+  [data-theme="light"] .auth-card { background: white !important; color: #1F2937 !important; }
+  
+  /* Badges and tags */
+  [data-theme="light"] .badge { color: inherit !important; }
+  [data-theme="light"] .tag { background: #EDE9FE !important; color: #6366F1 !important; border-color: #D8B4FE !important; }
+  
+  /* Modals and overlays */
+  [data-theme="light"] .overlay { background: rgba(0,0,0,0.5) !important; }
+  [data-theme="light"] .modal { background: white !important; color: #1F2937 !important; }
+  
+  /* Search and filters */
+  [data-theme="light"] .search-bar { background: white !important; border: 1.5px solid #D1D5DB !important; }
+  [data-theme="light"] .filter-chip { background: white !important; color: #374151 !important; border: 1.5px solid #E5E7EB !important; }
+  [data-theme="light"] .filter-chip:hover { border-color: #6366F1 !important; color: #6366F1 !important; }
+  
+  /* Footer */
+  [data-theme="light"] footer { background: #F9FAFB !important; color: #4B5563 !important; border-top: 1px solid #E5E7EB !important; }
+  
+  /* Dividers */
+  [data-theme="light"] .divider { background: #E5E7EB !important; }
+  [data-theme="light"] hr { border-color: #E5E7EB !important; }
   /* ════════════════════════════════════════════════════════════════════
      RESPONSIVE SYSTEM — mobile-first, fluid, safe-area aware
      Breakpoints: 1280 · 1024 · 768 · 640 · 480 · 360
