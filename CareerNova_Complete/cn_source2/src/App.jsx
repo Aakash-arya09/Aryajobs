@@ -1120,6 +1120,19 @@ const styles = `
   [data-theme="dark"] .btn-outline:hover { background: #818CF8; color: white; }
   [data-theme="dark"] input, [data-theme="dark"] select, [data-theme="dark"] textarea { background: var(--card); color: var(--text); border-color: var(--border); }
 
+  /* ── Light theme overrides ───────────────────────────────────────────── */
+  [data-theme="light"] body { background: var(--bg); color: var(--text); }
+  [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6 { color: var(--text-strong); }
+  [data-theme="light"] p, [data-theme="light"] span, [data-theme="light"] div { color: inherit; }
+  [data-theme="light"] .card { background: var(--card); color: var(--text); }
+  [data-theme="light"] input, [data-theme="light"] select, [data-theme="light"] textarea { background: white; color: var(--text); border-color: var(--border); }
+  [data-theme="light"] label { color: var(--text-strong); }
+  [data-theme="light"] .section-title { color: var(--text-strong); }
+  [data-theme="light"] .section-sub { color: var(--text-muted); }
+  [data-theme="light"] .nav-link { color: var(--text-soft); }
+  [data-theme="light"] .btn-outline { color: var(--violet); border-color: var(--violet); }
+  [data-theme="light"] main { background: var(--bg); color: var(--text); }
+
   /* ════════════════════════════════════════════════════════════════════
      RESPONSIVE SYSTEM — mobile-first, fluid, safe-area aware
      Breakpoints: 1280 · 1024 · 768 · 640 · 480 · 360
