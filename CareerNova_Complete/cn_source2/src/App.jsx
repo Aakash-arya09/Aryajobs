@@ -815,8 +815,10 @@ const CnLogo = ({ size = 36, textSize = 20 }) => (
     }}>
       <CnMark size={Math.round(size * 0.78)} />
     </div>
-    <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.5px", lineHeight:1, fontFamily:"inherit" }}>
-      <span style={{ color:"#0F172A" }}>Arya</span><span style={{ background:"linear-gradient(135deg,#6366F1,#8B5CF6)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>jobs</span>
+    <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.5px", lineHeight:1, fontFamily:"inherit",
+      background:"linear-gradient(135deg,#4338CA,#6366F1,#8B5CF6)",
+      WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
+      Aryajobs
     </span>
   </div>
 );
@@ -832,8 +834,10 @@ const CnLogoDark = ({ size = 36, textSize = 20 }) => (
     }}>
       <CnMark size={Math.round(size * 0.78)} />
     </div>
-    <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.5px", fontFamily:"inherit" }}>
-      <span style={{ color:"white" }}>Arya</span><span style={{ background:"linear-gradient(135deg,#818CF8,#60B5FF)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>jobs</span>
+    <span style={{ fontWeight:800, fontSize:textSize, letterSpacing:"-0.5px", fontFamily:"inherit",
+      background:"linear-gradient(135deg,#A5B4FC,#818CF8,#60B5FF)",
+      WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
+      Aryajobs
     </span>
   </div>
 );
@@ -12514,15 +12518,15 @@ export default function App() {
             fontFamily: "Inter,sans-serif",
           }}
         >
-          <span style={{ color: darkMode ? "white" : "#0F172A" }}>Arya</span>
-          <span
-            style={{
-              background: "linear-gradient(135deg,#6366F1,#60B5FF)",
+          <span style={{
+              background: darkMode
+                ? "linear-gradient(135deg,#A5B4FC,#818CF8,#60B5FF)"
+                : "linear-gradient(135deg,#4338CA,#6366F1,#8B5CF6)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-            }}
-          >
-            Jobs
+              backgroundClip: "text",
+            }}>
+            AryaJobs
           </span>
         </div>
         <div
