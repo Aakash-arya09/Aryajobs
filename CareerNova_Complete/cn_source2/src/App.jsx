@@ -944,7 +944,10 @@ const styles = `
   }
 
   /* ── Global body ─────────────────────────────────────────── */
-  body { background: var(--bg); min-height: 100vh; }
+  html { background: var(--bg); }
+  body { background: var(--bg); min-height: 100vh; color: var(--text); }
+  #root { background: var(--bg); min-height: 100vh; }
+  main { background: var(--bg); }
 
   /* ── Glass ───────────────────────────────────────────────── */
   .glass {
@@ -1388,7 +1391,7 @@ const ToggleSwitch = ({ on, onChange, disabled }) => (
         width: 21,
         height: 21,
         borderRadius: "50%",
-        background: "white",
+        background: "var(--card-2)",
         transform: on ? "translateX(21px)" : "translateX(0)",
         transition: "transform 0.25s ease",
         boxShadow: "0 1px 4px rgba(0,0,0,0.25)",
@@ -1976,7 +1979,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
   }));
 
   return (
-    <div>
+    <div style={{ background: "var(--bg)" }}>
       {/* HERO */}
       <section
         style={{
@@ -3110,6 +3113,8 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
         maxWidth: 1200,
         margin: "0 auto",
         padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)",
+        background: "var(--bg)",
+        minHeight: "calc(100dvh - 64px)",
       }}
     >
       {/* Search Bar */}
@@ -3407,6 +3412,8 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
         maxWidth: 1100,
         margin: "0 auto",
         padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)",
+        background: "var(--bg)",
+        minHeight: "calc(100dvh - 64px)",
       }}
     >
       <button
@@ -3982,6 +3989,8 @@ const CompaniesPage = ({ setPage, setJobFilter }) => {
         maxWidth: 1200,
         margin: "0 auto",
         padding: "clamp(18px,3.5vw,36px) clamp(12px,3.5vw,20px)",
+        background: "var(--bg)",
+        minHeight: "calc(100dvh - 64px)",
       }}
     >
       <div style={{ textAlign: "center", marginBottom: 36 }}>
@@ -4160,6 +4169,8 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
         maxWidth: 900,
         margin: "0 auto",
         padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)",
+        background: "var(--bg)",
+        minHeight: "calc(100dvh - 64px)",
       }}
     >
       <button
@@ -4606,7 +4617,7 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
             className="card"
             style={{
               padding: 24,
-              background: "var(--auth-bg)",
+              background: "var(--bg)",
             }}
           >
             <div
@@ -5104,7 +5115,7 @@ const DashSection = ({
         className="card"
         style={{
           padding: 22,
-          background: "var(--auth-bg)",
+          background: "var(--bg)",
         }}
       >
         <div
@@ -6369,7 +6380,7 @@ const ResumeSection = ({ showToast }) => {
         ? "linear-gradient(135deg, #7C3AED, #60B5FF)"
         : template === 1
           ? "#0F172A"
-          : "#F8FAFC";
+          : "var(--bg)";
     const headColor = template < 2 ? "#fff" : "#1F2937";
 
     const html = `<!DOCTYPE html>
@@ -6937,8 +6948,8 @@ const ChangePwModal = ({
             </div>
             <div
               style={{
-                background: "#F0FDF4",
-                border: "1px solid #BBF7D0",
+                background: "var(--tint-green)",
+                border: "1px solid rgba(52,211,153,0.25)",
                 borderRadius: 12,
                 padding: "12px 16px",
                 textAlign: "left",
@@ -9570,6 +9581,8 @@ const EmployerPage = ({
         maxWidth: 1200,
         margin: "0 auto",
         padding: "clamp(14px,3vw,28px) clamp(12px,3.5vw,20px)",
+        background: "var(--bg)",
+        minHeight: "calc(100dvh - 64px)",
       }}
     >
       <div
@@ -9608,8 +9621,8 @@ const EmployerPage = ({
               cursor: "pointer",
               fontWeight: 600,
               fontSize: 13,
-              background: activeTab === t.id ? "white" : "transparent",
-              color: activeTab === t.id ? "#7C3AED" : "var(--text-muted)",
+              background: activeTab === t.id ? "var(--card-2)" : "transparent",
+              color: activeTab === t.id ? "var(--violet)" : "var(--text-muted)",
               boxShadow:
                 activeTab === t.id ? "0 2px 8px rgba(0,0,0,0.08)" : "none",
               transition: "all 0.2s",
@@ -9785,7 +9798,7 @@ const OtpBox = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "var(--auth-bg)",
+        background: "var(--bg)",
         padding: 20,
       }}
     >
@@ -11045,7 +11058,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "var(--auth-bg)",
+    background: "var(--bg)",
     padding: "clamp(12px,4vw,20px)",
     // auth-wrap class added in JSX via className
   };
@@ -11183,8 +11196,8 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             </p>
             <div
               style={{
-                background: "#F0FDF4",
-                border: "1px solid #BBF7D0",
+                background: "var(--tint-green)",
+                border: "1px solid rgba(52,211,153,0.25)",
                 borderRadius: 12,
                 padding: "14px 16px",
                 margin: "20px 0",
@@ -11250,7 +11263,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "var(--auth-bg)",
+          background: "var(--bg)",
           padding: 20,
         }}
       >
@@ -11537,7 +11550,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                   cursor: "pointer",
                   fontWeight: 600,
                   fontSize: 13,
-                  background: form.role === val ? "white" : "transparent",
+                  background: form.role === val ? "var(--tint-violet)" : "transparent",
                   color: form.role === val ? "#7C3AED" : "var(--text-muted)",
                   boxShadow:
                     form.role === val ? "0 2px 8px rgba(0,0,0,0.08)" : "none",
@@ -12145,6 +12158,8 @@ const ResourcesPage = () => {
         maxWidth: 1100,
         margin: "0 auto",
         padding: "clamp(20px,4vw,40px) clamp(12px,3.5vw,20px)",
+        background: "var(--bg)",
+        minHeight: "calc(100dvh - 64px)",
       }}
     >
       <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -12549,7 +12564,7 @@ export default function App() {
       >
         <style>{styles}</style>
         <Navbar page={page} setPage={setPage} user={user} setUser={setUser} />
-        <main style={{ minHeight: "calc(100dvh - 64px)" }}>{renderPage()}</main>
+        <main style={{ minHeight: "calc(100dvh - 64px)", background: "var(--bg)", color: "var(--text)" }}>{renderPage()}</main>
         {toast && (
           <Toast
             msg={toast.msg}
