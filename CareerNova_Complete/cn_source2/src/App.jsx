@@ -1426,12 +1426,14 @@ const Navbar = ({ page, setPage, user, setUser }) => {
           top: 0,
           zIndex: 50,
           background: scrolled
-            ? ("rgba(11,17,32,0.92)")
-            : ("rgba(11,17,32,0.98)"),
-          backdropFilter: "blur(16px)",
+            ? (darkMode ? "rgba(8,15,30,0.95)" : "rgba(255,255,255,0.95)")
+            : (darkMode ? "rgba(8,15,30,0.98)" : "rgba(255,255,255,0.98)"),
+          backdropFilter: "blur(20px)",
           borderBottom: `1px solid ${scrolled ? "var(--border)" : "transparent"}`,
-          transition: "all 0.3s",
-          boxShadow: scrolled ? ("0 2px 24px rgba(0,0,0,0.5)") : "none",
+          transition: "background 0.3s, border 0.3s, box-shadow 0.3s",
+          boxShadow: scrolled
+            ? (darkMode ? "0 2px 24px rgba(0,0,0,0.5)" : "0 2px 20px rgba(0,0,0,0.07)")
+            : "none",
         }}
       >
         <div
