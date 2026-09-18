@@ -12321,12 +12321,10 @@ export default function App() {
 
   // ── Apply + persist theme ─────────────────────────────────────────────────
   useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      "dark",
-    );
+    const theme = darkMode ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
     try {
-      localStorage.setItem("cn_theme", "dark");
+      localStorage.setItem("cn_theme", theme);
     } catch {}
   }, [darkMode]);
 
