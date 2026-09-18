@@ -12483,7 +12483,7 @@ export default function App() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#080F1E",
+          background: darkMode ? "#080F1E" : "#F8FAFC",
           gap: 24,
           zIndex: 9999,
         }}
@@ -12497,11 +12497,11 @@ export default function App() {
             width: 64,
             height: 64,
             borderRadius: 20,
-            background: "linear-gradient(135deg,#0F172A,#7C3AED)",
+            background: "#0F172A",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: "0 8px 32px rgba(124,58,237,0.4)",
+            boxShadow: "0 8px 32px rgba(99,102,241,0.45)",
             animation: "cn-pulse 1.6s ease-in-out infinite",
           }}
         >
@@ -12514,15 +12514,15 @@ export default function App() {
             fontFamily: "Inter,sans-serif",
           }}
         >
-          <span style={{ color: "white" }}>Career</span>
+          <span style={{ color: darkMode ? "white" : "#0F172A" }}>Arya</span>
           <span
             style={{
-              background: "linear-gradient(135deg,#7C3AED,#60B5FF)",
+              background: "linear-gradient(135deg,#6366F1,#60B5FF)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
           >
-            Nova
+            Jobs
           </span>
         </div>
         <div
@@ -12530,7 +12530,7 @@ export default function App() {
             width: 120,
             height: 3,
             borderRadius: 99,
-            background: "#1F2937",
+            background: darkMode ? "#1F2937" : "#E5E7EB",
             overflow: "hidden",
             position: "relative",
           }}
