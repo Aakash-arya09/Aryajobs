@@ -906,218 +906,6 @@ const styles = `
     border: 1px solid rgba(255,255,255,0.6);
   }
 
-  /* ═══ DARK THEME COMPREHENSIVE OVERRIDES ═══ */
-  [data-theme="dark"] nav,
-  [data-theme="dark"] .nav-container {
-    background: rgba(11,17,32,0.85) !important;
-    backdrop-filter: blur(16px) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-  }
-  [data-theme="dark"] .glass {
-    background: rgba(21,27,46,0.75) !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-  }
-  [data-theme="dark"] input,
-  [data-theme="dark"] textarea,
-  [data-theme="dark"] select {
-    background: #111827 !important;
-    color: #F1F5F9 !important;
-    border-color: #1F2937 !important;
-  }
-  [data-theme="dark"] input:focus,
-  [data-theme="dark"] textarea:focus,
-  [data-theme="dark"] select:focus {
-    border-color: #818CF8 !important;
-    box-shadow: 0 0 0 3px rgba(129,140,248,0.15) !important;
-    outline: none !important;
-  }
-  [data-theme="dark"] input::placeholder,
-  [data-theme="dark"] textarea::placeholder {
-    color: #6B7A99 !important;
-  }
-  [data-theme="dark"] .btn-primary {
-    background: linear-gradient(135deg,#818CF8,#60B5FF) !important;
-    box-shadow: 0 4px 20px rgba(129,140,248,0.3) !important;
-  }
-  [data-theme="dark"] .btn-primary:hover {
-    box-shadow: 0 6px 28px rgba(129,140,248,0.45) !important;
-    transform: translateY(-1px);
-  }
-  [data-theme="dark"] .badge,
-  [data-theme="dark"] [class*="badge"] {
-    background: rgba(129,140,248,0.12) !important;
-    color: #C4B5FD !important;
-    border: 1px solid rgba(129,140,248,0.2) !important;
-  }
-  [data-theme="dark"] .card,
-  [data-theme="dark"] [class*="card"] {
-    background: #151B2E !important;
-    border: 1px solid rgba(255,255,255,0.06) !important;
-  }
-  [data-theme="dark"] .card:hover,
-  [data-theme="dark"] [class*="card"]:hover {
-    border-color: rgba(129,140,248,0.15) !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
-  }
-  [data-theme="dark"] .modal-overlay {
-    background: rgba(0,0,0,0.6) !important;
-  }
-  [data-theme="dark"] .modal,
-  [data-theme="dark"] [class*="modal"] {
-    background: #151B2E !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-  }
-  [data-theme="dark"] table th {
-    background: #111827 !important;
-    color: #D1D9E6 !important;
-    border-color: #1F2937 !important;
-  }
-  [data-theme="dark"] table td {
-    border-color: #1F2937 !important;
-    color: #F1F5F9 !important;
-  }
-  [data-theme="dark"] table tr:hover td {
-    background: rgba(129,140,248,0.04) !important;
-  }
-  [data-theme="dark"] ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  [data-theme="dark"] ::-webkit-scrollbar-track {
-    background: #0B1120;
-  }
-  [data-theme="dark"] ::-webkit-scrollbar-thumb {
-    background: #1F2937;
-    border-radius: 3px;
-  }
-  [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-    background: #374151;
-  }
-  [data-theme="dark"] .tooltip,
-  [data-theme="dark"] [class*="tooltip"] {
-    background: #1F2937 !important;
-    color: #F1F5F9 !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
-  }
-  [data-theme="dark"] hr {
-    border-color: #1F2937 !important;
-  }
-  [data-theme="dark"] .skeleton,
-  [data-theme="dark"] [class*="skeleton"] {
-    background: linear-gradient(90deg, #151B2E 25%, #1F2937 50%, #151B2E 75%) !important;
-    background-size: 200% 100% !important;
-  }
-  [data-theme="dark"] a:not(.btn-primary) {
-    color: #818CF8;
-  }
-  [data-theme="dark"] a:not(.btn-primary):hover {
-    color: #A5B4FC;
-  }
-  [data-theme="dark"] .dropdown,
-  [data-theme="dark"] [class*="dropdown"] {
-    background: #151B2E !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
-  }
-  [data-theme="dark"] .dropdown-item:hover,
-  [data-theme="dark"] [class*="dropdown"] > *:hover {
-    background: rgba(129,140,248,0.08) !important;
-  }
-  [data-theme="dark"] .status-online,
-  [data-theme="dark"] .status-active {
-    color: #4ADE80 !important;
-  }
-  [data-theme="dark"] .status-pending {
-    color: #FBBF24 !important;
-  }
-  [data-theme="dark"] .status-offline,
-  [data-theme="dark"] .status-error {
-    color: #F87171 !important;
-  }
-  [data-theme="dark"] code,
-  [data-theme="dark"] pre {
-    background: #111827 !important;
-    color: #E2E8F0 !important;
-    border: 1px solid #1F2937 !important;
-  }
-  [data-theme="dark"] blockquote {
-    border-left-color: #818CF8 !important;
-    background: rgba(129,140,248,0.05) !important;
-    color: #D1D9E6 !important;
-  }
-
-  /* ═══ LIGHT THEME COMPREHENSIVE OVERRIDES ═══ */
-  [data-theme="light"] nav,
-  [data-theme="light"] .nav-container {
-    background: rgba(255,255,255,0.92) !important;
-    backdrop-filter: blur(12px) !important;
-    border-bottom: 1px solid rgba(0,0,0,0.06) !important;
-  }
-  [data-theme="light"] input,
-  [data-theme="light"] textarea,
-  [data-theme="light"] select {
-    background: #FFFFFF !important;
-    color: #1F2937 !important;
-    border-color: #D1D5DB !important;
-  }
-  [data-theme="light"] input:focus,
-  [data-theme="light"] textarea:focus,
-  [data-theme="light"] select:focus {
-    border-color: #6366F1 !important;
-    box-shadow: 0 0 0 3px rgba(99,102,241,0.12) !important;
-    outline: none !important;
-  }
-  [data-theme="light"] input::placeholder,
-  [data-theme="light"] textarea::placeholder {
-    color: #9CA3AF !important;
-  }
-  [data-theme="light"] .card,
-  [data-theme="light"] [class*="card"] {
-    background: #FFFFFF !important;
-    border: 1px solid #E5E7EB !important;
-    color: #1F2937 !important;
-  }
-  [data-theme="light"] h1,
-  [data-theme="light"] h2,
-  [data-theme="light"] h3,
-  [data-theme="light"] h4,
-  [data-theme="light"] h5,
-  [data-theme="light"] h6 {
-    color: #111827 !important;
-  }
-  [data-theme="light"] p,
-  [data-theme="light"] span,
-  [data-theme="light"] label,
-  [data-theme="light"] div {
-    color: inherit;
-  }
-  [data-theme="light"] table th {
-    background: #F9FAFB !important;
-    color: #374151 !important;
-    border-color: #E5E7EB !important;
-  }
-  [data-theme="light"] table td {
-    border-color: #E5E7EB !important;
-    color: #1F2937 !important;
-  }
-  [data-theme="light"] .badge,
-  [data-theme="light"] [class*="badge"] {
-    background: #EDE9FE !important;
-    color: #5B21B6 !important;
-    border: 1px solid rgba(99,102,241,0.2) !important;
-  }
-  [data-theme="light"] .modal,
-  [data-theme="light"] [class*="modal"] {
-    background: #FFFFFF !important;
-    border: 1px solid #E5E7EB !important;
-  }
-  [data-theme="light"] .dropdown,
-  [data-theme="light"] [class*="dropdown"] {
-    background: #FFFFFF !important;
-    border: 1px solid #E5E7EB !important;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1) !important;
-  }
-
   .grad-text {
     background: var(--grad-btn);
     -webkit-background-clip: text;
@@ -1301,35 +1089,277 @@ const styles = `
   .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 
-  /* ── Dark theme ─────────────────────────────────────────────────────── */
-  [data-theme="dark"] body { background: var(--bg); color: var(--text); }
-  [data-theme="dark"] nav { background: rgba(13,18,36,0.95) !important; border-bottom-color: var(--border) !important; box-shadow: 0 2px 20px rgba(0,0,0,0.35) !important; }
-  [data-theme="dark"] .glass { background: rgba(19,26,46,0.85); border-color: var(--border); }
-  [data-theme="dark"] .overlay { background: rgba(0,0,0,0.65); }
-  [data-theme="dark"] .tooltip:hover::after { background: #334155; }
-  [data-theme="dark"] :is(input,select,textarea)::placeholder { color: var(--text-faint); }
-  [data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
-  [data-theme="dark"] .skeleton { background: linear-gradient(90deg,#1C243C 25%,#26304A 50%,#1C243C 75%); }
-  [data-theme="dark"] .skeleton, [data-theme="dark"] .match-ring { --border: #26304A; }
-  [data-theme="dark"] .badge-violet { background:var(--tint-violet); color:var(--violet); }
-  [data-theme="dark"] .badge-green  { background:var(--tint-green);  color:var(--green);  }
-  [data-theme="dark"] .badge-orange { background:var(--tint-amber);  color:var(--amber);  }
-  [data-theme="dark"] .badge-cyan   { background:var(--tint-cyan);   color:var(--teal);   }
-  [data-theme="dark"] .badge-red    { background:var(--tint-red);    color:var(--red);    }
-  [data-theme="dark"] .tag          { background:var(--tint-violet); color:var(--violet); border-color:var(--border); }
-  [data-theme="dark"] .tag-cyan     { background:var(--tint-cyan);   color:var(--teal);   border-color:var(--border); }
-  [data-theme="dark"] .tag-green    { background:var(--tint-green);  color:var(--green);  border-color:var(--border); }
-  [data-theme="dark"] .tag-orange   { background:var(--tint-amber);  color:var(--amber);  border-color:var(--border); }
-  [data-theme="dark"] .btn-ghost    { border-color:var(--border); color:var(--text-muted); }
-  [data-theme="dark"] .btn-ghost:hover { border-color:var(--violet); color:var(--violet); }
-  [data-theme="dark"] .divider { background: var(--border); }
-  [data-theme="dark"] .sidebar-link { color: var(--text-muted); }
-  [data-theme="dark"] .sidebar-link:hover  { background:var(--border-soft); color:var(--text); }
-  [data-theme="dark"] .sidebar-link.active { background:var(--tint-violet); color:var(--violet); }
-  [data-theme="dark"] .section-title { color: var(--text); }
-  [data-theme="dark"] .card { box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+  /* ══════════════════════════════════════════════════════════════════════
+     DARK THEME — Complete Professional Redesign
+     ══════════════════════════════════════════════════════════════════════ */
 
-  /* ════════════════════════════════════════════════════════════════════
+  /* ── Base ──────────────────────────────────────────────────────────── */
+  [data-theme="dark"] body { background: var(--bg); color: var(--text); }
+
+  /* ── Glass effect ─────────────────────────────────────────────────── */
+  [data-theme="dark"] .glass {
+    background: rgba(21,27,46,0.65) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    backdrop-filter: blur(16px) !important;
+  }
+
+  /* ── Overlay ──────────────────────────────────────────────────────── */
+  [data-theme="dark"] .overlay { background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+
+  /* ── Cards ────────────────────────────────────────────────────────── */
+  [data-theme="dark"] .card {
+    background: var(--card) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35) !important;
+  }
+  [data-theme="dark"] .card:hover,
+  [data-theme="dark"] .job-card:hover {
+    border-color: rgba(129,140,248,0.18) !important;
+    box-shadow: 0 8px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(129,140,248,0.08) !important;
+  }
+
+  /* ── Inputs / Select / Textarea ───────────────────────────────────── */
+  [data-theme="dark"] input,
+  [data-theme="dark"] select,
+  [data-theme="dark"] textarea {
+    background: rgba(15,23,42,0.8) !important;
+    color: var(--text) !important;
+    border-color: rgba(255,255,255,0.1) !important;
+  }
+  [data-theme="dark"] input:focus,
+  [data-theme="dark"] select:focus,
+  [data-theme="dark"] textarea:focus {
+    border-color: #818CF8 !important;
+    box-shadow: 0 0 0 3px rgba(129,140,248,0.15) !important;
+    outline: none !important;
+  }
+  [data-theme="dark"] :is(input,select,textarea)::placeholder { color: var(--text-faint) !important; }
+
+  /* ── Buttons ──────────────────────────────────────────────────────── */
+  [data-theme="dark"] .btn-primary {
+    background: linear-gradient(135deg,#818CF8,#60B5FF) !important;
+    box-shadow: 0 4px 18px rgba(129,140,248,0.28) !important;
+    border: none !important;
+  }
+  [data-theme="dark"] .btn-primary:hover {
+    box-shadow: 0 6px 28px rgba(129,140,248,0.45) !important;
+    transform: translateY(-1px);
+    opacity: 1 !important;
+  }
+  [data-theme="dark"] .btn-outline {
+    color: #A5B4FC !important;
+    border-color: rgba(129,140,248,0.35) !important;
+  }
+  [data-theme="dark"] .btn-outline:hover {
+    background: rgba(129,140,248,0.12) !important;
+    border-color: #818CF8 !important;
+    color: #C7D2FE !important;
+  }
+  [data-theme="dark"] .btn-ghost { border-color: rgba(255,255,255,0.1) !important; color: var(--text-muted) !important; }
+  [data-theme="dark"] .btn-ghost:hover { border-color: #818CF8 !important; color: #A5B4FC !important; background: rgba(129,140,248,0.06) !important; }
+
+  /* ── Badges (color-coded) ─────────────────────────────────────────── */
+  [data-theme="dark"] .badge-violet { background: rgba(129,140,248,0.15) !important; color: #A5B4FC !important; }
+  [data-theme="dark"] .badge-green  { background: rgba(74,222,128,0.12) !important; color: #86EFAC !important; }
+  [data-theme="dark"] .badge-orange { background: rgba(251,191,36,0.12) !important; color: #FCD34D !important; }
+  [data-theme="dark"] .badge-cyan   { background: rgba(96,181,255,0.12) !important; color: #93C5FD !important; }
+  [data-theme="dark"] .badge-red    { background: rgba(248,113,113,0.12) !important; color: #FCA5A5 !important; }
+
+  /* ── Tags (skill pills) ────────────────────────────────────────────── */
+  [data-theme="dark"] .tag          { background: rgba(129,140,248,0.1) !important; color: #A5B4FC !important; border-color: rgba(129,140,248,0.2) !important; }
+  [data-theme="dark"] .tag-cyan     { background: rgba(96,181,255,0.1)  !important; color: #93C5FD !important; border-color: rgba(96,181,255,0.2) !important; }
+  [data-theme="dark"] .tag-green    { background: rgba(74,222,128,0.1)  !important; color: #86EFAC !important; border-color: rgba(74,222,128,0.2) !important; }
+  [data-theme="dark"] .tag-orange   { background: rgba(251,191,36,0.1)  !important; color: #FCD34D !important; border-color: rgba(251,191,36,0.2) !important; }
+
+  /* ── Google Auth Button ─────────────────────────────────────────────── */
+  [data-theme="dark"] .google-btn {
+    background: rgba(15,23,42,0.6) !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: var(--text) !important;
+  }
+  [data-theme="dark"] .google-btn:hover {
+    border-color: #818CF8 !important;
+    background: rgba(129,140,248,0.06) !important;
+  }
+
+  /* ── Sidebar links ──────────────────────────────────────────────────── */
+  [data-theme="dark"] .sidebar-link { color: var(--text-muted); }
+  [data-theme="dark"] .sidebar-link:hover  { background: rgba(255,255,255,0.04) !important; color: var(--text) !important; }
+  [data-theme="dark"] .sidebar-link.active { background: rgba(129,140,248,0.1) !important; color: #A5B4FC !important; }
+  [data-theme="dark"] .divider { background: rgba(255,255,255,0.06) !important; }
+
+  /* ── Section titles ──────────────────────────────────────────────────── */
+  [data-theme="dark"] .section-title { color: #F1F5F9 !important; }
+
+  /* ── Tables ──────────────────────────────────────────────────────────── */
+  [data-theme="dark"] table th { background: rgba(15,23,42,0.6) !important; color: #D1D9E6 !important; border-color: rgba(255,255,255,0.06) !important; }
+  [data-theme="dark"] table td { color: var(--text) !important; border-color: rgba(255,255,255,0.06) !important; }
+  [data-theme="dark"] table tr:hover td { background: rgba(129,140,248,0.04) !important; }
+
+  /* ── Tooltips ────────────────────────────────────────────────────────── */
+  [data-theme="dark"] .tooltip:hover::after { background: #1E293B !important; color: #F1F5F9 !important; border: 1px solid rgba(255,255,255,0.1); }
+
+  /* ── Scrollbar ──────────────────────────────────────────────────────── */
+  [data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08) !important; }
+  [data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15) !important; }
+  [data-theme="dark"] ::-webkit-scrollbar-track { background: transparent !important; }
+
+  /* ── Skeleton shimmer ───────────────────────────────────────────────── */
+  [data-theme="dark"] .skeleton { background: linear-gradient(90deg,#151B2E 25%,#1F2937 50%,#151B2E 75%) !important; background-size: 200% 100% !important; }
+  [data-theme="dark"] .skeleton, [data-theme="dark"] .match-ring { --border: #1F2937; }
+
+  /* ── Links ───────────────────────────────────────────────────────────── */
+  [data-theme="dark"] a:not(.btn-primary):not(.nav-link) { color: #818CF8; }
+  [data-theme="dark"] a:not(.btn-primary):not(.nav-link):hover { color: #A5B4FC; }
+
+  /* ── Dropdown menus ──────────────────────────────────────────────────── */
+  [data-theme="dark"] .dropdown,
+  [data-theme="dark"] [role="menu"] {
+    background: #151B2E !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55) !important;
+  }
+
+  /* ── Auth pages ──────────────────────────────────────────────────────── */
+  [data-theme="dark"] .auth-or { color: var(--text-faint) !important; }
+  [data-theme="dark"] .auth-or::before,
+  [data-theme="dark"] .auth-or::after { background: rgba(255,255,255,0.08) !important; }
+
+  /* ── Progress bar ────────────────────────────────────────────────────── */
+  [data-theme="dark"] .progress-bar { background: rgba(255,255,255,0.06) !important; }
+
+  /* ── Code blocks ─────────────────────────────────────────────────────── */
+  [data-theme="dark"] code,
+  [data-theme="dark"] pre { background: rgba(15,23,42,0.6) !important; color: #E2E8F0 !important; border: 1px solid rgba(255,255,255,0.08) !important; }
+
+  /* ── Horizontal rules ────────────────────────────────────────────────── */
+  [data-theme="dark"] hr { border-color: rgba(255,255,255,0.06) !important; }
+
+  /* ── Nav links active state ──────────────────────────────────────────── */
+  [data-theme="dark"] .nav-link { color: var(--text-soft) !important; }
+  [data-theme="dark"] .nav-link:hover { color: #A5B4FC !important; }
+
+
+  /* ── Dark theme: Form labels & helper text ─────────────────────────── */
+  [data-theme="dark"] label { color: var(--text-soft) !important; }
+  [data-theme="dark"] .helper-text,
+  [data-theme="dark"] .hint,
+  [data-theme="dark"] small { color: var(--text-muted) !important; }
+
+  /* ── Dark theme: Select option dropdowns ────────────────────────────── */
+  [data-theme="dark"] option {
+    background: #151B2E !important;
+    color: var(--text) !important;
+  }
+
+  /* ── Dark theme: Checkbox & Radio ───────────────────────────────────── */
+  [data-theme="dark"] input[type="checkbox"],
+  [data-theme="dark"] input[type="radio"] {
+    accent-color: #818CF8 !important;
+  }
+
+  /* ── Dark theme: Tab navigation ─────────────────────────────────────── */
+  [data-theme="dark"] .tab,
+  [data-theme="dark"] [role="tab"] {
+    color: var(--text-muted) !important;
+    border-bottom-color: transparent !important;
+  }
+  [data-theme="dark"] .tab.active,
+  [data-theme="dark"] .tab:hover,
+  [data-theme="dark"] [role="tab"][aria-selected="true"],
+  [data-theme="dark"] [role="tab"]:hover {
+    color: #A5B4FC !important;
+    border-bottom-color: #818CF8 !important;
+  }
+
+  /* ── Dark theme: All remaining white backgrounds ────────────────────── */
+  [data-theme="dark"] [style*="background: rgb(255"],
+  [data-theme="dark"] [style*="background-color: rgb(255"],
+  [data-theme="dark"] [style*="background: #fff"],
+  [data-theme="dark"] [style*="background-color: #fff"],
+  [data-theme="dark"] [style*="background: white"],
+  [data-theme="dark"] [style*="background-color: white"] {
+    background: var(--card) !important;
+    background-color: var(--card) !important;
+  }
+
+  /* ── Dark theme: All remaining light grey backgrounds ───────────────── */
+  [data-theme="dark"] [style*="background: #F9FAFB"],
+  [data-theme="dark"] [style*="background-color: #F9FAFB"],
+  [data-theme="dark"] [style*="background: #F3F4F6"],
+  [data-theme="dark"] [style*="background-color: #F3F4F6"],
+  [data-theme="dark"] [style*="background: #f0f4ff"],
+  [data-theme="dark"] [style*="background-color: #f0f4ff"],
+  [data-theme="dark"] [style*="background: #EEF2FF"],
+  [data-theme="dark"] [style*="background-color: #EEF2FF"],
+  [data-theme="dark"] [style*="background: #EDE9FE"],
+  [data-theme="dark"] [style*="background-color: #EDE9FE"],
+  [data-theme="dark"] [style*="background: #F5F3FF"],
+  [data-theme="dark"] [style*="background-color: #F5F3FF"] {
+    background: rgba(15,23,42,0.6) !important;
+    background-color: rgba(15,23,42,0.6) !important;
+  }
+
+  /* ── Dark theme: Dark text that should be light ─────────────────────── */
+  [data-theme="dark"] [style*="color: #1F2937"],
+  [data-theme="dark"] [style*="color: #111827"],
+  [data-theme="dark"] [style*="color: #374151"] {
+    color: var(--text) !important;
+  }
+  [data-theme="dark"] [style*="color: #4B5563"],
+  [data-theme="dark"] [style*="color: #6B7280"],
+  [data-theme="dark"] [style*="color: #64748B"] {
+    color: var(--text-soft) !important;
+  }
+  [data-theme="dark"] [style*="color: #9CA3AF"] {
+    color: var(--text-muted) !important;
+  }
+
+  /* ── Dark theme - border overrides for inline styles ────────────────── */
+  [data-theme="dark"] [style*="border: 1px solid #E5E7EB"],
+  [data-theme="dark"] [style*="border: 1px solid #e5e7eb"],
+  [data-theme="dark"] [style*="border: 1px solid #D1D5DB"],
+  [data-theme="dark"] [style*="border-color: #E5E7EB"],
+  [data-theme="dark"] [style*="border-color: #D1D5DB"],
+  [data-theme="dark"] [style*="border-bottom: 1px solid #E5E7EB"],
+  [data-theme="dark"] [style*="border-bottom: 1px solid #e5e7eb"] {
+    border-color: rgba(255,255,255,0.06) !important;
+  }
+
+  /* ── Dark theme: Ensure smooth page transitions ─────────────────────── */
+  [data-theme="dark"] * {
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     LIGHT THEME OVERRIDES
+     ══════════════════════════════════════════════════════════════════════ */
+  [data-theme="light"] input,
+  [data-theme="light"] select,
+  [data-theme="light"] textarea {
+    background: #FFFFFF !important;
+    color: #1F2937 !important;
+    border-color: #D1D5DB !important;
+  }
+  [data-theme="light"] input:focus,
+  [data-theme="light"] select:focus,
+  [data-theme="light"] textarea:focus {
+    border-color: #6366F1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.1) !important;
+  }
+  [data-theme="light"] .card {
+    background: #FFFFFF !important;
+    border: 1px solid #E5E7EB !important;
+    color: #1F2937 !important;
+  }
+  [data-theme="light"] h1,
+  [data-theme="light"] h2,
+  [data-theme="light"] h3,
+  [data-theme="light"] h4 { color: #111827 !important; }
+
+    /* ════════════════════════════════════════════════════════════════════
      RESPONSIVE SYSTEM — mobile-first, fluid, safe-area aware
      Breakpoints: 1280 · 1024 · 768 · 640 · 480 · 360
      ════════════════════════════════════════════════════════════════════ */
@@ -1624,12 +1654,12 @@ const Navbar = ({ page, setPage, user, setUser }) => {
           top: 0,
           zIndex: 50,
           background: scrolled
-            ? "rgba(255,255,255,0.95)"
-            : "rgba(255,255,255,0.98)",
+            ? (darkMode ? "rgba(11,17,32,0.92)" : "rgba(255,255,255,0.95)")
+            : (darkMode ? "rgba(11,17,32,0.98)" : "rgba(255,255,255,0.98)"),
           backdropFilter: "blur(16px)",
           borderBottom: `1px solid ${scrolled ? "var(--border)" : "transparent"}`,
           transition: "all 0.3s",
-          boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.06)" : "none",
+          boxShadow: scrolled ? (darkMode ? "0 2px 24px rgba(0,0,0,0.5)" : "0 2px 20px rgba(0,0,0,0.06)") : "none",
         }}
       >
         <div
@@ -2550,7 +2580,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               <span
                 style={{
                   background: "var(--tint-violet)",
-                  color: "#7C3AED",
+                  color: darkMode ? "#A5B4FC" : "#7C3AED",
                   fontSize: 11,
                   fontWeight: 700,
                   padding: "2px 8px",
@@ -2983,7 +3013,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             onClick={() => setPage("signup")}
             style={{
               background: "var(--card)",
-              color: "#7C3AED",
+              color: darkMode ? "#A5B4FC" : "#7C3AED",
               border: "none",
               padding: "14px 32px",
               borderRadius: 12,
@@ -3247,7 +3277,7 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
         <button
           style={{
             fontSize: 12,
-            color: "#7C3AED",
+            color: darkMode ? "#A5B4FC" : "#7C3AED",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -3466,7 +3496,7 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
                 fontSize: 15,
               }}
             >
-              <span style={{ color: "#7C3AED", fontWeight: 700 }}>
+              <span style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 700 }}>
                 {filtered.length}
               </span>{" "}
               jobs found
@@ -3664,7 +3694,7 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
                   {job.title}
                 </h1>
                 <div
-                  style={{ fontWeight: 600, color: "#7C3AED", marginTop: 4 }}
+                  style={{ fontWeight: 600, color: darkMode ? "#A5B4FC" : "#7C3AED", marginTop: 4 }}
                 >
                   {job.company}
                 </div>
@@ -3969,7 +3999,7 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
               }}
             >
               <span style={{ color: "var(--text-muted)" }}>Open positions</span>
-              <span style={{ fontWeight: 600, color: "#7C3AED" }}>
+              <span style={{ fontWeight: 600, color: darkMode ? "#A5B4FC" : "#7C3AED" }}>
                 {company?.jobs}
               </span>
             </div>
@@ -4090,7 +4120,7 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
               }}
             >
               Let us know why you&apos;re reporting{" "}
-              <strong style={{ color: "#7C3AED" }}>{job.title}</strong> at{" "}
+              <strong style={{ color: darkMode ? "#A5B4FC" : "#7C3AED" }}>{job.title}</strong> at{" "}
               {job.company}.
             </div>
             <div
@@ -4410,7 +4440,7 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
           <h2 style={{ fontWeight: 800, fontSize: 18, color: "var(--text)" }}>
             {job.title}
           </h2>
-          <p style={{ fontSize: 14, color: "#7C3AED", fontWeight: 600 }}>
+          <p style={{ fontSize: 14, color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600 }}>
             {job.company}
           </p>
           <div
@@ -4501,7 +4531,7 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#7C3AED",
+                  color: darkMode ? "#A5B4FC" : "#7C3AED",
                 }}
               >
                 <Icon name="user" size={16} />
@@ -4818,7 +4848,7 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                 marginBottom: 16,
               }}
             >
-              <Icon name="ai" size={18} style={{ color: "#7C3AED" }} />
+              <Icon name="ai" size={18} style={{ color: darkMode ? "#A5B4FC" : "#7C3AED" }} />
               <h3
                 style={{ fontWeight: 700, fontSize: 15, color: "var(--text)" }}
               >
@@ -5172,7 +5202,7 @@ const DashSection = ({
       label: "Applications",
       value: applications.length,
       icon: "send",
-      color: "#7C3AED",
+      color: darkMode ? "#A5B4FC" : "#7C3AED",
       bg: "var(--tint-violet)",
     },
     {
@@ -5260,7 +5290,7 @@ const DashSection = ({
           <div style={{ fontWeight: 700, color: "var(--text)" }}>
             Profile Strength
           </div>
-          <span style={{ fontWeight: 700, color: "#7C3AED", fontSize: 18 }}>
+          <span style={{ fontWeight: 700, color: darkMode ? "#A5B4FC" : "#7C3AED", fontSize: 18 }}>
             {completion}%
           </span>
         </div>
@@ -5318,7 +5348,7 @@ const DashSection = ({
             gap: 8,
           }}
         >
-          <Icon name="ai" size={16} style={{ color: "#7C3AED" }} /> AI Job
+          <Icon name="ai" size={16} style={{ color: darkMode ? "#A5B4FC" : "#7C3AED" }} /> AI Job
           Recommendations
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -5359,7 +5389,7 @@ const DashSection = ({
                   fontSize: 12,
                   fontWeight: 700,
                   background: "var(--tint-violet)",
-                  color: "#7C3AED",
+                  color: darkMode ? "#A5B4FC" : "#7C3AED",
                   padding: "3px 10px",
                   borderRadius: 999,
                 }}
@@ -5591,7 +5621,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
             >
               {form.name}
             </div>
-            <div style={{ color: "#7C3AED", fontSize: 14, fontWeight: 600 }}>
+            <div style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontSize: 14, fontWeight: 600 }}>
               {form.headline}
             </div>
             <div
@@ -5617,10 +5647,10 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                 borderRadius: 12,
               }}
             >
-              <div style={{ fontWeight: 800, fontSize: 22, color: "#7C3AED" }}>
+              <div style={{ fontWeight: 800, fontSize: 22, color: darkMode ? "#A5B4FC" : "#7C3AED" }}>
                 {Math.min(40 + skills.length * 3 + experience.length * 5, 100)}%
               </div>
-              <div style={{ fontSize: 11, color: "#7C3AED", fontWeight: 600 }}>
+              <div style={{ fontSize: 11, color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600 }}>
                 Profile Strength
               </div>
             </div>
@@ -5706,7 +5736,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  color: "#7C3AED",
+                  color: darkMode ? "#A5B4FC" : "#7C3AED",
                   marginLeft: 4,
                   padding: "0 0 0 2px",
                   fontSize: 12,
@@ -5803,7 +5833,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#7C3AED",
+                color: darkMode ? "#A5B4FC" : "#7C3AED",
                 flexShrink: 0,
               }}
             >
@@ -5813,7 +5843,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
               <div style={{ fontWeight: 700, color: "var(--text)" }}>
                 {e.role}
               </div>
-              <div style={{ fontSize: 13, color: "#7C3AED", fontWeight: 600 }}>
+              <div style={{ fontSize: 13, color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600 }}>
                 {e.company}
               </div>
               <div
@@ -5841,7 +5871,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                   style={{
                     background: "none",
                     border: "none",
-                    color: "#7C3AED",
+                    color: darkMode ? "#A5B4FC" : "#7C3AED",
                     cursor: "pointer",
                     fontSize: 12,
                     fontWeight: 600,
@@ -5996,7 +6026,7 @@ const ApplicationsSection = ({ applications, setPage, setJobFilter }) => {
                       style={{
                         fontWeight: 700,
                         fontSize: 16,
-                        color: "#7C3AED",
+                        color: darkMode ? "#A5B4FC" : "#7C3AED",
                         cursor: "pointer",
                       }}
                     >
@@ -7082,7 +7112,7 @@ const ChangePwModal = ({
                 width: 34,
                 height: 34,
                 borderRadius: 10,
-                background: "#EDE9FE",
+                background: darkMode ? "rgba(129,140,248,0.12)" : "#EDE9FE",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -7158,7 +7188,7 @@ const ChangePwModal = ({
                     display: "flex",
                     gap: 8,
                     fontSize: 12,
-                    color: "#166534",
+                    color: darkMode ? "#86EFAC" : "#166534",
                     marginBottom: i < 3 ? 6 : 0,
                   }}
                 >
@@ -8475,7 +8505,7 @@ const EmployerPage = ({
       label: "Jobs Posted",
       value: totalPosted,
       icon: "briefcase",
-      color: "#7C3AED",
+      color: darkMode ? "#A5B4FC" : "#7C3AED",
     },
     {
       label: "Active Jobs",
@@ -8612,7 +8642,7 @@ const EmployerPage = ({
                     style={{ display: "flex", gap: 16, alignItems: "center" }}
                   >
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontWeight: 700, color: "#7C3AED" }}>
+                      <div style={{ fontWeight: 700, color: darkMode ? "#A5B4FC" : "#7C3AED" }}>
                         {
                           employerApplicants.filter((a) => a.jobId === j.id)
                             .length
@@ -9211,7 +9241,7 @@ const EmployerPage = ({
                     style={{ display: "flex", gap: 12, alignItems: "center" }}
                   >
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontWeight: 700, color: "#7C3AED" }}>
+                      <div style={{ fontWeight: 700, color: darkMode ? "#A5B4FC" : "#7C3AED" }}>
                         {
                           employerApplicants.filter((a) => a.jobId === j.id)
                             .length
@@ -9390,7 +9420,7 @@ const EmployerPage = ({
                       <div
                         style={{
                           fontSize: 12,
-                          color: "#059669",
+                          color: darkMode ? "#4ADE80" : "#059669",
                           marginTop: 4,
                           fontWeight: 600,
                         }}
@@ -10180,7 +10210,7 @@ const OtpBox = ({
               style={{
                 background: "none",
                 border: "none",
-                color: "#7C3AED",
+                color: darkMode ? "#A5B4FC" : "#7C3AED",
                 fontWeight: 600,
                 cursor: "pointer",
               }}
@@ -10464,7 +10494,7 @@ const ProfileSetupJSX = ({
         <div style={{ fontWeight: 700, color: "var(--text)" }}>
           Profile Strength
         </div>
-        <span style={{ fontWeight: 700, color: "#7C3AED", fontSize: 18 }}>
+        <span style={{ fontWeight: 700, color: darkMode ? "#A5B4FC" : "#7C3AED", fontSize: 18 }}>
           {strength}%
         </span>
       </div>
@@ -10548,7 +10578,7 @@ const ProfileSetupJSX = ({
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                color: "#7C3AED",
+                color: darkMode ? "#A5B4FC" : "#7C3AED",
                 marginLeft: 4,
                 padding: 0,
                 fontSize: 12,
@@ -10635,7 +10665,7 @@ const ProfileSetupJSX = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#7C3AED",
+              color: darkMode ? "#A5B4FC" : "#7C3AED",
               flexShrink: 0,
             }}
           >
@@ -10651,7 +10681,7 @@ const ProfileSetupJSX = ({
             >
               {e.role}
             </div>
-            <div style={{ fontSize: 13, color: "#7C3AED", fontWeight: 600 }}>
+            <div style={{ fontSize: 13, color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600 }}>
               {e.company}
             </div>
             <div
@@ -11335,7 +11365,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
               style={{
                 background: "none",
                 border: "none",
-                color: "#7C3AED",
+                color: darkMode ? "#A5B4FC" : "#7C3AED",
                 fontWeight: 600,
                 cursor: "pointer",
                 fontSize: 13,
@@ -11390,7 +11420,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                 padding: "14px 16px",
                 margin: "20px 0",
                 fontSize: 13,
-                color: "#166534",
+                color: darkMode ? "#86EFAC" : "#166534",
                 textAlign: "left",
               }}
             >
@@ -11415,7 +11445,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             >
               Didn't get it? Check your spam folder, or{" "}
               <span
-                style={{ color: "#7C3AED", fontWeight: 600, cursor: "pointer" }}
+                style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600, cursor: "pointer" }}
                 onClick={() => {
                   setStep("forgot");
                   setError("");
@@ -11677,7 +11707,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                 style={{
                   background: "none",
                   border: "none",
-                  color: "#7C3AED",
+                  color: darkMode ? "#A5B4FC" : "#7C3AED",
                   fontWeight: 600,
                   cursor: "pointer",
                 }}
@@ -11864,7 +11894,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             <span
               style={{
                 fontSize: 13,
-                color: "#7C3AED",
+                color: darkMode ? "#A5B4FC" : "#7C3AED",
                 cursor: "pointer",
                 fontWeight: 600,
               }}
@@ -11889,7 +11919,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             <>
               Don't have an account?{" "}
               <span
-                style={{ color: "#7C3AED", fontWeight: 700, cursor: "pointer" }}
+                style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 700, cursor: "pointer" }}
                 onClick={() => setPage("signup")}
               >
                 Sign Up
@@ -11899,7 +11929,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             <>
               Already have an account?{" "}
               <span
-                style={{ color: "#7C3AED", fontWeight: 700, cursor: "pointer" }}
+                style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 700, cursor: "pointer" }}
                 onClick={() => setPage("login")}
               >
                 Log In
@@ -12274,7 +12304,7 @@ const ResourcesModal = ({ resource, onClose }) => {
               style={{
                 fontWeight: 700,
                 fontSize: 15,
-                color: "#7C3AED",
+                color: darkMode ? "#A5B4FC" : "#7C3AED",
                 marginBottom: 8,
               }}
             >
@@ -12292,7 +12322,7 @@ const ResourcesModal = ({ resource, onClose }) => {
                   marginBottom: 6,
                 }}
               >
-                <span style={{ color: "#7C3AED", fontWeight: 700 }}>•</span>
+                <span style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 700 }}>•</span>
                 <span>{p}</span>
               </div>
             ))}
@@ -12401,7 +12431,7 @@ const ResourcesPage = () => {
                 marginTop: 16,
                 background: "none",
                 border: "none",
-                color: "#7C3AED",
+                color: darkMode ? "#A5B4FC" : "#7C3AED",
                 fontWeight: 700,
                 fontSize: 13,
                 cursor: "pointer",
