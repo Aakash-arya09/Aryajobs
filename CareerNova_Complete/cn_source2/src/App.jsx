@@ -842,76 +842,131 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+
+  /* ══════════════════════════════════════════════════════════
+     DARK-FIRST DESIGN SYSTEM
+     ══════════════════════════════════════════════════════════ */
   :root {
-    --primary: #0F172A;
-    --violet: #6366F1;
-    --cyan: #60B5FF;
-    --bg: #F8FAFC;
-    --dark: #080F1E;
-    --card: #ffffff;
-    --success: #10B981;
-    --warning: #F59E0B;
-    --danger: #EF4444;
-    --text: #1F2937;
-    --text-strong: #374151;
-    --text-soft: #4B5563;
-    --text-muted: #6B7280;
-    --text-faint: #9CA3AF;
-    --border: #E5E7EB;
-    --border-soft: #F3F4F6;
-    --tint-violet: #EDE9FE;
-    --tint-green: #D1FAE5;
-    --tint-amber: #FEF3C7;
-    --tint-cyan: #ECFEFF;
-    --tint-red: #FEE2E2;
-    --green: #059669;
-    --amber: #D97706;
-    --teal: #0891B2;
-    --red: #DC2626;
-    --grad: linear-gradient(135deg, #0F172A, #6366F1, #3B82F6);
-    --grad-btn: linear-gradient(135deg, #6366F1, #3B82F6);
-    --auth-bg: linear-gradient(135deg, #F5F3FF, #ECFEFF);
-    --shadow: 0 4px 24px rgba(21,27,61,0.08);
-    --shadow-lg: 0 8px 40px rgba(21,27,61,0.14);
+    /* Core palette — deep dark */
+    --bg:            #080C14;
+    --bg-2:          #0D1117;
+    --bg-3:          #111827;
+    --card:          #111827;
+    --card-2:        #1A2234;
+    --card-hover:    #1E2A40;
+
+    /* Text */
+    --text:          #F0F4FF;
+    --text-strong:   #FFFFFF;
+    --text-soft:     #B8C4E0;
+    --text-muted:    #8896B3;
+    --text-faint:    #4B5A78;
+    --primary:       #F0F4FF;
+
+    /* Accent — electric indigo + cyan */
+    --violet:        #818CF8;
+    --violet-2:      #6366F1;
+    --cyan:          #22D3EE;
+    --cyan-2:        #06B6D4;
+
+    /* Borders */
+    --border:        #1E2D45;
+    --border-soft:   #172035;
+    --border-bright: #2D3F60;
+
+    /* Status */
+    --green:         #34D399;
+    --amber:         #FBBF24;
+    --red:           #F87171;
+    --teal:          #22D3EE;
+    --success:       #10B981;
+    --warning:       #F59E0B;
+    --danger:        #EF4444;
+
+    /* Tints — dark translucent chips */
+    --tint-violet:   rgba(99,102,241,0.15);
+    --tint-green:    rgba(52,211,153,0.12);
+    --tint-amber:    rgba(251,191,36,0.12);
+    --tint-cyan:     rgba(34,211,238,0.12);
+    --tint-red:      rgba(248,113,113,0.12);
+
+    /* Gradients */
+    --grad:          linear-gradient(135deg, #0D1117, #1a1f35, #0D1117);
+    --grad-btn:      linear-gradient(135deg, #6366F1, #22D3EE);
+    --grad-hero:     linear-gradient(160deg, #080C14 0%, #0F172A 50%, #0D1B2A 100%);
+    --grad-card:     linear-gradient(145deg, #111827, #1A2234);
+    --auth-bg:       #080C14;
+
+    /* Glow effects */
+    --glow-violet:   0 0 40px rgba(99,102,241,0.25);
+    --glow-cyan:     0 0 40px rgba(34,211,238,0.2);
+
+    /* Shadows */
+    --shadow:        0 4px 24px rgba(0,0,0,0.6);
+    --shadow-lg:     0 8px 48px rgba(0,0,0,0.8);
+    --shadow-card:   0 2px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
   }
-  [data-theme="dark"] {
-    --primary: #E5E7EB;
-    --bg: #0B1120;
-    --card: #151B2E;
-    --text: #F1F5F9;
-    --text-strong: #FFFFFF;
-    --text-soft: #D1D9E6;
-    --text-muted: #A8B3CF;
-    --text-faint: #6B7A99;
-    --border: #1F2937;
-    --border-soft: #1C243C;
-    --tint-violet: #2D2055;
-    --tint-green: #0F3129;
-    --tint-amber: #332919;
-    --tint-cyan: #0D2F35;
-    --tint-red: #3A1D24;
-    --violet: #818CF8;
-    --green: #4ADE80;
-    --amber: #FBBF24;
-    --teal: #60B5FF;
-    --red: #F87171;
-    --grad-btn: linear-gradient(135deg,#818CF8,#60B5FF);
-    --auth-bg: linear-gradient(135deg, #171031, #0B1120);
-    --shadow: 0 4px 24px rgba(0,0,0,0.5);
-    --shadow-lg: 0 8px 40px rgba(0,0,0,0.65);
+
+  /* Light mode override — still supported via toggle */
+  [data-theme="light"] {
+    --bg:            #F8FAFC;
+    --bg-2:          #F1F5F9;
+    --bg-3:          #E5E7EB;
+    --card:          #FFFFFF;
+    --card-2:        #F8FAFC;
+    --card-hover:    #F3F4F6;
+    --text:          #1F2937;
+    --text-strong:   #111827;
+    --text-soft:     #374151;
+    --text-muted:    #6B7280;
+    --text-faint:    #9CA3AF;
+    --primary:       #0F172A;
+    --violet:        #6366F1;
+    --violet-2:      #4F46E5;
+    --border:        #E5E7EB;
+    --border-soft:   #F3F4F6;
+    --border-bright: #D1D5DB;
+    --tint-violet:   #EDE9FE;
+    --tint-green:    #D1FAE5;
+    --tint-amber:    #FEF3C7;
+    --tint-cyan:     #ECFEFF;
+    --tint-red:      #FEE2E2;
+    --green:         #059669;
+    --amber:         #D97706;
+    --red:           #DC2626;
+    --shadow:        0 4px 24px rgba(21,27,61,0.08);
+    --shadow-lg:     0 8px 40px rgba(21,27,61,0.14);
+    --shadow-card:   0 2px 12px rgba(21,27,61,0.06);
+    --grad-hero:     linear-gradient(160deg,#F5F3FF 0%,#ECFEFF 100%);
+    --auth-bg:       linear-gradient(135deg,#F5F3FF,#ECFEFF);
+    --glow-violet:   none;
+    --glow-cyan:     none;
   }
+
+  /* ── Global body ─────────────────────────────────────────── */
+  body { background: var(--bg); min-height: 100vh; }
+
+  /* ── Glass ───────────────────────────────────────────────── */
   .glass {
+    background: rgba(17,24,39,0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  [data-theme="light"] .glass {
     background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,0.6);
   }
 
+  /* ── Gradient text ───────────────────────────────────────── */
   .grad-text {
     background: var(--grad-btn);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* ── Buttons ─────────────────────────────────────────────── */
   .btn-primary {
     background: var(--grad-btn);
     color: white;
@@ -926,8 +981,10 @@ const styles = `
     align-items: center;
     gap: 8px;
     white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(99,102,241,0.35);
   }
-  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,58,237,0.35); }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(99,102,241,0.5); }
+
   .btn-outline {
     background: transparent;
     color: var(--violet);
@@ -943,9 +1000,10 @@ const styles = `
     gap: 8px;
     white-space: nowrap;
   }
-  .btn-outline:hover { background: var(--violet); color: white; transform: translateY(-1px); }
+  .btn-outline:hover { background: var(--violet); color: white; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(99,102,241,0.35); }
+
   .btn-ghost {
-    background: transparent;
+    background: rgba(255,255,255,0.04);
     color: var(--text-muted);
     border: 1.5px solid var(--border);
     padding: 9px 16px;
@@ -958,20 +1016,57 @@ const styles = `
     align-items: center;
     gap: 8px;
   }
-  .btn-ghost:hover { border-color: var(--violet); color: var(--violet); }
-  .card { background: var(--card); border-radius: 16px; box-shadow: var(--shadow); border: 1px solid var(--border); }
-  .tag { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; background: #EDE9FE; color: var(--violet); border: 1px solid #DDD6FE; }
-  .tag-cyan { background: #ECFEFF; color: #0891B2; border-color: #A5F3FC; }
-  .tag-green { background: #D1FAE5; color: #059669; border-color: #6EE7B7; }
-  .tag-orange { background: #FEF3C7; color: #D97706; border-color: #FCD34D; }
+  .btn-ghost:hover { border-color: var(--violet); color: var(--violet); background: var(--tint-violet); }
+  [data-theme="light"] .btn-ghost { background: transparent; }
+
+  /* ── Card ─────────────────────────────────────────────────── */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  /* Subtle top-border glow on cards */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(145deg, rgba(99,102,241,0.15), transparent 60%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  [data-theme="light"] .card::before { display: none; }
+
+  /* ── Tags & Badges ────────────────────────────────────────── */
+  .tag {
+    display: inline-flex; align-items: center;
+    padding: 4px 12px; border-radius: 999px;
+    font-size: 12px; font-weight: 500;
+    background: var(--tint-violet); color: var(--violet);
+    border: 1px solid rgba(99,102,241,0.25);
+  }
+  .tag-cyan   { background: var(--tint-cyan);  color: var(--cyan);  border-color: rgba(34,211,238,0.25); }
+  .tag-green  { background: var(--tint-green); color: var(--green); border-color: rgba(52,211,153,0.25); }
+  .tag-orange { background: var(--tint-amber); color: var(--amber); border-color: rgba(251,191,36,0.25); }
+
   .badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
-  .badge-violet { background: #EDE9FE; color: var(--violet); }
-  .badge-green { background: #D1FAE5; color: #059669; }
-  .badge-orange { background: #FEF3C7; color: #D97706; }
-  .badge-cyan { background: #ECFEFF; color: #0891B2; }
-  .badge-red { background: #FEE2E2; color: #DC2626; }
+  .badge-violet { background: var(--tint-violet); color: var(--violet); }
+  .badge-green  { background: var(--tint-green);  color: var(--green); }
+  .badge-orange { background: var(--tint-amber);  color: var(--amber); }
+  .badge-cyan   { background: var(--tint-cyan);   color: var(--cyan); }
+  .badge-red    { background: var(--tint-red);    color: var(--red); }
+
+  /* ── Progress ────────────────────────────────────────────── */
   .progress-bar { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; }
-  .progress-fill { height: 100%; background: var(--grad-btn); border-radius: 999px; transition: width 0.6s ease; }
+  .progress-fill { height: 100%; background: var(--grad-btn); border-radius: 999px; transition: width 0.6s ease; box-shadow: 0 0 8px rgba(99,102,241,0.5); }
+
+  /* ── Inputs ───────────────────────────────────────────────── */
   input, select, textarea {
     width: 100%;
     padding: 10px 14px;
@@ -980,571 +1075,245 @@ const styles = `
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: var(--text);
-    background: var(--card);
-    transition: border 0.2s;
+    background: var(--bg-3);
+    transition: border 0.2s, box-shadow 0.2s;
     outline: none;
   }
-  input:focus, select:focus, textarea:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(124,58,237,0.1); }
-  label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 5px; display: block; }
+  input::placeholder, textarea::placeholder { color: var(--text-faint); }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--violet);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+    background: var(--bg-3);
+  }
+  [data-theme="light"] input, [data-theme="light"] select, [data-theme="light"] textarea { background: #fff; }
+  [data-theme="light"] input:focus, [data-theme="light"] select:focus, [data-theme="light"] textarea:focus { background: #fff; }
+
+  label { font-size: 13px; font-weight: 600; color: var(--text-soft); margin-bottom: 5px; display: block; }
   .form-group { display: flex; flex-direction: column; gap: 5px; }
+
+  /* ── Auth buttons ─────────────────────────────────────────── */
   .google-btn {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
     padding: 12px;
     border-radius: 12px;
-    border: 1.5px solid var(--border);
-    background: var(--card);
+    border: 1.5px solid var(--border-bright);
+    background: var(--card-2);
     color: var(--text);
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
+    font-weight: 600; font-size: 14px;
+    cursor: pointer; transition: all 0.2s;
   }
-  .google-btn:hover { border-color: #7C3AED; box-shadow: var(--shadow); }
+  .google-btn:hover { border-color: var(--violet); box-shadow: var(--glow-violet); background: var(--card-hover); }
   .google-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
   .auth-or { display: flex; align-items: center; gap: 12px; margin: 4px 0 16px; color: var(--text-faint); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
   .auth-or::before, .auth-or::after { content: ""; flex: 1; height: 1px; background: var(--border); }
   .otp-box-input { min-height: unset !important; }
   .divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+  /* ── Sidebar ─────────────────────────────────────────────── */
   .sidebar-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 11px 14px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.15s;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 14px; border-radius: 12px;
+    font-size: 14px; font-weight: 500;
+    color: var(--text-muted); cursor: pointer;
+    transition: all 0.15s; border: none; background: none; width: 100%; text-align: left;
   }
   .sidebar-link:hover { background: var(--border-soft); color: var(--text); }
-  .sidebar-link.active { background: var(--tint-violet); color: var(--violet); font-weight: 600; }
-  .section-title { font-size: 28px; font-weight: 800; color: var(--primary); }
-  .section-sub { font-size: 16px; color: var(--text-muted); margin-top: 8px; }
+  .sidebar-link.active { background: var(--tint-violet); color: var(--violet); font-weight: 600; border: 1px solid rgba(99,102,241,0.2); }
+
+  /* ── Typography ───────────────────────────────────────────── */
+  .section-title { font-size: 28px; font-weight: 800; color: var(--text-strong); }
+  .section-sub   { font-size: 16px; color: var(--text-muted); margin-top: 8px; }
+
+  /* ── Animations ───────────────────────────────────────────── */
   .animate-in { animation: fadeUp 0.4s ease both; }
   @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-  .job-card { transition: all 0.25s; }
-  .job-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-  .company-card { transition: all 0.25s; }
-  .company-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .match-ring { background: conic-gradient(var(--violet) var(--pct, 0%), var(--border) var(--pct, 0%)); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .nav-link { font-size: 14px; font-weight: 500; color: var(--text-soft); cursor: pointer; padding: 8px 4px; border: none; background: none; transition: color 0.15s; white-space: nowrap; }
-  .nav-link:hover { color: var(--violet); }
-  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 40; backdrop-filter: blur(2px); }
-  /* ── Utilities ─────────────────────────────────────────────────────── */
-  .show-mobile { display: none  !important; }
-  .hide-mobile { display: flex; }
+  @keyframes authFadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+  @keyframes twinkle { 0%,100%{opacity:.2} 50%{opacity:1} }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
 
-  /* ≥641px: desktop/tablet — sidebar always visible, tab bar hidden */
+  /* ── Cards hover ──────────────────────────────────────────── */
+  .job-card { transition: all 0.25s; }
+  .job-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(99,102,241,0.2); }
+  .company-card { transition: all 0.25s; }
+  .company-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(34,211,238,0.15); }
+
+  /* ── Match ring ───────────────────────────────────────────── */
+  .match-ring { background: conic-gradient(var(--violet) var(--pct, 0%), var(--border) var(--pct, 0%)); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+  /* ── Nav ──────────────────────────────────────────────────── */
+  .nav-link { font-size: 14px; font-weight: 500; color: var(--text-muted); cursor: pointer; padding: 8px 4px; border: none; background: none; transition: color 0.15s; white-space: nowrap; }
+  .nav-link:hover { color: var(--violet); }
+
+  /* ── Overlay ──────────────────────────────────────────────── */
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 40; backdrop-filter: blur(4px); }
+
+  /* ── Skeleton ─────────────────────────────────────────────── */
+  .skeleton {
+    background: linear-gradient(90deg, var(--bg-3) 25%, var(--card-2) 50%, var(--bg-3) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+  }
+
+  /* ── Stars (hero bg) ──────────────────────────────────────── */
+  .star-bg { position:absolute; width:2px; height:2px; background:rgba(255,255,255,0.6); border-radius:50%; animation:twinkle 3s infinite; }
+
+  /* ── Utilities ────────────────────────────────────────────── */
+  .show-mobile { display: none !important; }
+  .hide-mobile { display: flex; }
+  .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+
+  /* ── Scrollbar ────────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--violet); }
+
+  /* ── Tooltip ──────────────────────────────────────────────── */
+  .tooltip { position: relative; }
+  .tooltip:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+    background: var(--card-2); color: var(--text); border: 1px solid var(--border);
+    font-size: 11px; padding: 4px 10px; border-radius: 6px;
+    white-space: nowrap; z-index: 200; pointer-events: none;
+    box-shadow: var(--shadow);
+  }
+
+  /* ≥641px: desktop/tablet */
   @media (min-width: 641px) {
     .show-mobile { display: none !important; }
     .hide-mobile { display: flex !important; }
   }
 
-  /* ── Scrollbar ──────────────────────────────────────────────────────── */
-  ::-webkit-scrollbar { width: 5px; height: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--violet); }
-
-  /* ── Tooltip ────────────────────────────────────────────────────────── */
-  .tooltip { position: relative; }
-  .tooltip:hover::after {
-    content: attr(data-tip);
-    position: absolute;
-    bottom: calc(100% + 6px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: #1F2937;
-    color: white;
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 6px;
-    white-space: nowrap;
-    z-index: 200;
-    pointer-events: none;
+  /* ══════════════════════════════════════════════════════════
+     AUTH PAGES — split screen
+     ══════════════════════════════════════════════════════════ */
+  .auth-shell { min-height: calc(100vh - 64px); display: flex; background: var(--bg); }
+  .auth-brand {
+    flex: 1 1 44%; position: relative;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 60px 56px;
+    background: linear-gradient(160deg, #080C14 0%, #0F172A 40%, #0D1B2A 100%);
+    color: #fff; overflow: hidden;
   }
-
-  /* ── Skeleton shimmer ───────────────────────────────────────────────── */
-  .skeleton {
-    background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    border-radius: 8px;
+  .auth-brand::before {
+    content: ""; position: absolute; width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.2), transparent 70%);
+    top: -180px; right: -160px;
   }
-  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-  .star-bg { position:absolute;width:3px;height:3px;background:white;border-radius:50%;animation:twinkle 3s infinite; }
-  @keyframes twinkle { 0%,100%{opacity:.2} 50%{opacity:1} }
-
-  /* ── Grid system ────────────────────────────────────────────────────── */
-  .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-
-  /* ══════════════════════════════════════════════════════════════════════
-     DARK THEME — Complete Professional Redesign
-     ══════════════════════════════════════════════════════════════════════ */
-
-  /* ── Base ──────────────────────────────────────────────────────────── */
-  [data-theme="dark"] body { background: var(--bg); color: var(--text); }
-
-  /* ── Glass effect ─────────────────────────────────────────────────── */
-  [data-theme="dark"] .glass {
-    background: rgba(21,27,46,0.65) !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-    backdrop-filter: blur(16px) !important;
+  .auth-brand::after {
+    content: ""; position: absolute; width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(34,211,238,0.15), transparent 70%);
+    bottom: -160px; left: -100px;
   }
-
-  /* ── Overlay ──────────────────────────────────────────────────────── */
-  [data-theme="dark"] .overlay { background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
-
-  /* ── Cards ────────────────────────────────────────────────────────── */
-  [data-theme="dark"] .card {
-    background: var(--card) !important;
-    border: 1px solid rgba(255,255,255,0.06) !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.35) !important;
+  .auth-brand-inner { position: relative; z-index: 1; max-width: 420px; }
+  .auth-brand-feature { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+  .auth-check {
+    flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(34,211,238,0.15); color: var(--cyan);
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
   }
-  [data-theme="dark"] .card:hover,
-  [data-theme="dark"] .job-card:hover {
-    border-color: rgba(129,140,248,0.18) !important;
-    box-shadow: 0 8px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(129,140,248,0.08) !important;
+  .auth-form-side { flex: 1 1 56%; display: flex; align-items: center; justify-content: center; padding: 40px 24px; background: var(--bg); }
+  .auth-card {
+    width: 100%; max-width: 424px;
+    background: var(--card); border-radius: 20px;
+    border: 1px solid var(--border-bright);
+    box-shadow: var(--shadow-lg), var(--glow-violet);
+    padding: 40px 36px; animation: authFadeUp 0.45s ease;
   }
+  .field-icon-wrap { position: relative; }
+  .field-icon-wrap > span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); display: flex; pointer-events: none; }
 
-  /* ── Inputs / Select / Textarea ───────────────────────────────────── */
-  [data-theme="dark"] input,
-  [data-theme="dark"] select,
-  [data-theme="dark"] textarea {
-    background: rgba(15,23,42,0.8) !important;
-    color: var(--text) !important;
-    border-color: rgba(255,255,255,0.1) !important;
-  }
-  [data-theme="dark"] input:focus,
-  [data-theme="dark"] select:focus,
-  [data-theme="dark"] textarea:focus {
-    border-color: #818CF8 !important;
-    box-shadow: 0 0 0 3px rgba(129,140,248,0.15) !important;
-    outline: none !important;
-  }
-  [data-theme="dark"] :is(input,select,textarea)::placeholder { color: var(--text-faint) !important; }
-
-  /* ── Buttons ──────────────────────────────────────────────────────── */
-  [data-theme="dark"] .btn-primary {
-    background: linear-gradient(135deg,#818CF8,#60B5FF) !important;
-    box-shadow: 0 4px 18px rgba(129,140,248,0.28) !important;
-    border: none !important;
-  }
-  [data-theme="dark"] .btn-primary:hover {
-    box-shadow: 0 6px 28px rgba(129,140,248,0.45) !important;
-    transform: translateY(-1px);
-    opacity: 1 !important;
-  }
-  [data-theme="dark"] .btn-outline {
-    color: #A5B4FC !important;
-    border-color: rgba(129,140,248,0.35) !important;
-  }
-  [data-theme="dark"] .btn-outline:hover {
-    background: rgba(129,140,248,0.12) !important;
-    border-color: #818CF8 !important;
-    color: #C7D2FE !important;
-  }
-  [data-theme="dark"] .btn-ghost { border-color: rgba(255,255,255,0.1) !important; color: var(--text-muted) !important; }
-  [data-theme="dark"] .btn-ghost:hover { border-color: #818CF8 !important; color: #A5B4FC !important; background: rgba(129,140,248,0.06) !important; }
-
-  /* ── Badges (color-coded) ─────────────────────────────────────────── */
-  [data-theme="dark"] .badge-violet { background: rgba(129,140,248,0.15) !important; color: #A5B4FC !important; }
-  [data-theme="dark"] .badge-green  { background: rgba(74,222,128,0.12) !important; color: #86EFAC !important; }
-  [data-theme="dark"] .badge-orange { background: rgba(251,191,36,0.12) !important; color: #FCD34D !important; }
-  [data-theme="dark"] .badge-cyan   { background: rgba(96,181,255,0.12) !important; color: #93C5FD !important; }
-  [data-theme="dark"] .badge-red    { background: rgba(248,113,113,0.12) !important; color: #FCA5A5 !important; }
-
-  /* ── Tags (skill pills) ────────────────────────────────────────────── */
-  [data-theme="dark"] .tag          { background: rgba(129,140,248,0.1) !important; color: #A5B4FC !important; border-color: rgba(129,140,248,0.2) !important; }
-  [data-theme="dark"] .tag-cyan     { background: rgba(96,181,255,0.1)  !important; color: #93C5FD !important; border-color: rgba(96,181,255,0.2) !important; }
-  [data-theme="dark"] .tag-green    { background: rgba(74,222,128,0.1)  !important; color: #86EFAC !important; border-color: rgba(74,222,128,0.2) !important; }
-  [data-theme="dark"] .tag-orange   { background: rgba(251,191,36,0.1)  !important; color: #FCD34D !important; border-color: rgba(251,191,36,0.2) !important; }
-
-  /* ── Google Auth Button ─────────────────────────────────────────────── */
-  [data-theme="dark"] .google-btn {
-    background: rgba(15,23,42,0.6) !important;
-    border-color: rgba(255,255,255,0.1) !important;
-    color: var(--text) !important;
-  }
-  [data-theme="dark"] .google-btn:hover {
-    border-color: #818CF8 !important;
-    background: rgba(129,140,248,0.06) !important;
-  }
-
-  /* ── Sidebar links ──────────────────────────────────────────────────── */
-  [data-theme="dark"] .sidebar-link { color: var(--text-muted); }
-  [data-theme="dark"] .sidebar-link:hover  { background: rgba(255,255,255,0.04) !important; color: var(--text) !important; }
-  [data-theme="dark"] .sidebar-link.active { background: rgba(129,140,248,0.1) !important; color: #A5B4FC !important; }
-  [data-theme="dark"] .divider { background: rgba(255,255,255,0.06) !important; }
-
-  /* ── Section titles ──────────────────────────────────────────────────── */
-  [data-theme="dark"] .section-title { color: #F1F5F9 !important; }
-
-  /* ── Tables ──────────────────────────────────────────────────────────── */
-  [data-theme="dark"] table th { background: rgba(15,23,42,0.6) !important; color: #D1D9E6 !important; border-color: rgba(255,255,255,0.06) !important; }
-  [data-theme="dark"] table td { color: var(--text) !important; border-color: rgba(255,255,255,0.06) !important; }
-  [data-theme="dark"] table tr:hover td { background: rgba(129,140,248,0.04) !important; }
-
-  /* ── Tooltips ────────────────────────────────────────────────────────── */
-  [data-theme="dark"] .tooltip:hover::after { background: #1E293B !important; color: #F1F5F9 !important; border: 1px solid rgba(255,255,255,0.1); }
-
-  /* ── Scrollbar ──────────────────────────────────────────────────────── */
-  [data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08) !important; }
-  [data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15) !important; }
-  [data-theme="dark"] ::-webkit-scrollbar-track { background: transparent !important; }
-
-  /* ── Skeleton shimmer ───────────────────────────────────────────────── */
-  [data-theme="dark"] .skeleton { background: linear-gradient(90deg,#151B2E 25%,#1F2937 50%,#151B2E 75%) !important; background-size: 200% 100% !important; }
-  [data-theme="dark"] .skeleton, [data-theme="dark"] .match-ring { --border: #1F2937; }
-
-  /* ── Links ───────────────────────────────────────────────────────────── */
-  [data-theme="dark"] a:not(.btn-primary):not(.nav-link) { color: #818CF8; }
-  [data-theme="dark"] a:not(.btn-primary):not(.nav-link):hover { color: #A5B4FC; }
-
-  /* ── Dropdown menus ──────────────────────────────────────────────────── */
-  [data-theme="dark"] .dropdown,
-  [data-theme="dark"] [role="menu"] {
-    background: #151B2E !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.55) !important;
-  }
-
-  /* ── Auth pages ──────────────────────────────────────────────────────── */
-  [data-theme="dark"] .auth-or { color: var(--text-faint) !important; }
-  [data-theme="dark"] .auth-or::before,
-  [data-theme="dark"] .auth-or::after { background: rgba(255,255,255,0.08) !important; }
-
-  /* ── Progress bar ────────────────────────────────────────────────────── */
-  [data-theme="dark"] .progress-bar { background: rgba(255,255,255,0.06) !important; }
-
-  /* ── Code blocks ─────────────────────────────────────────────────────── */
-  [data-theme="dark"] code,
-  [data-theme="dark"] pre { background: rgba(15,23,42,0.6) !important; color: #E2E8F0 !important; border: 1px solid rgba(255,255,255,0.08) !important; }
-
-  /* ── Horizontal rules ────────────────────────────────────────────────── */
-  [data-theme="dark"] hr { border-color: rgba(255,255,255,0.06) !important; }
-
-  /* ── Nav links active state ──────────────────────────────────────────── */
-  [data-theme="dark"] .nav-link { color: var(--text-soft) !important; }
-  [data-theme="dark"] .nav-link:hover { color: #A5B4FC !important; }
-
-
-  /* ── Dark theme: Form labels & helper text ─────────────────────────── */
-  [data-theme="dark"] label { color: var(--text-soft) !important; }
-  [data-theme="dark"] .helper-text,
-  [data-theme="dark"] .hint,
-  [data-theme="dark"] small { color: var(--text-muted) !important; }
-
-  /* ── Dark theme: Select option dropdowns ────────────────────────────── */
-  [data-theme="dark"] option {
-    background: #151B2E !important;
-    color: var(--text) !important;
-  }
-
-  /* ── Dark theme: Checkbox & Radio ───────────────────────────────────── */
-  [data-theme="dark"] input[type="checkbox"],
-  [data-theme="dark"] input[type="radio"] {
-    accent-color: #818CF8 !important;
-  }
-
-  /* ── Dark theme: Tab navigation ─────────────────────────────────────── */
-  [data-theme="dark"] .tab,
-  [data-theme="dark"] [role="tab"] {
-    color: var(--text-muted) !important;
-    border-bottom-color: transparent !important;
-  }
-  [data-theme="dark"] .tab.active,
-  [data-theme="dark"] .tab:hover,
-  [data-theme="dark"] [role="tab"][aria-selected="true"],
-  [data-theme="dark"] [role="tab"]:hover {
-    color: #A5B4FC !important;
-    border-bottom-color: #818CF8 !important;
-  }
-
-  /* ── Dark theme: All remaining white backgrounds ────────────────────── */
-  [data-theme="dark"] [style*="background: rgb(255"],
-  [data-theme="dark"] [style*="background-color: rgb(255"],
-  [data-theme="dark"] [style*="background: #fff"],
-  [data-theme="dark"] [style*="background-color: #fff"],
-  [data-theme="dark"] [style*="background: white"],
-  [data-theme="dark"] [style*="background-color: white"] {
-    background: var(--card) !important;
-    background-color: var(--card) !important;
-  }
-
-  /* ── Dark theme: All remaining light grey backgrounds ───────────────── */
-  [data-theme="dark"] [style*="background: #F9FAFB"],
-  [data-theme="dark"] [style*="background-color: #F9FAFB"],
-  [data-theme="dark"] [style*="background: #F3F4F6"],
-  [data-theme="dark"] [style*="background-color: #F3F4F6"],
-  [data-theme="dark"] [style*="background: #f0f4ff"],
-  [data-theme="dark"] [style*="background-color: #f0f4ff"],
-  [data-theme="dark"] [style*="background: #EEF2FF"],
-  [data-theme="dark"] [style*="background-color: #EEF2FF"],
-  [data-theme="dark"] [style*="background: #EDE9FE"],
-  [data-theme="dark"] [style*="background-color: #EDE9FE"],
-  [data-theme="dark"] [style*="background: #F5F3FF"],
-  [data-theme="dark"] [style*="background-color: #F5F3FF"] {
-    background: rgba(15,23,42,0.6) !important;
-    background-color: rgba(15,23,42,0.6) !important;
-  }
-
-  /* ── Dark theme: Dark text that should be light ─────────────────────── */
-  [data-theme="dark"] [style*="color: #1F2937"],
-  [data-theme="dark"] [style*="color: #111827"],
-  [data-theme="dark"] [style*="color: #374151"] {
-    color: var(--text) !important;
-  }
-  [data-theme="dark"] [style*="color: #4B5563"],
-  [data-theme="dark"] [style*="color: #6B7280"],
-  [data-theme="dark"] [style*="color: #64748B"] {
-    color: var(--text-soft) !important;
-  }
-  [data-theme="dark"] [style*="color: #9CA3AF"] {
-    color: var(--text-muted) !important;
-  }
-
-  /* ── Dark theme - border overrides for inline styles ────────────────── */
-  [data-theme="dark"] [style*="border: 1px solid #E5E7EB"],
-  [data-theme="dark"] [style*="border: 1px solid #e5e7eb"],
-  [data-theme="dark"] [style*="border: 1px solid #D1D5DB"],
-  [data-theme="dark"] [style*="border-color: #E5E7EB"],
-  [data-theme="dark"] [style*="border-color: #D1D5DB"],
-  [data-theme="dark"] [style*="border-bottom: 1px solid #E5E7EB"],
-  [data-theme="dark"] [style*="border-bottom: 1px solid #e5e7eb"] {
-    border-color: rgba(255,255,255,0.06) !important;
-  }
-
-  /* ── Dark theme: Ensure smooth page transitions ─────────────────────── */
-  [data-theme="dark"] * {
-    transition-property: background-color, color, border-color;
-    transition-duration: 0.15s;
-    transition-timing-function: ease;
-  }
-
-  /* ══════════════════════════════════════════════════════════════════════
-     LIGHT THEME OVERRIDES
-     ══════════════════════════════════════════════════════════════════════ */
-  [data-theme="light"] input,
-  [data-theme="light"] select,
-  [data-theme="light"] textarea {
-    background: #FFFFFF !important;
-    color: #1F2937 !important;
-    border-color: #D1D5DB !important;
-  }
-  [data-theme="light"] input:focus,
-  [data-theme="light"] select:focus,
-  [data-theme="light"] textarea:focus {
-    border-color: #6366F1 !important;
-    box-shadow: 0 0 0 3px rgba(99,102,241,0.1) !important;
-  }
-  [data-theme="light"] .card {
-    background: #FFFFFF !important;
-    border: 1px solid #E5E7EB !important;
-    color: #1F2937 !important;
-  }
-  [data-theme="light"] h1,
-  [data-theme="light"] h2,
-  [data-theme="light"] h3,
-  [data-theme="light"] h4 { color: #111827 !important; }
-
-    /* ════════════════════════════════════════════════════════════════════
-     RESPONSIVE SYSTEM — mobile-first, fluid, safe-area aware
-     Breakpoints: 1280 · 1024 · 768 · 640 · 480 · 360
-     ════════════════════════════════════════════════════════════════════ */
-
-  /* Global: prevent horizontal overflow on every page */
-  *, *::before, *::after { box-sizing: border-box; }
-  html, body { overflow-x: hidden; max-width: 100vw; }
-
-  /* ── Large desktop ≥1280px ─────────────────────────────────────────── */
-  @media (min-width: 1280px) {
-    .grid-4 { grid-template-columns: repeat(4,1fr); }
-    .grid-3 { grid-template-columns: repeat(3,1fr); }
-  }
-
-  /* ── Tablet landscape ≤1024px ──────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════════
+     RESPONSIVE — mobile-first
+     ══════════════════════════════════════════════════════════ */
   @media (max-width: 1024px) {
     .grid-4 { grid-template-columns: repeat(2,1fr); }
     .grid-3 { grid-template-columns: repeat(2,1fr); }
-    /* Footer grid collapse */
     .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
-    /* Job detail sidebar stacks */
     .job-detail-grid { grid-template-columns: 1fr !important; }
   }
 
-  /* ── Tablet portrait ≤768px ────────────────────────────────────────── */
   @media (max-width: 768px) {
     .show-mobile { display: flex !important; }
-    .section-title { font-size: clamp(20px,5.5vw,26px) !important; line-height:1.25 !important; }
-    .section-sub   { font-size: clamp(13px,3.5vw,15px) !important; }
-
-    /* Touch targets */
-    .btn-primary, .btn-outline, .btn-ghost { font-size: 14px; padding: 10px 16px; min-height: 44px; }
-    .btn-primary { white-space: normal; word-break: break-word; }
+    .section-title { font-size: clamp(18px,5vw,22px) !important; line-height:1.25 !important; }
+    .section-sub   { font-size: clamp(12px,3vw,14px) !important; }
+    .nav-link      { font-size: 13px !important; }
+    .sidebar-link  { font-size: 13px !important; min-height: 44px; }
+    .tag   { font-size: 11px !important; padding: 3px 9px !important; }
+    .badge { font-size: 10px !important; padding: 2px 8px !important; }
+    label  { font-size: 12px !important; }
+    .btn-primary, .btn-outline, .btn-ghost { font-size: 13px !important; padding: 9px 14px; min-height: 44px; }
     input, select, textarea { font-size: 16px !important; min-height: 44px; }
-    .sidebar-link { min-height: 44px; }
     .card { border-radius: 12px !important; }
-
-    /* Grids */
     .grid-2 { grid-template-columns: 1fr !important; }
     .grid-3 { grid-template-columns: 1fr 1fr !important; }
     .grid-4 { grid-template-columns: 1fr 1fr !important; }
-
-    /* Dashboard bottom tab bar clearance */
-    .dash-content { padding-bottom: calc(68px + env(safe-area-inset-bottom,0px)) !important; }
+    .dash-content { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important; }
   }
 
-  /* ── Phone ≤640px — hide desktop sidebar, show tab bar ────────────── */
   @media (max-width: 640px) {
-    .hide-mobile { display: none !important; }
-    .dash-layout { flex-direction: column !important; }
-
-    /* ── Global font scale-down ───────────────────────────────────────── */
-    html  { font-size: 14px; }
-    body  { font-size: 13px; }
-    p     { font-size: 13px !important; }
-    label { font-size: 12px !important; }
-    .nav-link  { font-size: 13px !important; }
-    .section-title { font-size: clamp(18px,5vw,22px) !important; }
-    .section-sub   { font-size: 13px !important; }
-    .btn-primary, .btn-outline, .btn-ghost { font-size: 13px !important; }
-    .card  { font-size: 13px; }
-    .tag   { font-size: 11px !important; padding: 3px 9px !important; }
-    .badge { font-size: 10px !important; }
-    h1 { font-size: clamp(18px,5vw,24px) !important; }
-    h2 { font-size: clamp(15px,4.5vw,19px) !important; }
-    h3 { font-size: clamp(13px,4vw,16px) !important; }
-
-    /* Auth: full width card, no side panel */
-    .auth-brand { display: none !important; }
+    .hide-mobile  { display: none !important; }
+    .dash-layout  { flex-direction: column !important; }
+    .auth-brand   { display: none !important; }
     .auth-form-side { padding: 16px !important; }
-    .auth-card { padding: 24px 20px !important; border-radius: 16px !important; max-width: 100% !important; }
-
-    /* Hero search bar stacks */
+    .auth-card    { padding: 24px 18px !important; border-radius: 16px !important; max-width: 100% !important; }
     .hero-search-bar { flex-direction: column !important; gap: 8px !important; }
-    .hero-search-bar > div { border-left: none !important; padding-left: 0 !important; width: 100% !important; flex: unset !important; }
-    .hero-search-divider { display: none !important; }
-
-    /* Footer: single column */
-    .footer-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
-
-    /* Job detail: single column */
+    .footer-grid  { grid-template-columns: 1fr !important; gap: 20px !important; }
     .job-detail-grid { grid-template-columns: 1fr !important; }
-
-    /* Jobs page layout stacks */
-    .jobs-layout { grid-template-columns: 1fr !important; }
-
-    /* Profile setup experience grid */
-    .exp-grid { grid-template-columns: 1fr !important; }
-
-    /* Employer stats */
+    .jobs-layout  { grid-template-columns: 1fr !important; }
+    .exp-grid     { grid-template-columns: 1fr !important; }
     .employer-stats { grid-template-columns: 1fr 1fr !important; }
-
-    /* Toast position */
-    .toast-box {
-      bottom: calc(68px + env(safe-area-inset-bottom,0px)) !important;
-      left: 12px !important; right: 12px !important;
-      width: auto !important; min-width: 0 !important;
-    }
+    .toast-box { bottom: calc(68px + env(safe-area-inset-bottom,0px)) !important; left: 12px !important; right: 12px !important; width: auto !important; }
   }
 
-  /* ── Small mobile ≤480px ───────────────────────────────────────────── */
   @media (max-width: 480px) {
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
-    .section-title { font-size: clamp(16px,4.8vw,20px) !important; }
-
-    /* Tighter global type */
-    html  { font-size: 13px; }
-    body  { font-size: 12px; }
-    p     { font-size: 12px !important; }
-    label { font-size: 11px !important; }
-    h1    { font-size: clamp(16px,4.8vw,20px) !important; }
-    h2    { font-size: clamp(14px,4.2vw,17px) !important; }
-    h3    { font-size: clamp(12px,3.8vw,15px) !important; }
-    .section-sub { font-size: 12px !important; }
-    .btn-primary, .btn-outline, .btn-ghost { font-size: 12px !important; padding: 9px 14px !important; }
-
-    /* OTP boxes — keep them fitting */
-    .otp-box-input { width: 40px !important; height: 48px !important; font-size: 18px !important; }
-
-    /* Modals */
-    .modal-sheet {
-      width: 96vw !important; max-width: 96vw !important;
-      padding: clamp(14px,4vw,20px) !important; border-radius: 16px !important;
-    }
-    /* Button rows stack */
+    .section-title { font-size: 16px !important; }
+    .btn-primary, .btn-outline, .btn-ghost { font-size: 12px !important; padding: 8px 12px !important; }
+    .otp-box-input { width: 38px !important; height: 46px !important; font-size: 18px !important; }
+    .modal-sheet { width: 96vw !important; padding: clamp(14px,4vw,20px) !important; border-radius: 16px !important; }
     .action-row { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
     .action-row > * { width: 100% !important; justify-content: center !important; }
-
-    /* Profile setup step indicators — tighten up */
+    .employer-stats { gap: 10px !important; }
+    .auth-card { padding: 20px 14px !important; }
     .setup-steps { gap: 4px !important; }
     .setup-step-label { display: none !important; }
-
-    /* Employer stats: still 2 col but narrower */
-    .employer-stats { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
-    .employer-stats .card { padding: 14px !important; }
   }
 
-  /* ── Very small ≤360px ─────────────────────────────────────────────── */
   @media (max-width: 360px) {
-    html  { font-size: 12px; }
-    body  { font-size: 11px; }
-    .section-title { font-size: 16px !important; }
-    .btn-primary, .btn-outline, .btn-ghost { font-size: 12px; padding: 9px 12px; }
-    .card { border-radius: 10px !important; }
+    .section-title { font-size: 15px !important; }
+    .btn-primary, .btn-outline, .btn-ghost { font-size: 11px !important; padding: 8px 10px !important; }
     nav { padding-left: 8px !important; padding-right: 8px !important; }
-    .auth-card { padding: 20px 14px !important; }
-    h1 { font-size: 16px !important; }
-    h2 { font-size: 14px !important; }
+    .auth-card { padding: 18px 12px !important; }
+    .otp-box-input { width: 34px !important; height: 42px !important; font-size: 16px !important; }
   }
 
-  /* ── Touch devices ─────────────────────────────────────────────────── */
   @media (hover:none) and (pointer:coarse) {
-    button, [role="button"], .sidebar-link, .nav-link,
-    .btn-primary, .btn-outline, .btn-ghost,
-    input, select, textarea { min-height: 44px; }
-    .job-card:hover     { transform: none !important; box-shadow: var(--shadow) !important; }
-    .company-card:hover { transform: none !important; box-shadow: var(--shadow) !important; }
-    .btn-primary:hover  { transform: none !important; opacity: 1 !important; }
-    .btn-outline:hover  { transform: none !important; }
+    button, .sidebar-link, .nav-link, .btn-primary, .btn-outline, .btn-ghost, input, select, textarea { min-height: 44px; }
+    .job-card:hover, .company-card:hover { transform: none !important; }
+    .btn-primary:hover { transform: none !important; }
   }
 
-  /* ── Landscape phone ───────────────────────────────────────────────── */
   @media (max-height: 480px) and (orientation: landscape) {
-    nav  { height: 50px !important; }
-    main { min-height: calc(100dvh - 50px) !important; }
+    nav { height: 50px !important; }
     .hero-section { padding-top: 16px !important; padding-bottom: 16px !important; }
-    .auth-wrap { padding: 8px 16px !important; min-height: unset !important; }
   }
 
-  /* ── Retina ────────────────────────────────────────────────────────── */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    ::-webkit-scrollbar { width: 4px; }
-  }
-
-  /* ── Print ─────────────────────────────────────────────────────────── */
   @media print {
     nav, .show-mobile, footer, .toast-box { display: none !important; }
-    .card { box-shadow: none !important; border: 1px solid #ccc !important; }
-    main { min-height: auto !important; }
-    body { background: white !important; color: #000 !important; }
-    a    { color: #000 !important; text-decoration: underline; }
+    .card { box-shadow: none !important; border: 1px solid #333 !important; }
+    body { background: #000 !important; color: #fff !important; }
   }
 `;
 
-// ─── TOAST ───────────────────────────────────────────────────────────────────
 const Toast = ({ msg, type = "success", onClose }) => (
   <div
     style={{
@@ -1654,12 +1423,12 @@ const Navbar = ({ page, setPage, user, setUser }) => {
           top: 0,
           zIndex: 50,
           background: scrolled
-            ? (darkMode ? "rgba(11,17,32,0.92)" : "rgba(255,255,255,0.95)")
-            : (darkMode ? "rgba(11,17,32,0.98)" : "rgba(255,255,255,0.98)"),
+            ? ("rgba(11,17,32,0.92)")
+            : ("rgba(11,17,32,0.98)"),
           backdropFilter: "blur(16px)",
           borderBottom: `1px solid ${scrolled ? "var(--border)" : "transparent"}`,
           transition: "all 0.3s",
-          boxShadow: scrolled ? (darkMode ? "0 2px 24px rgba(0,0,0,0.5)" : "0 2px 20px rgba(0,0,0,0.06)") : "none",
+          boxShadow: scrolled ? ("0 2px 24px rgba(0,0,0,0.5)") : "none",
         }}
       >
         <div
@@ -1684,7 +1453,7 @@ const Navbar = ({ page, setPage, user, setUser }) => {
               flexShrink: 0,
             }}
           >
-            {darkMode ? <CnLogoDark size={34} textSize={19} /> : <CnLogo size={34} textSize={19} />}
+            {<CnLogoDark size={34} textSize={19} />}
           </div>
           {/* Desktop Nav */}
           <div
@@ -1717,11 +1486,11 @@ const Navbar = ({ page, setPage, user, setUser }) => {
             <button
               onClick={() => setDarkMode(!darkMode)}
               aria-label="Toggle dark mode"
-              title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              title={"Switch to light mode"}
               className="btn-ghost"
               style={{ padding: "8px 10px" }}
             >
-              <Icon name={darkMode ? "sun" : "moon"} size={17} />
+              <Icon name={"sun"} size={17} />
             </button>
             {user ? (
               <>
@@ -1838,7 +1607,7 @@ const Navbar = ({ page, setPage, user, setUser }) => {
                 marginBottom: 28,
               }}
             >
-              {darkMode ? <CnLogoDark size={30} textSize={17} /> : <CnLogo size={30} textSize={17} />}
+              {<CnLogoDark size={30} textSize={17} />}
               <button
                 onClick={() => setMenuOpen(false)}
                 style={{
@@ -1946,8 +1715,8 @@ const Navbar = ({ page, setPage, user, setUser }) => {
                   <span
                     style={{ display: "flex", alignItems: "center", gap: 10 }}
                   >
-                    <Icon name={darkMode ? "sun" : "moon"} size={16} />
-                    {darkMode ? "Light Mode" : "Dark Mode"}
+                    <Icon name={"sun"} size={16} />
+                    {"Light Mode"}
                   </span>
                   <span onClick={(e) => e.stopPropagation()}>
                     <ToggleSwitch on={darkMode} onChange={setDarkMode} />
@@ -2580,7 +2349,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
               <span
                 style={{
                   background: "var(--tint-violet)",
-                  color: darkMode ? "#A5B4FC" : "#7C3AED",
+                  color: "#A5B4FC",
                   fontSize: 11,
                   fontWeight: 700,
                   padding: "2px 8px",
@@ -3013,7 +2782,7 @@ const HomePage = ({ setPage, setJobFilter, user }) => {
             onClick={() => setPage("signup")}
             style={{
               background: "var(--card)",
-              color: darkMode ? "#A5B4FC" : "#7C3AED",
+              color: "#A5B4FC",
               border: "none",
               padding: "14px 32px",
               borderRadius: 12,
@@ -3277,7 +3046,7 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
         <button
           style={{
             fontSize: 12,
-            color: darkMode ? "#A5B4FC" : "#7C3AED",
+            color: "#A5B4FC",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -3496,7 +3265,7 @@ const JobsPage = ({ jobFilter, setPage, setJobFilter, user }) => {
                 fontSize: 15,
               }}
             >
-              <span style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 700 }}>
+              <span style={{ color: "#A5B4FC", fontWeight: 700 }}>
                 {filtered.length}
               </span>{" "}
               jobs found
@@ -3694,7 +3463,7 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
                   {job.title}
                 </h1>
                 <div
-                  style={{ fontWeight: 600, color: darkMode ? "#A5B4FC" : "#7C3AED", marginTop: 4 }}
+                  style={{ fontWeight: 600, color: "#A5B4FC", marginTop: 4 }}
                 >
                   {job.company}
                 </div>
@@ -3999,7 +3768,7 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
               }}
             >
               <span style={{ color: "var(--text-muted)" }}>Open positions</span>
-              <span style={{ fontWeight: 600, color: darkMode ? "#A5B4FC" : "#7C3AED" }}>
+              <span style={{ fontWeight: 600, color: "#A5B4FC" }}>
                 {company?.jobs}
               </span>
             </div>
@@ -4120,7 +3889,7 @@ const JobDetailPage = ({ job, setPage, setJobFilter, user }) => {
               }}
             >
               Let us know why you&apos;re reporting{" "}
-              <strong style={{ color: darkMode ? "#A5B4FC" : "#7C3AED" }}>{job.title}</strong> at{" "}
+              <strong style={{ color: "#A5B4FC" }}>{job.title}</strong> at{" "}
               {job.company}.
             </div>
             <div
@@ -4440,7 +4209,7 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
           <h2 style={{ fontWeight: 800, fontSize: 18, color: "var(--text)" }}>
             {job.title}
           </h2>
-          <p style={{ fontSize: 14, color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600 }}>
+          <p style={{ fontSize: 14, color: "#A5B4FC", fontWeight: 600 }}>
             {job.company}
           </p>
           <div
@@ -4531,7 +4300,7 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: darkMode ? "#A5B4FC" : "#7C3AED",
+                  color: "#A5B4FC",
                 }}
               >
                 <Icon name="user" size={16} />
@@ -4848,7 +4617,7 @@ const JobApplicationPage = ({ job, setPage, setJobFilter, user }) => {
                 marginBottom: 16,
               }}
             >
-              <Icon name="ai" size={18} style={{ color: darkMode ? "#A5B4FC" : "#7C3AED" }} />
+              <Icon name="ai" size={18} style={{ color: "#A5B4FC" }} />
               <h3
                 style={{ fontWeight: 700, fontSize: 15, color: "var(--text)" }}
               >
@@ -5202,7 +4971,7 @@ const DashSection = ({
       label: "Applications",
       value: applications.length,
       icon: "send",
-      color: darkMode ? "#A5B4FC" : "#7C3AED",
+      color: "#A5B4FC",
       bg: "var(--tint-violet)",
     },
     {
@@ -5290,7 +5059,7 @@ const DashSection = ({
           <div style={{ fontWeight: 700, color: "var(--text)" }}>
             Profile Strength
           </div>
-          <span style={{ fontWeight: 700, color: darkMode ? "#A5B4FC" : "#7C3AED", fontSize: 18 }}>
+          <span style={{ fontWeight: 700, color: "#A5B4FC", fontSize: 18 }}>
             {completion}%
           </span>
         </div>
@@ -5348,7 +5117,7 @@ const DashSection = ({
             gap: 8,
           }}
         >
-          <Icon name="ai" size={16} style={{ color: darkMode ? "#A5B4FC" : "#7C3AED" }} /> AI Job
+          <Icon name="ai" size={16} style={{ color: "#A5B4FC" }} /> AI Job
           Recommendations
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -5389,7 +5158,7 @@ const DashSection = ({
                   fontSize: 12,
                   fontWeight: 700,
                   background: "var(--tint-violet)",
-                  color: darkMode ? "#A5B4FC" : "#7C3AED",
+                  color: "#A5B4FC",
                   padding: "3px 10px",
                   borderRadius: 999,
                 }}
@@ -5621,7 +5390,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
             >
               {form.name}
             </div>
-            <div style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontSize: 14, fontWeight: 600 }}>
+            <div style={{ color: "#A5B4FC", fontSize: 14, fontWeight: 600 }}>
               {form.headline}
             </div>
             <div
@@ -5647,10 +5416,10 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                 borderRadius: 12,
               }}
             >
-              <div style={{ fontWeight: 800, fontSize: 22, color: darkMode ? "#A5B4FC" : "#7C3AED" }}>
+              <div style={{ fontWeight: 800, fontSize: 22, color: "#A5B4FC" }}>
                 {Math.min(40 + skills.length * 3 + experience.length * 5, 100)}%
               </div>
-              <div style={{ fontSize: 11, color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600 }}>
+              <div style={{ fontSize: 11, color: "#A5B4FC", fontWeight: 600 }}>
                 Profile Strength
               </div>
             </div>
@@ -5736,7 +5505,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  color: darkMode ? "#A5B4FC" : "#7C3AED",
+                  color: "#A5B4FC",
                   marginLeft: 4,
                   padding: "0 0 0 2px",
                   fontSize: 12,
@@ -5833,7 +5602,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: darkMode ? "#A5B4FC" : "#7C3AED",
+                color: "#A5B4FC",
                 flexShrink: 0,
               }}
             >
@@ -5843,7 +5612,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
               <div style={{ fontWeight: 700, color: "var(--text)" }}>
                 {e.role}
               </div>
-              <div style={{ fontSize: 13, color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600 }}>
+              <div style={{ fontSize: 13, color: "#A5B4FC", fontWeight: 600 }}>
                 {e.company}
               </div>
               <div
@@ -5871,7 +5640,7 @@ const ProfileSection = ({ user, showToast, profile, setProfile }) => {
                   style={{
                     background: "none",
                     border: "none",
-                    color: darkMode ? "#A5B4FC" : "#7C3AED",
+                    color: "#A5B4FC",
                     cursor: "pointer",
                     fontSize: 12,
                     fontWeight: 600,
@@ -6026,7 +5795,7 @@ const ApplicationsSection = ({ applications, setPage, setJobFilter }) => {
                       style={{
                         fontWeight: 700,
                         fontSize: 16,
-                        color: darkMode ? "#A5B4FC" : "#7C3AED",
+                        color: "#A5B4FC",
                         cursor: "pointer",
                       }}
                     >
@@ -7112,7 +6881,7 @@ const ChangePwModal = ({
                 width: 34,
                 height: 34,
                 borderRadius: 10,
-                background: darkMode ? "rgba(129,140,248,0.12)" : "#EDE9FE",
+                background: "rgba(129,140,248,0.12)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -7188,7 +6957,7 @@ const ChangePwModal = ({
                     display: "flex",
                     gap: 8,
                     fontSize: 12,
-                    color: darkMode ? "#86EFAC" : "#166534",
+                    color: "#86EFAC",
                     marginBottom: i < 3 ? 6 : 0,
                   }}
                 >
@@ -8505,7 +8274,7 @@ const EmployerPage = ({
       label: "Jobs Posted",
       value: totalPosted,
       icon: "briefcase",
-      color: darkMode ? "#A5B4FC" : "#7C3AED",
+      color: "#A5B4FC",
     },
     {
       label: "Active Jobs",
@@ -8642,7 +8411,7 @@ const EmployerPage = ({
                     style={{ display: "flex", gap: 16, alignItems: "center" }}
                   >
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontWeight: 700, color: darkMode ? "#A5B4FC" : "#7C3AED" }}>
+                      <div style={{ fontWeight: 700, color: "#A5B4FC" }}>
                         {
                           employerApplicants.filter((a) => a.jobId === j.id)
                             .length
@@ -9241,7 +9010,7 @@ const EmployerPage = ({
                     style={{ display: "flex", gap: 12, alignItems: "center" }}
                   >
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontWeight: 700, color: darkMode ? "#A5B4FC" : "#7C3AED" }}>
+                      <div style={{ fontWeight: 700, color: "#A5B4FC" }}>
                         {
                           employerApplicants.filter((a) => a.jobId === j.id)
                             .length
@@ -9420,7 +9189,7 @@ const EmployerPage = ({
                       <div
                         style={{
                           fontSize: 12,
-                          color: darkMode ? "#4ADE80" : "#059669",
+                          color: "#4ADE80",
                           marginTop: 4,
                           fontWeight: 600,
                         }}
@@ -9883,7 +9652,7 @@ const AuthLogo = () => {
   const { darkMode } = useContext(ThemeContext);
   return (
     <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
-      {darkMode ? <CnLogoDark size={44} textSize={23} /> : <CnLogo size={44} textSize={23} />}
+      {<CnLogoDark size={44} textSize={23} />}
     </div>
   );
 };
@@ -10210,7 +9979,7 @@ const OtpBox = ({
               style={{
                 background: "none",
                 border: "none",
-                color: darkMode ? "#A5B4FC" : "#7C3AED",
+                color: "#A5B4FC",
                 fontWeight: 600,
                 cursor: "pointer",
               }}
@@ -10494,7 +10263,7 @@ const ProfileSetupJSX = ({
         <div style={{ fontWeight: 700, color: "var(--text)" }}>
           Profile Strength
         </div>
-        <span style={{ fontWeight: 700, color: darkMode ? "#A5B4FC" : "#7C3AED", fontSize: 18 }}>
+        <span style={{ fontWeight: 700, color: "#A5B4FC", fontSize: 18 }}>
           {strength}%
         </span>
       </div>
@@ -10578,7 +10347,7 @@ const ProfileSetupJSX = ({
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                color: darkMode ? "#A5B4FC" : "#7C3AED",
+                color: "#A5B4FC",
                 marginLeft: 4,
                 padding: 0,
                 fontSize: 12,
@@ -10665,7 +10434,7 @@ const ProfileSetupJSX = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: darkMode ? "#A5B4FC" : "#7C3AED",
+              color: "#A5B4FC",
               flexShrink: 0,
             }}
           >
@@ -10681,7 +10450,7 @@ const ProfileSetupJSX = ({
             >
               {e.role}
             </div>
-            <div style={{ fontSize: 13, color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600 }}>
+            <div style={{ fontSize: 13, color: "#A5B4FC", fontWeight: 600 }}>
               {e.company}
             </div>
             <div
@@ -11365,7 +11134,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
               style={{
                 background: "none",
                 border: "none",
-                color: darkMode ? "#A5B4FC" : "#7C3AED",
+                color: "#A5B4FC",
                 fontWeight: 600,
                 cursor: "pointer",
                 fontSize: 13,
@@ -11420,7 +11189,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                 padding: "14px 16px",
                 margin: "20px 0",
                 fontSize: 13,
-                color: darkMode ? "#86EFAC" : "#166534",
+                color: "#86EFAC",
                 textAlign: "left",
               }}
             >
@@ -11445,7 +11214,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             >
               Didn't get it? Check your spam folder, or{" "}
               <span
-                style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 600, cursor: "pointer" }}
+                style={{ color: "#A5B4FC", fontWeight: 600, cursor: "pointer" }}
                 onClick={() => {
                   setStep("forgot");
                   setError("");
@@ -11707,7 +11476,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
                 style={{
                   background: "none",
                   border: "none",
-                  color: darkMode ? "#A5B4FC" : "#7C3AED",
+                  color: "#A5B4FC",
                   fontWeight: 600,
                   cursor: "pointer",
                 }}
@@ -11894,7 +11663,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             <span
               style={{
                 fontSize: 13,
-                color: darkMode ? "#A5B4FC" : "#7C3AED",
+                color: "#A5B4FC",
                 cursor: "pointer",
                 fontWeight: 600,
               }}
@@ -11919,7 +11688,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             <>
               Don't have an account?{" "}
               <span
-                style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 700, cursor: "pointer" }}
+                style={{ color: "#A5B4FC", fontWeight: 700, cursor: "pointer" }}
                 onClick={() => setPage("signup")}
               >
                 Sign Up
@@ -11929,7 +11698,7 @@ const AuthPage = ({ mode, setPage, setUser }) => {
             <>
               Already have an account?{" "}
               <span
-                style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 700, cursor: "pointer" }}
+                style={{ color: "#A5B4FC", fontWeight: 700, cursor: "pointer" }}
                 onClick={() => setPage("login")}
               >
                 Log In
@@ -12304,7 +12073,7 @@ const ResourcesModal = ({ resource, onClose }) => {
               style={{
                 fontWeight: 700,
                 fontSize: 15,
-                color: darkMode ? "#A5B4FC" : "#7C3AED",
+                color: "#A5B4FC",
                 marginBottom: 8,
               }}
             >
@@ -12322,7 +12091,7 @@ const ResourcesModal = ({ resource, onClose }) => {
                   marginBottom: 6,
                 }}
               >
-                <span style={{ color: darkMode ? "#A5B4FC" : "#7C3AED", fontWeight: 700 }}>•</span>
+                <span style={{ color: "#A5B4FC", fontWeight: 700 }}>•</span>
                 <span>{p}</span>
               </div>
             ))}
@@ -12431,7 +12200,7 @@ const ResourcesPage = () => {
                 marginTop: 16,
                 background: "none",
                 border: "none",
-                color: darkMode ? "#A5B4FC" : "#7C3AED",
+                color: "#A5B4FC",
                 fontWeight: 700,
                 fontSize: 13,
                 cursor: "pointer",
@@ -12493,9 +12262,11 @@ export default function App() {
   const toastTimer = useRef(null);
   const [darkMode, setDarkMode] = useState(() => {
     try {
-      return localStorage.getItem("cn_theme") === "dark";
+      // Default to dark mode always — full dark theme redesign
+      const stored = localStorage.getItem("cn_theme");
+      return stored !== "light"; // dark unless explicitly set to light
     } catch {
-      return false;
+      return true;
     }
   });
 
@@ -12537,10 +12308,10 @@ export default function App() {
   useEffect(() => {
     document.documentElement.setAttribute(
       "data-theme",
-      darkMode ? "dark" : "light",
+      "dark",
     );
     try {
-      localStorage.setItem("cn_theme", darkMode ? "dark" : "light");
+      localStorage.setItem("cn_theme", "dark");
     } catch {}
   }, [darkMode]);
 
@@ -12697,7 +12468,7 @@ export default function App() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: darkMode ? "#080F1E" : "#F8FAFC",
+          background: "#080F1E",
           gap: 24,
           zIndex: 9999,
         }}
@@ -12728,7 +12499,7 @@ export default function App() {
             fontFamily: "Inter,sans-serif",
           }}
         >
-          <span style={{ color: darkMode ? "white" : "#0F172A" }}>Career</span>
+          <span style={{ color: "white" }}>Career</span>
           <span
             style={{
               background: "linear-gradient(135deg,#7C3AED,#60B5FF)",
@@ -12744,7 +12515,7 @@ export default function App() {
             width: 120,
             height: 3,
             borderRadius: 99,
-            background: darkMode ? "#1F2937" : "#E5E7EB",
+            background: "#1F2937",
             overflow: "hidden",
             position: "relative",
           }}
